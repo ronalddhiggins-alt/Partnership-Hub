@@ -1,3 +1,18 @@
 {
-    "cleanUrls": true
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "routes": [
+        {
+            "src": "/downloads/(.*)",
+            "dest": "/downloads/$1"
+        },
+        {
+            "src": "/(.*)\\.(?:css|js|woff|woff2|ttf|eot)",
+            "dest": "/$1.$2"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/index.html"
+        }
+    ]
 }
