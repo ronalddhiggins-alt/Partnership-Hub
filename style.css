@@ -401,6 +401,7 @@ img {
     opacity: 0;
     transition: opacity var(--transition);
     border-radius: var(--radius);
+    pointer-events: none;
 }
 
 .tool-bridge::before {
