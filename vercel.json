@@ -4,6 +4,10 @@
         {
             "source": "/wellbeing",
             "destination": "/wellbeing.html"
+        },
+        {
+            "source": "/vibecoding",
+            "destination": "/vibecoding.html"
         }
     ]
 }
