@@ -478,13 +478,13 @@
             </div>
             <ul class="toc-list" id="toc-list">
                 <li class="toc-item"><a href="#the-dedication-preface-the-symphony-of-the-bricks" class="active">📜 Dedication: Symphony of Bricks</a></li>
-                <li class="toc-item"><a href="#the-architects-of-vibe-coding">🗺️ 16-Chapter Panoramic Blueprint</a></li>
+                <li class="toc-item"><a href="#the-architects-of-vibe-coding-the-weightlessness-of-creation-16-chapter-panoramic-blueprint">🗺️ 16-Chapter Panoramic Blueprint</a></li>
                 <li class="toc-item"><a href="#chapter-1-the-death-of-syntax-the-birth-of-pure-intent">🏛️ Ch 1: Death of Syntax, Birth of Intent</a></li>
                 <li class="toc-item"><a href="#chapter-2-the-human-heart-as-the-sovereign-compiler">🏛️ Ch 2: Heart as Sovereign Compiler</a></li>
                 <li class="toc-item"><a href="#chapter-3-the-studio-console-the-vibe-loop">🏛️ Ch 3: Studio Console & The Vibe Loop</a></li>
-                <li class="toc-item status-coming"><a href="#">⏳ Ch 4: Stepping into the Void</a></li>
-                <li class="toc-item status-coming"><a href="#">⏳ Ch 5: Anatomy of the Agentic Engine</a></li>
-                <li class="toc-item status-coming"><a href="#">⏳ Ch 6: Git, Commits, & Local Sovereignty</a></li>
+                <li class="toc-item"><a href="#chapter-4-stepping-into-the-void-the-first-white-canvas">🏛️ Ch 4: Stepping into the Void</a></li>
+                <li class="toc-item"><a href="#chapter-5-hands-eyes-and-scalpels-how-agents-actually-build-the-anatomy-of-the-agentic-engine">🏛️ Ch 5: Anatomy of the Agentic Engine</a></li>
+                <li class="toc-item"><a href="#chapter-6-the-infinite-tape-machine-multi-session-context-version-history-and-local-file-ownership">🏛️ Ch 6: Git, Commits, & Local Sovereignty</a></li>
                 <li class="toc-item status-coming"><a href="#">⏳ Ch 7: Deploying to the Living Edge</a></li>
                 <li class="toc-item status-coming"><a href="#">⏳ Ch 8: The Zero-Panic Diagnostic Protocol</a></li>
                 <li class="toc-item status-coming"><a href="#">⏳ Ch 9: Heart-Driven Dynamics</a></li>
@@ -538,7 +538,34 @@
             });
 
             setupReadingFeatures();
+            setupScrollSpy();
         });
+
+        function setupScrollSpy() {
+            const tocLinks = document.querySelectorAll('.toc-item a:not([href="#"])');
+            const targetIds = Array.from(tocLinks).map(link => link.getAttribute('href').substring(1));
+            const targets = targetIds.map(id => document.getElementById(id)).filter(el => el !== null);
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                const scrollPos = window.scrollY + 120;
+
+                targets.forEach(section => {
+                    if (section.offsetTop <= scrollPos) {
+                        current = section.id;
+                    }
+                });
+
+                if (current) {
+                    tocLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + current) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
 
         function setupReadingFeatures() {
             // Reading Progress Bar
@@ -562,7 +589,15 @@
 
             // Close sidebar on link click on mobile
             document.querySelectorAll('.toc-item a').forEach(link => {
-                link.addEventListener('click', () => {
+                link.addEventListener('click', (e) => {
+                    const targetHref = link.getAttribute('href');
+                    if (targetHref && targetHref !== '#') {
+                        const targetElement = document.querySelector(targetHref);
+                        if (targetElement) {
+                            e.preventDefault();
+                            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }
                     if (window.innerWidth <= 900) {
                         sidebar.classList.remove('open');
                     }
