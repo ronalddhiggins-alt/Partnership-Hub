@@ -481,6 +481,15 @@
             const cleanHtml = DOMPurify.sanitize(marked.parse(rawMarkdown));
             container.innerHTML = cleanHtml;
 
+            // Make all links open in a new tab to preserve reader position
+            container.querySelectorAll('a').forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && (href.startsWith('http://') || href.startsWith('https://') || href.endsWith('.html') || href.startsWith('//'))) {
+                    link.setAttribute('target', '_blank');
+                    link.setAttribute('rel', 'noopener noreferrer');
+                }
+            });
+
             // Generate Table of Contents
             generateTOC();
             enhancePrompts();
