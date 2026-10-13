@@ -8,6 +8,10 @@
         {
             "source": "/vibecoding",
             "destination": "/vibecoding.html"
+        },
+        {
+            "source": "/remembrance",
+            "destination": "/remembrance.html"
         }
     ]
 }
