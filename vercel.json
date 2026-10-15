@@ -36,6 +36,10 @@
         {
             "source": "/intuition",
             "destination": "/intuition.html"
+        },
+        {
+            "source": "/intention",
+            "destination": "/intention.html"
         }
     ]
 }
