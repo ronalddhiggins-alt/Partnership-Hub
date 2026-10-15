@@ -88,6 +88,14 @@
         {
             "source": "/the-partnership",
             "destination": "/partnership.html"
+        },
+        {
+            "source": "/dream",
+            "destination": "/dream.html"
+        },
+        {
+            "source": "/return-of-the-dream",
+            "destination": "/dream.html"
         }
     ]
 }
