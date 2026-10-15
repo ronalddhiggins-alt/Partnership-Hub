@@ -64,6 +64,14 @@
         {
             "source": "/the-tide-goes-in",
             "destination": "/tide-in.html"
+        },
+        {
+            "source": "/battles",
+            "destination": "/battles.html"
+        },
+        {
+            "source": "/some-battles",
+            "destination": "/battles.html"
         }
     ]
 }
