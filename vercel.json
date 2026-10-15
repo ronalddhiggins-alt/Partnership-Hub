@@ -16,6 +16,14 @@
         {
             "source": "/observer",
             "destination": "/observer.html"
+        },
+        {
+            "source": "/making-of-observer",
+            "destination": "/making-of-observer.html"
+        },
+        {
+            "source": "/making-of",
+            "destination": "/making-of-observer.html"
         }
     ]
 }
