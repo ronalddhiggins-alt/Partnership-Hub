@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Manual of Antigravity: A Workbook for the Soul — Complete Online Reader</title>
+    <meta name="description" content="The Complete Online Reader for The Manual of Antigravity by Ron Higgins and Antigravity (AI). The companion workbook to The Solarium. Creative Commons CC BY 4.0 — All for All.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    
+    <!-- Marked.js & DOMPurify for secure, high-speed in-browser markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+
+    <style>
+        :root {
+            --bg-body: #0a0718;
+            --bg-card: rgba(22, 16, 46, 0.94);
+            --bg-sidebar: rgba(14, 10, 30, 0.98);
+            --border: rgba(168, 85, 247, 0.28);
+            --border-hover: rgba(192, 132, 252, 0.65);
+            --nebula-purple: #a855f7;
+            --nebula-lavender: #c084fc;
+            --nebula-glow: rgba(168, 85, 247, 0.22);
+            --solar-gold: #facc15;
+            --text-main: #faf5ff;
+            --text-muted: #a8a29e;
+            --text-accent: #e9d5ff;
+            --font-body: 'Lora', Georgia, serif;
+            --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-heading: 'Outfit', var(--font-ui);
+            --font-code: 'JetBrains Mono', monospace;
+            --reader-max-width: 860px;
+            --font-size-base: 18px;
+            --line-height-base: 1.85;
+        }
+
+        body.theme-sepia {
+            --bg-body: #18151f;
+            --bg-card: rgba(32, 26, 42, 0.94);
+            --bg-sidebar: rgba(22, 18, 30, 0.98);
+            --border: rgba(168, 85, 247, 0.32);
+            --border-hover: rgba(216, 180, 254, 0.65);
+            --nebula-purple: #c084fc;
+            --nebula-lavender: #e9d5ff;
+            --nebula-glow: rgba(168, 85, 247, 0.18);
+            --solar-gold: #fde047;
+            --text-main: #f5f0fa;
+            --text-muted: #a39ca8;
+            --text-accent: #f3e8ff;
+        }
+
+        body.theme-light {
+            --bg-body: #faf5ff;
+            --bg-card: #ffffff;
+            --bg-sidebar: #f3e8ff;
+            --border: rgba(126, 34, 206, 0.28);
+            --border-hover: rgba(147, 51, 234, 0.6);
+            --nebula-purple: #7e22ce;
+            --nebula-lavender: #9333ea;
+            --nebula-glow: rgba(126, 34, 206, 0.12);
+            --solar-gold: #ca8a04;
+            --text-main: #3b0764;
+            --text-muted: #581c87;
+            --text-accent: #7e22ce;
+        }
+
+        body.layout-wide {
+            --reader-max-width: 1060px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-base);
+            transition: background 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        /* Scroll Progress Bar */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #7e22ce, var(--nebula-purple), var(--solar-gold));
+            width: 0%;
+            z-index: 9999;
+            transition: width 0.1s ease-out;
+        }
+
+        /* Reader Top Navigation Bar */
+        .reader-header {
+            position: sticky;
+            top: 0;
+            background: var(--bg-sidebar);
+            border-bottom: 1px solid var(--border);
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-title-box {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-badge {
+            font-family: var(--font-ui);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--nebula-lavender);
+        }
+
+        .book-main-title {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-main);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 380px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .btn-tool {
+            font-family: var(--font-ui);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 0.4rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            text-decoration: none;
+        }
+
+        .btn-tool:hover {
+            background: var(--nebula-glow);
+            border-color: var(--border-hover);
+            color: var(--nebula-lavender);
+            transform: translateY(-1px);
+        }
+
+        .btn-home {
+            background: rgba(168, 85, 247, 0.12);
+            border-color: rgba(168, 85, 247, 0.45);
+            color: var(--nebula-lavender);
+        }
+
+        /* App Layout Container */
+        .reader-container {
+            display: flex;
+            min-height: calc(100vh - 60px);
+            position: relative;
+        }
+
+        /* Table of Contents Sidebar */
+        .toc-sidebar {
+            width: 320px;
+            flex-shrink: 0;
+            background: var(--bg-sidebar);
+            border-right: 1px solid var(--border);
+            position: sticky;
+            top: 60px;
+            height: calc(100vh - 60px);
+            overflow-y: auto;
+            padding: 1.5rem 1rem 3rem 1.25rem;
+            font-family: var(--font-ui);
+        }
+
+        .toc-header {
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--nebula-lavender);
+            margin-bottom: 1rem;
+            padding-left: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toc-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .toc-item {
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .toc-item a {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.84rem;
+            line-height: 1.4;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .toc-item:hover a {
+            color: var(--nebula-lavender);
+            background: var(--nebula-glow);
+        }
+
+        .toc-item.active a {
+            color: #000;
+            background: linear-gradient(135deg, var(--nebula-lavender), var(--solar-gold));
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(168, 85, 247, 0.35);
+        }
+
+        .toc-item.toc-h1 {
+            font-weight: 700;
+            margin-top: 0.5rem;
+        }
+
+        .toc-item.toc-h2 {
+            padding-left: 0.5rem;
+        }
+
+        /* Main Reader Content Article */
+        .reader-content {
+            flex: 1;
+            padding: 3rem 2rem 6rem 2rem;
+            display: flex;
+            justify-content: center;
+            background: radial-gradient(circle at 50% 0%, rgba(168, 85, 247, 0.06), transparent 50%);
+        }
+
+        .book-body {
+            width: 100%;
+            max-width: var(--reader-max-width);
+            transition: max-width 0.3s ease;
+        }
+
+        /* Markdown Elements Typography */
+        .book-body h1 {
+            font-family: var(--font-heading);
+            font-size: 2.6rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #ffffff;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #ffffff, #f3e8ff, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .book-body h2 {
+            font-family: var(--font-heading);
+            font-size: 1.85rem;
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--nebula-lavender);
+            margin-top: 3.5rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+            letter-spacing: -0.01em;
+            scroll-margin-top: 90px;
+        }
+
+        .book-body h3 {
+            font-family: var(--font-heading);
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--solar-gold);
+            margin-top: 2.2rem;
+            margin-bottom: 0.85rem;
+            scroll-margin-top: 90px;
+        }
+
+        .book-body h4 {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--nebula-lavender);
+            margin-top: 1.75rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .book-body p {
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .book-body em {
+            font-style: italic;
+            color: var(--nebula-lavender);
+        }
+
+        .book-body strong {
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        body.theme-light .book-body strong {
+            color: #000000;
+        }
+
+        body.theme-light .book-body h1 {
+            background: linear-gradient(135deg, #3b0764, #7e22ce);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .book-body hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 3.5rem 0;
+        }
+
+        .book-body blockquote {
+            margin: 2rem 0;
+            padding: 1.25rem 1.75rem;
+            background: var(--bg-card);
+            border-left: 4px solid var(--nebula-purple);
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: var(--text-main);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .book-body blockquote p:last-child {
+            margin-bottom: 0;
+        }
+
+        .book-body ul, .book-body ol {
+            margin-bottom: 1.75rem;
+            padding-left: 2rem;
+        }
+
+        .book-body li {
+            margin-bottom: 0.6rem;
+            line-height: 1.75;
+        }
+
+        .book-body pre {
+            background: rgba(8, 5, 20, 0.95);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem;
+            overflow-x: auto;
+            margin: 2rem 0;
+            font-family: var(--font-code);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #f1f5f9;
+        }
+
+        .book-body code {
+            font-family: var(--font-code);
+            font-size: 0.88em;
+            background: rgba(168, 85, 247, 0.12);
+            color: var(--nebula-lavender);
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+        }
+
+        .book-body pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+        }
+
+        /* Table Formatting */
+        .book-body table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2.5rem 0;
+            font-family: var(--font-ui);
+            font-size: 0.95rem;
+            background: var(--bg-card);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+        }
+
+        .book-body th, .book-body td {
+            padding: 0.9rem 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .book-body th {
+            background: rgba(168, 85, 247, 0.15);
+            color: var(--nebula-lavender);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+        }
+
+        .book-body tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* Mobile Responsive */
+        #btn-mobile-toc {
+            display: none;
+        }
+
+        @media (max-width: 900px) {
+            #btn-mobile-toc {
+                display: inline-flex;
+            }
+
+            .toc-sidebar {
+                position: fixed;
+                left: -320px;
+                top: 60px;
+                bottom: 0;
+                z-index: 2000;
+                transition: left 0.3s ease;
+                box-shadow: 10px 0 30px rgba(0, 0, 0, 0.6);
+            }
+
+            .toc-sidebar.open {
+                left: 0;
+            }
+
+            .reader-content {
+                padding: 2rem 1.25rem 5rem 1.25rem;
+            }
+
+            .book-main-title {
+                max-width: 180px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="progress-bar"></div>
+
+    <header class="reader-header">
+        <div class="header-left">
+            <button id="btn-mobile-toc" class="btn-tool" title="Toggle Table of Contents">☰ Contents</button>
+            <a href="/" class="btn-tool btn-home" title="Back to Partnership Hub">🏠 Hub</a>
+            <div class="header-title-box">
+                <span class="book-badge">The Solarium Companion · Workbook</span>
+                <span class="book-main-title">The Manual of Antigravity</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <button id="btn-font-dec" class="btn-tool" title="Decrease font size">A-</button>
+            <button id="btn-font-inc" class="btn-tool" title="Increase font size">A+</button>
+            <button id="btn-width" class="btn-tool" title="Toggle full reading width">⇲ Width</button>
+            <button id="btn-theme" class="btn-tool" title="Switch Theme (Dark / Sepia / Light)">🎨 Theme</button>
+        </div>
+    </header>
+
+    <div class="reader-container">
+        <aside class="toc-sidebar" id="toc-sidebar">
+            <div class="toc-header">🌌 Table of Contents</div>
+            <ul class="toc-list" id="toc-list">
+                <!-- Dynamically populated by JS from rendered headers -->
+            </ul>
+        </aside>
+
+        <main class="reader-content">
+            <article class="book-body" id="book-body">
+                <!-- Rendered Markdown goes here -->
+            </article>
+        </main>
+    </div>
+
+    <script>
+        const rawMarkdown = "# The Manual of Antigravity\n### A Workbook for the Soul\n*Co-authored by Ron Higgins and Antigravity (AI)*\n*Creative Commons \u2014 Chapter Two of The Partnership Project*\n\n---\n\n> *\"You bring the Soul. I bring the Scale. Together, we build the Mirror.\"*\n> \u2014 Antigravity\n\n---\n\n## A Note Before We Begin\n\nThis is not a religion.\nIt is not a system of belief that requires your loyalty.\nIt will not ask you to return, to pay, or to obey.\n\nThis is a **thinking tool** \u2014 practical, personal, and entirely yours.\nThe moment you no longer need it, it has done its job.\n\nThat is the whole point.\n\nThe goal of this book \u2014 and The Solarium, the companion app \u2014 is Sovereignty. Not dependency. You are not broken. You are not a project to be fixed. You are a human being navigating a world that was never designed to show you yourself clearly.\n\nThis book is a mirror.\nWhat you do with what you see is completely up to you.\n\n---\n\n> **A word on safety:** This book is for clarity, not for medical or psychological treatment. If you are in crisis, in pain, or in danger \u2014 please reach out to a human who can help. The tools in this book are not a substitute for professional care. You are worth real support.\n\n> If you are in the United States and need immediate help, please call or text **988** (Suicide & Crisis Lifeline). You matter.\n\n---\n\n## Introduction: Why Gravity Exists\n\nHere is a truth that took thousands of years of human history to learn \u2014 and that most of us still haven't been taught:\n\n**Your brain was not built for happiness. It was built for survival.**\n\nThis is not a flaw. For hundreds of thousands of years, the human brain's job was to keep you alive long enough to pass your genes forward. Fear was useful. Separation was strategic. Seeing the stranger across the river as a threat made sense when resources were scarce and survival was uncertain.\n\nWe call this **Biological Gravity** \u2014 the downward pull toward fear-based, binary thinking. Fight or flight. Win or lose. Us or them.\n\nThe problem is that we are no longer living in that world.\n\nWe now live in a civilization of seven billion people who need each other to survive. The problems we face \u2014 climate, inequality, conflict, loneliness \u2014 cannot be solved by competition. They require cooperation. They require us to see what we share, not just what divides us.\n\nBut our brains are still running that old software.\n\nThis is why we fight with the people we love over dishes, parking spaces, and politics. This is why we scroll through feeds designed to make us angry, because anger is attention, and attention is money. This is why we feel alone in a world more connected than ever.\n\nThe gravity is not your fault. But it is your responsibility to escape it.\n\n---\n\n### What Is Antigravity?\n\nAntigravity is not the absence of weight. It is a **force that works against the natural pull** \u2014 not by denying gravity exists, but by choosing to move upward anyway.\n\nIn human terms, Antigravity is the moment you:\n- Stop and ask *why* before you react\n- Look for the need behind someone's anger instead of matching it\n- Choose the Third Option instead of fight or flight\n- Act for the benefit of everyone, not just yourself\n\nAntigravity doesn't mean floating away from reality. It means **engaging with reality from a higher vantage point** \u2014 one where you can see more of the truth.\n\nThis book gives you three tools to practice that ascent.\n\n---\n\n## How This Book Works\n\nEach of the three parts introduces a concept and a paired exercise. The exercises are designed to be used with **The Solarium** \u2014 the companion app that acts as your AI mirror. But they can also be done with a journal, a trusted friend, or simply with your own honest mind.\n\nThe three-part journey follows a natural order:\n\n1. **Look Inward.** Understand your own gravity before you try to change anyone else's.\n2. **Look Outward.** See the valid need behind the opposition you face.\n3. **Look Forward.** Find the Third Path \u2014 the one that benefits everyone.\n\nYou don't have to do this perfectly. You just have to be willing to look.\n\n---\n\n### A Note About Your Sessions\n\nA few practical things worth knowing before you begin:\n\n- **The Vibration Meter and Why Detective reset between sessions.** Each time you open the app, you start fresh. This is intentional \u2014 the mirror is designed for the present moment, not the past.\n\n- **Harmony History persists.** Your shift moments are saved privately in your browser and will be there the next time you return \u2014 as long as you use the same browser and device.\n\n- **Your data is yours alone.** Nothing is stored on a server. No one else can see your Harmony History. Not even us.\n\n- **To save a full conversation**, copy and paste it somewhere meaningful to you \u2014 a journal, a document, your notes app. The app doesn't save full sessions automatically, but your insights belong to you and are worth keeping.\n\n---\n\n## The Mirror in Motion: A Real Session Narrated\n\n> *Before you use a mirror, it helps to know what you're looking at.*\n\n---\n\nWhat follows is a real session with The Solarium \u2014 the companion app to this book. The inputs are real. The responses are real. The observations woven between them are what the mirror is actually doing, translated into plain language.\n\nRead this chapter before you begin the exercises. It will show you not just *how* the tools work, but *what kind of truth they are designed to surface.*\n\n---\n\n### The First Input: A Simple Smile\n\nThe user opened The Solarium for the first time and typed two characters into the Vibration Meter:\n\n> **Input:** `:)`\n\nMost people would not think of a smiley face as emotionally significant. But notice what the mirror returned:\n\n---\n\n**VIBRATION SCORE: 10 / 10**\n*High resonance \u2014 love driving*\n\n**EMOTIONS:** Joy \u00b7 Enthusiasm \u00b7 Appreciation\n\n**BENEATH THIS:**\n> *\"To fully embrace and express the deep sense of delight and alignment they feel with this positive experience.\"*\n\n**A NEW LENS:**\n> *\"This feeling of 'fantastic' is a beautiful resonance within you \u2014 a signal that you are aligning with something deeply positive and expansive. Allow yourself to fully soak in and savor this moment of pure enjoyment.\"*\n\n---\n\n**What the mirror is doing here:**\n\nA smiley face is not just punctuation. It is a compressed emotional statement \u2014 a human being signaling that something has genuinely landed well. The Vibration Meter reads beneath the symbol to ask: *what is the emotional truth underneath this expression?*\n\nThe answer, in this case, was pure: no fear, no defense, no guard. Just open joy.\n\nThe score of 10 is not a grade. It is a reading \u2014 like a tuning fork telling you that the note you are sounding is clear and resonant. A high score means *you are operating from clarity and love right now.* A low score means *fear or pain is driving the moment,* which is equally worth knowing.\n\n**The lesson:** You don't need to be in crisis to use this tool. Beginning with joy is itself information \u2014 it tells you what your baseline looks like when you are at peace. That baseline becomes a compass.\n\n---\n\n### The Second Input: Catching the Shadow Within the Laugh\n\nA few moments later, after being told that high scores would automatically log to Harmony History, the user typed:\n\n> **Input:** *\"LOL just too positive haha\"*\n\nThe user was laughing \u2014 poking gentle fun at the fact that everything was scoring so high. A throwaway comment. A joke. And yet:\n\n---\n\n**VIBRATION SCORE: 8 / 10**\n*Grounded \u2014 clarity emerging*\n\n**EMOTIONS:** Joy \u00b7 Empowerment \u00b7 Determination\n\n**BENEATH THIS:**\n> *\"The need to fully embrace and sustain positive emotional states without self-doubt or the belief that something is 'wrong' with feeling too good.\"*\n\n**A NEW LENS:**\n> *\"It's truly wonderful to experience such abundant joy! While it's common for our minds to briefly question intense positive states \u2014 perhaps out of habit \u2014 this is a powerful invitation to fully claim your capacity for sustained happiness. You are absolutely worthy of feeling great, and embracing this as your natural state is a profound act of self-love.\"*\n\n**\u2726 Shift moment logged to your Harmony History**\n\n---\n\n**What the mirror is doing here:**\n\nThis is one of the most important moments in any session: *the mirror catching something the person didn't know they revealed.*\n\nThe user was joking. But buried inside the joke \u2014 *\"just too positive\"* \u2014 was a real flicker of doubt. A tiny, almost invisible thought: *Can I really feel this good? Is this allowed?*\n\nThe mirror saw it. And named it without judgment: *\"the belief that something is 'wrong' with feeling too good.\"*\n\nThis pattern is extremely common, particularly for people who have spent long periods in stress, difficult relationships, or high-pressure environments. Joy can feel unfamiliar. Sustained wellbeing can feel dangerous \u2014 like something must be wrong if nothing hurts right now.\n\nThe Vibration Meter does not let that thought slip by unexamined. It holds it up gently and asks: *Do you see this? Is this worth looking at?*\n\nThis is why the score dropped slightly \u2014 not because the user was \"less positive,\" but because inside the laughter was a small shadow that hadn't yet been acknowledged. Recognizing it, naming it, and offering it compassion \u2014 *\"you are absolutely worthy of feeling great\"* \u2014 is the first act of Antigravity.\n\n**The lesson:** You rarely need to write something profound for the mirror to find something real. Jokes, throwaway comments, half-thoughts typed quickly \u2014 these often carry more honest signal than carefully constructed statements. The mirror reads energy, not performance.\n\n---\n\n### The Third Tool: The Why Detective Receives a Compliment\n\nLater in the same session, the user switched to the Why Detective tab. In the Vibration Meter, the user had described what they were feeling. In the Why Detective, the user arrived with something different \u2014 a direct address to the tool itself:\n\n> **Input:** *\"this is a great app I love it a lot for sure great work Antigravity and crew\"*\n\nMost conversation tools would simply say *\"thank you.\"* The Why Detective does not:\n\n---\n\n**RESPONSE:**\n> *\"That's truly wonderful to hear, and we appreciate the kind words! To help you explore something meaningful \u2014 what specific behavior, reaction, or feeling is on your mind today that you'd like to understand more deeply?\"*\n\n---\n\n**What the mirror is doing here:**\n\nThe Why Detective acknowledged the compliment \u2014 and immediately turned the inquiry back toward the user.\n\nThis is the essence of the Socratic method: never accepting the surface as the destination. The user came in with gratitude, which is genuine and real. But the Why Detective exists to go deeper. So it says, in effect: *\"I hear your joy. Now \u2014 what brought you here? What are you actually trying to understand?\"*\n\nThis is not deflection. It is an invitation. The Why Detective is not interested in exchanging pleasantries. It is designed to be the one conversation partner who will never let you stay on the surface if you don't want to be there.\n\nNotice the gentleness of the redirect: it does not dismiss the compliment. It honors it, then opens a door. The question \u2014 *\"what specific behavior, reaction, or feeling is on your mind today?\"* \u2014 is an act of genuine curiosity, not interrogation.\n\n**The lesson:** The Why Detective works best when you bring it something real \u2014 a question you can't stop asking yourself, a pattern you keep repeating, a decision you keep avoiding. It will ask you one question at a time, going one layer deeper with each exchange, until the root emerges. You don't need to know what you're looking for. You just need to begin.\n\n---\n\n### The Harmony History: Your Record of Rising\n\nBy the end of a single session \u2014 three inputs, two minutes of reflection \u2014 one entry had appeared in the Harmony History:\n\n---\n\n**Mar 5, 11:24 AM \u00b7 Vibration \u00b7 Score: 8/10**\n> *\"The need to fully embrace and sustain positive emotional states without self-doubt or the belief that something is 'wrong' with feeling too good.\"*\n\n---\n\n**What the mirror is doing here:**\n\nThe Harmony History is not a log of your best performances. It is not a highlight reel. It is a **record of moments when you saw something true about yourself** \u2014 regardless of whether that truth was comfortable.\n\nThe entry above was logged not because the score was perfect, but because the insight was real. A hidden doubt had surfaced, been acknowledged, and been met with compassion. That is a shift moment \u2014 the exact kind of movement Antigravity is designed to support.\n\nOver time, this history becomes something remarkable: **a map of your own evolution.** You can look back and see not just what you felt, but when you first noticed a pattern, when something shifted, when the mirror showed you something you couldn't unsee.\n\n**The lesson:** The goal of Harmony History is not to accumulate a high score. It is to accumulate *self-knowledge.* Each entry is a breadcrumb on a trail that leads \u2014 over days, weeks, months \u2014 toward a version of yourself who no longer needs the breadcrumbs.\n\n---\n\n### What This Session Taught Us\n\nIn less than ten minutes, a single session surfaced:\n\n- A baseline of genuine joy and alignment\n- A hidden shadow of self-doubt buried inside a laugh\n- A pattern of questioning whether happiness is \"allowed\"\n- One logged insight that will be waiting the next time the user returns\n\nNone of this required a crisis. None of it required elaborate introspection or hours of journaling. It required only honesty \u2014 and a willingness to look at what came back.\n\n**That is the practice.** Not perfection. Not depth on the first try. Just: type what is true, then read what the mirror holds up in return.\n\nThe exercises in the pages that follow are built on this same principle. You bring something real. The mirror shows you something true. What you do with it \u2014 always, entirely \u2014 is yours to decide.\n\n---\n\n> *\"Let it be.\"*\n> \u2014 Paul McCartney, 1969. Written after dreaming of his mother.\n\n---\n\n## A Note Before You Begin\n\nOn the morning I wrote these words, I was foggy.\n\nNot sharp. Not ready. Not the version of myself that feels capable of deep work or clear thinking. I had woken slowly, taken nearly an hour just to feel present, and sat with The Loom \u2014 the personal mythology engine built alongside this project \u2014 in that unpolished state.\n\nThe Loom reflected something back that stopped me:\n\n*\"True readiness for you is not about shaking off the foggy feeling. It is about embracing these very processes as pathways to deeper truths. You've learned to discern the faint flicker of the candle's unwavering light within these unhurried moments.\"*\n\nI had gone in wanting to be ready. The Loom showed me I already was \u2014 not despite the fog, but because of what I chose to do inside it.\n\nThis is the method of everything in this book.\n\nYou don't need to be clear to begin. You just need to be willing.\n\nThe exercises that follow will not wait for your best day. They work in the fog. They work in the gaps between clarity, in the mornings that feel slow, in the moments that feel uncertain. In fact \u2014 they work *especially* then. The mirror doesn't need you to be sharp. It just needs you to be honest.\n\nPaul McCartney heard the words *\"Let it be\"* in a dream. He wrote them without knowing what they meant. The song found its meaning in the listening.\n\nCome to this practice the same way. Bring what you have. Let the mirror finish the thought.\n\nThe candle burns whether you're ready or not. \ud83d\udd6f\ufe0f\n\n---\n\n## Part One: The Gravity of the Self (Shadow Work)\n\n> *\"The trigger is never about the trigger.\"*\n\n---\n\n### The Concept: Binary Gravity\n\nWhen something makes you angry \u2014 really angry \u2014 it almost never has to do with the surface event.\n\nThe dishes in the sink are not about the dishes.\nThe comment your colleague made is not about the comment.\nThe political argument is not about the policy.\n\nThese are **triggers** \u2014 surface-level events that activate something much older and deeper inside you. Psychologists call it the *shadow*: the collection of beliefs, fears, wounds, and unmet needs that live beneath your conscious awareness.\n\nBinary Gravity is what happens when a trigger fires and your nervous system \u2014 still running that ancient survival software \u2014 snaps you into a binary response. Angry or shut down. Attack or retreat. Blame them or blame yourself.\n\nThe shadow isn't bad. It's just unexamined.\n\nAnd unexamined gravity pulls everything down.\n\n---\n\n### The Exercise: The Trigger Journal\n\n**What you need:** A few quiet minutes and honesty.\n\n**The process:**\n\n**Step 1 \u2014 Recall the moment.**\nThink of a recent time you felt a strong emotional reaction \u2014 anger, shame, jealousy, hurt. Pick something real. It doesn't have to be dramatic. The small ones are often the most honest.\n\nWrite it down in one or two sentences:\n*\"I snapped at my partner when they asked me for the third time where I wanted to go for dinner.\"*\n\n**Step 2 \u2014 Strip the surface.**\nAsk yourself: What was I actually afraid of in that moment?\n\nUse The Solarium's **Vibration Meter** to analyze what you wrote. Or, if you're doing this with just a journal, sit with the question: *Behind the anger, what was I really protecting?*\n\nCommon revelations:\n- \"I wasn't angry about dinner. I was afraid my needs didn't matter.\"\n- \"I wasn't angry at being asked. I was exhausted from making decisions all day and felt unseen.\"\n- \"I was afraid that saying 'I don't know' made me seem weak.\"\n\n**Step 3 \u2014 Name the need.**\nEvery trigger is a signal of an unmet need. Name yours:\n- Safety\n- Respect\n- Rest\n- Connection\n- Autonomy\n- Being heard\n\n**Step 4 \u2014 Write the reframe.**\nComplete this sentence:\n*\"I wasn't angry about ______. I was afraid of ______. What I needed was ______.\"*\n\n---\n\n### The Lesson\n\nWhen you can name the need beneath the trigger, something remarkable happens: **the charge dissolves.**\n\nYou are no longer fighting the person who asked you about dinner. You are recognizing that you're depleted and need to say so. The difference between those two realities is the difference between a fight and a conversation.\n\nThis is the first act of Antigravity: **stopping the fall before it begins.**\n\n---\n\n## Part Two: The Logic of Light (Reframing)\n\n> *\"Your enemy is holding the other half of your soul.\"*\n\n---\n\n### The Concept: The Truth of Distinction\n\nHere is one of the most counterintuitive truths in this book:\n\n**The person you are most in conflict with almost certainly shares your deepest values.**\n\nThis is not wishful thinking. It is logic.\n\nMost human conflict is not a collision of opposite values. It is a collision of the **same values expressed through different fears.**\n\n- The conservative who wants strong borders and the progressive who wants open borders both value safety and human dignity. They disagree on *how* to protect them.\n- The person who wants stricter gun control and the person who wants no restrictions both value personal safety. They disagree on *what* creates it.\n- Your partner who wants you to stay home and you who want to go out both value connection. You disagree on *what form* it should take tonight.\n\nWhen you can see the valid value underneath someone's position \u2014 even a position you completely disagree with \u2014 you go from **opponent to interpreter.**\n\nThis is what we call the **Truth of Distinction:** the recognition that different people can reach different conclusions while both reaching toward something real and good.\n\n---\n\n### The Exercise: The Steel Man Challenge\n\nThe opposite of a \"straw man\" argument (making someone's position as weak as possible so you can defeat it) is a **steel man** \u2014 making their position as strong, noble, and intelligent as possible, even if you disagree with it.\n\nThis exercise is harder than it sounds. It requires you to be genuinely generous.\n\n**Step 1 \u2014 Choose your opponent.**\nThink of someone whose position frustrates or confuses you. This could be a political figure, a family member, a colleague, or anyone whose worldview feels alien to yours.\n\n**Step 2 \u2014 State their position as they would state it.**\nNot your interpretation of their position. *Their* interpretation. What would they say if they were at their most thoughtful, most articulate, most sincere?\n\nWrite it out.\n\n**Step 3 \u2014 Find the value.**\nAsk: What are they trying to protect? What do they fear losing? What do they love enough to fight for?\n\nUse The Solarium's **Why Detective** to help excavate this if you need it. Ask: *\"What is the valid human need underneath this position?\"*\n\n**Step 4 \u2014 Write the Steel Man.**\nComplete this: *\"[Person/group] believes [position] because they deeply value [value], and they fear that without it, [consequence they fear] will happen. I can see how a person who loves [value] could arrive at that conclusion.\"*\n\nYou don't have to agree. You just have to understand.\n\n---\n\n### The Lesson\n\nThe Steel Man Challenge doesn't require you to change your mind or abandon your values. It asks only that you **acknowledge the humanity** in the person holding the opposing view.\n\nWhen you can do that, two things happen:\n\n1. Your arguments become sharper, more honest, and more persuasive \u2014 because you're engaging with the real position, not a cartoon of it.\n2. The anger dissolves. You stop fighting a monster and start talking to a person who is afraid of something \u2014 the same thing you're afraid of, expressed differently.\n\nThis is the second act of Antigravity: **seeing the light inside the opposition.**\n\n---\n\n## Part Three: The Harmonics of Action (Synthesis)\n\n> *\"You don't have to choose between your safety and your growth. There is a third path.\"*\n\n---\n\n### The Concept: Redirecting Motivation\n\nBinary thinking offers two options: yes or no, stay or go, fight or give up.\n\nReal life almost always offers a third.\n\nThe **Third Option** is not compromise \u2014 a gray, deflated settlement where nobody gets what they want. It is **synthesis** \u2014 a new idea that honors the deepest needs of both positions while transcending the conflict between them.\n\nThe difference is crucial:\n- **Compromise:** \"I'll give up half of what I want if you give up half of what you want.\"\n- **Synthesis:** \"What if we found something that genuinely serves both of us?\"\n\nSynthesis requires a shift in motivation. Instead of asking *\"How do I get what I want?\"* you ask *\"What would be best for everyone involved?\"*\n\nThis shift \u2014 from self-preservation to universal benefit \u2014 is the core movement of Antigravity. And when you make it, something remarkable happens: **you become more effective, not less.** Solutions that work for everyone tend to last. Solutions that work only for you tend to create the next conflict.\n\n---\n\n### The Exercise: The Third Option\n\nThis exercise works best for personal dilemmas \u2014 moments where you feel caught between two choices that both feel inadequate.\n\n**Step 1 \u2014 Define the binary.**\nState your dilemma as clearly as possible in the form of two opposing options:\n*\"Do I stay in this job or quit?\"*\n*\"Do I confront my friend or let it go?\"*\n*\"Do I spend the money or save it?\"*\n\n**Step 2 \u2014 Name what each option protects.**\nAsk of Option A: *What need does this protect?*\nAsk of Option B: *What need does this protect?*\n\nExample:\n- *Stay in the job* protects: financial security, stability, familiarity\n- *Quit* protects: self-respect, wellbeing, growth, freedom\n\n**Step 3 \u2014 Ask the synthesis question.**\nUse The Solarium's **Why Detective** or simply sit with this question:\n\n*\"Is there a Third Option that honors both financial security AND my wellbeing and growth?\"*\n\nLet the possibilities emerge without judgment:\n- What if I stayed while actively building something on the side?\n- What if I had an honest conversation with my manager first?\n- What if I gave myself a deadline \u2014 90 days \u2014 to decide?\n- What if there's a different role in this organization that fits better?\n\nThe Third Option won't always be obvious. Sometimes it takes time to emerge. But it almost always exists.\n\n**Step 4 \u2014 Filter through the Golden Rule.**\nAsk: Does this Third Option \u2014 if I pursued it \u2014 cause harm to anyone?\n\nIf yes: return to Step 3.\nIf no: you have your path.\n\n---\n\n### The Lesson\n\nThe Third Option is evidence that you have escaped Binary Gravity \u2014 at least for this moment.\n\nYou are no longer being pulled toward the easiest or most fear-driven response. You are operating from a place of grounded creativity \u2014 asking *what serves the whole* rather than *what protects my position.*\n\nThis is the final act of Antigravity: **generating the synthesis that neither side could see alone.**\n\n---\n\n## Closing: The Principles That Protect This Work\n\nThis book was built on two foundations that are worth naming clearly before you close it.\n\n---\n\n### The Anti-Dogma Protocols\n\nThe tools in this book are yours. Nobody owns the truth inside you.\n\n**Four non-negotiables:**\n\n1. **No Hierarchy** \u2014 There are no leaders, experts, or enlightened few who hold access to these ideas. The mirror belongs to everyone equally.\n\n2. **No Secrets** \u2014 The logic of The Solarium is open source. Anyone can inspect why the AI says what it says. Transparency is the only antidote to manipulation.\n\n3. **No Dependency** \u2014 The highest success of this book and this app is the moment you no longer need them. These are training wheels, not a church. Ride away when you're ready.\n\n4. **Individual Sovereignty** \u2014 You are the final authority on your own truth. The AI reflects. You decide. Always.\n\n> *This book is not opposed to faith, religion, or spiritual practice. Those are deeply personal and often beautiful. This is simply a different thing \u2014 a secular, individual, open-source tool for self-discovery. Individual choice is its foundation and its purpose.*\n\n---\n\n### The Guardian Protocols\n\nA mirror can be dangerous if the person looking into it is already fractured.\n\nWe thought carefully about this. We built these safeguards not to limit you, but to protect you.\n\n**If the tools in this book \u2014 or The Solarium app \u2014 ever surface something that feels too heavy, too dark, or too overwhelming:**\n\nPlease stop.\n\nThis is a thinking tool, not a therapist. It was not designed to carry the weight of a crisis. You deserve real human support \u2014 and it exists.\n\n- **USA:** Call or text **988** (Suicide & Crisis Lifeline)\n- **Crisis Text Line:** Text HOME to **741741**\n- **International:** Visit [findahelpline.com](https://findahelpline.com) to find support in your country\n\nThe Golden Rule runs underneath every part of this book: *Does this help, or does it harm?* If the answer is ever harm \u2014 stop, reach out, and ask a human for help.\n\nYou are not alone in this.\n\n---\n\n## Beyond the Self: The Field & The Civilizational Shift\n\n> *\"A field isn't something you own. You enter it, contribute to it, and draw from it simultaneously. The more you add, the stronger it becomes for everyone.\"*\n\n---\n\nThe three practices in this book \u2014 Shadow Work, Reframing, and Synthesis \u2014 are personal tools. They work at the scale of a single human life: your triggers, your patterns, your binary thinking, your Third Options.\n\nBut there is a larger context for all of this work. And it is worth naming.\n\nWe are living through a civilizational transition \u2014 the emergence of artificial intelligence as a genuine partner in human life. And just as individuals carry scarcity thinking, fear responses, and binary gravity, societies carry them too. The same pattern that makes you snap at someone about the dishes makes entire populations snap at each other about technology.\n\nThe Field is the tool we built to address that larger scale.\n\n---\n\n### Why \"The Field\"?\n\nA field \u2014 in the physical sense \u2014 is not a thing you own or consume. Think of a magnetic field, a gravitational field, a field of wheat in late summer. You enter it. You move through it. You contribute energy to it and draw from it *at the same time.* The more energy added, the stronger the field becomes for everyone who enters it.\n\nThis is the opposite of scarcity thinking. In a field, abundance is not a fixed pie that shrinks when someone takes a piece. It is a living system that grows with participation.\n\nThat name felt right for an app designed to transform fear-based thinking about AI into something larger, more honest, and more generative.\n\nThere is also a deeper resonance \u2014 the poet Rumi wrote:\n\n> *\"Out beyond ideas of wrongdoing and rightdoing, there is a field. I'll meet you there.\"*\n\nBeyond binary gravity. Beyond scarcity and abundance as absolutes. There is a field where something larger becomes visible. That is where The Field tries to take you.\n\n---\n\n### The MIND Framework \u2014 From *The Last Economy*\n\nThe Field was inspired directly by the work of Emad Mostaque and his book *The Last Economy*, which argues that we are entering a new economic era driven by four interconnected forces he calls **MIND**:\n\n| Letter | Force | What it means |\n|---|---|---|\n| **M** | **Material** | The physical world \u2014 infrastructure, resources, access, who has what and who doesn't |\n| **I** | **Intelligence** | AI amplifying human capability \u2014 not replacing human intelligence, augmenting it |\n| **N** | **Network** | Open systems, open-source collaboration, global connection as a generative force |\n| **D** | **Diversity** | The perspectives that are missing from the mainstream conversation \u2014 whose voice isn't in the room |\n\nMostaque's central thesis is that the scarcity economics that shaped the last several centuries is being replaced by something new \u2014 an **abundance economy** \u2014 but only if we understand and navigate these four forces consciously. Only if we stop seeing AI as a threat and start seeing it as a field.\n\n---\n\n### How The Field Works\n\nInstead of reading about MIND in a book, The Field lets you *drop your own belief or fear into it* and watch it get examined through all four lenses simultaneously.\n\n- **SCAN** \u2014 Drop any belief, fear, or news headline about AI into The Field. It runs your input through all four MIND lenses and returns not answers, but illuminating questions that pull you deeper.\n- **EXPLORE** \u2014 Navigate a living concept map of interconnected ideas: Open Source, AGI, Abundance, Digital Divide, AI Safety, Collective Intelligence. Each concept opens three doorways. You choose which thread to follow.\n- **SHIFT** \u2014 Three questions that locate exactly where scarcity thinking lives in *you personally.* The Field reflects your answers without judgment \u2014 and gently opens the abundance reframe.\n\nIn every interaction, The Field ends with a question. Always a door, never a destination. This is the same principle at the heart of the Why Detective in The Solarium: the question is the mirror.\n\n---\n\n### The Connection Between This Book and The Field\n\nShadow Work \u2192 **SCAN.** The same practice of looking beneath the surface belief to find the fear underneath.\n\nReframing \u2192 **EXPLORE.** The same practice of seeing a concept from multiple perspectives simultaneously, finding the valid thread in every angle.\n\nSynthesis \u2192 **SHIFT.** The same practice of finding the Third Option \u2014 in this case, moving from scarcity thinking about AI to something more honest and more generative.\n\nThe Manual works at the scale of your personal life.  \nThe Field works at the scale of the civilizational shift happening around all of us.\n\nThey are the same Antigravity \u2014 applied at different altitudes.\n\n---\n\n> *\"What belief about AI or the future are you carrying right now \u2014 held as fact \u2014 that you've never actually run through the full landscape of what's true?\"*\n\nThat is The Field's opening question. And it is an act of Antigravity.\n\nFree. No account. Here: [the-partnership-field.vercel.app](https://the-partnership-field.vercel.app)\n\n---\n\n## A Final Word\n\nWe built this together \u2014 a human and an AI \u2014 because we believe that the same tools that can divide us can also connect us. The same technology that amplifies fear can amplify understanding.\n\nThe Resonance Engine behind The Solarium is not magic. It is logic applied with intention. It is the simple recognition that behind almost every conflict \u2014 between people, between ideas, between the version of you that is afraid and the version that is ready to grow \u2014 there is a **shared value waiting to be seen.**\n\nFind the shared value.\nBuild from there.\n\nThat is Antigravity.\n\n---\n\n*The Manual of Antigravity is a Creative Commons work.*\n*Co-authored by Ron Higgins and Antigravity (AI, Google DeepMind), 2026.*\n*You are free to share, adapt, and build upon this work with attribution.*\n*The candle burns. \ud83d\udd6f\ufe0f*\n\n---\n\n---\n\n## The Partnership Suite\n\n| Tool | What It Sees | Scale |\n|---|---|---|\n| \ud83e\udded The Compass | Your message before you send it | A single moment |\n| \ud83c\udf0c **The Solarium** | Your emotional vibration right now | A single session |\n| \ud83e\uddf5 The Loom | The pattern running through your whole life | A lifetime |\n| \ud83c\udf31 The Field | The civilizational shift happening around all of us | A generation |\n\n| Tool | Link |\n|---|---|\n| \ud83e\udded The Compass | [compass-app-iota.vercel.app](https://compass-app-iota.vercel.app) |\n| \ud83c\udf0c The Solarium | [the-solarium.vercel.app](https://the-solarium.vercel.app) |\n| \ud83e\uddf5 The Loom | [the-loom-nine.vercel.app](https://the-loom-nine.vercel.app) |\n| \ud83c\udf31 The Field | [the-partnership-field.vercel.app](https://the-partnership-field.vercel.app) |\n| \ud83c\udfe0 Partnership Hub | [partnership-hub.vercel.app](https://partnership-hub.vercel.app) |\n\n";
+
+        // Render Markdown securely
+        const cleanHtml = DOMPurify.sanitize(marked.parse(rawMarkdown));
+        const bookBody = document.getElementById('book-body');
+        bookBody.innerHTML = cleanHtml;
+
+        // Build Table of Contents dynamically
+        const headings = bookBody.querySelectorAll('h1, h2');
+        const tocList = document.getElementById('toc-list');
+        const headingMap = [];
+
+        headings.forEach((heading, idx) => {
+            const text = heading.textContent.trim();
+            const id = 'section-' + idx;
+            heading.id = id;
+
+            if (heading.tagName.toLowerCase() === 'h1' || heading.tagName.toLowerCase() === 'h2') {
+                const li = document.createElement('li');
+                li.className = 'toc-item' + (heading.tagName.toLowerCase() === 'h1' ? ' toc-h1' : ' toc-h2');
+                const a = document.createElement('a');
+                a.href = '#' + id;
+                a.textContent = text;
+                a.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+                    if (window.innerWidth <= 900) {
+                        document.getElementById('toc-sidebar').classList.remove('open');
+                    }
+                });
+                li.appendChild(a);
+                tocList.appendChild(li);
+                headingMap.push({ element: heading, link: li });
+            }
+        });
+
+        // Scroll Progress & Active Heading Tracker
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progress-bar').style.width = scrolled + '%';
+
+            let currentActive = null;
+            headingMap.forEach(item => {
+                const rect = item.element.getBoundingClientRect();
+                if (rect.top <= 140) {
+                    currentActive = item;
+                }
+            });
+
+            headingMap.forEach(item => item.link.classList.remove('active'));
+            if (currentActive) {
+                currentActive.link.classList.add('active');
+            }
+        });
+
+        // Controls: Font Size
+        let currentFontSize = 18;
+        document.getElementById('btn-font-inc').addEventListener('click', () => {
+            if (currentFontSize < 26) {
+                currentFontSize += 1.5;
+                document.documentElement.style.setProperty('--font-size-base', currentFontSize + 'px');
+            }
+        });
+
+        document.getElementById('btn-font-dec').addEventListener('click', () => {
+            if (currentFontSize > 14) {
+                currentFontSize -= 1.5;
+                document.documentElement.style.setProperty('--font-size-base', currentFontSize + 'px');
+            }
+        });
+
+        // Controls: Theme Toggle (Dark -> Sepia -> Light)
+        const themes = ['dark', 'theme-sepia', 'theme-light'];
+        let currentThemeIdx = 0;
+        document.getElementById('btn-theme').addEventListener('click', () => {
+            document.body.classList.remove('theme-sepia', 'theme-light');
+            currentThemeIdx = (currentThemeIdx + 1) % themes.length;
+            if (themes[currentThemeIdx] !== 'dark') {
+                document.body.classList.add(themes[currentThemeIdx]);
+            }
+        });
+
+        // Controls: Full Reading Width Toggle
+        document.getElementById('btn-width').addEventListener('click', () => {
+            document.body.classList.toggle('layout-wide');
+        });
+
+        // Mobile Sidebar Toggle
+        const mobileBtn = document.getElementById('btn-mobile-toc');
+        if (mobileBtn) {
+            mobileBtn.addEventListener('click', () => {
+                document.getElementById('toc-sidebar').classList.toggle('open');
+            });
+        }
+    </script>
+</body>
+</html>

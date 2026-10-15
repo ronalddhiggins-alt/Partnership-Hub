@@ -72,6 +72,14 @@
         {
             "source": "/some-battles",
             "destination": "/battles.html"
+        },
+        {
+            "source": "/manual",
+            "destination": "/manual.html"
+        },
+        {
+            "source": "/manual-of-antigravity",
+            "destination": "/manual.html"
         }
     ]
 }
