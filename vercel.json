@@ -24,6 +24,14 @@
         {
             "source": "/making-of",
             "destination": "/making-of-observer.html"
+        },
+        {
+            "source": "/music",
+            "destination": "/music.html"
+        },
+        {
+            "source": "/songs",
+            "destination": "/music.html"
         }
     ]
 }
