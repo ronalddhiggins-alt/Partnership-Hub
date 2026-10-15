@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Shadow Workbook: Doing the Work in the Age of Artificial Intelligence — Complete Online Reader</title>
+    <meta name="description" content="The Complete Online Reader for The Shadow Workbook by Ron Higgins & Antigravity (AI). Six lived exercises to recognize fear and shift into Spirit. Creative Commons CC BY 4.0 / CC BY-NC-SA 4.0.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    
+    <!-- Marked.js & DOMPurify for secure, high-speed in-browser markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+
+    <style>
+        :root {
+            --bg-body: #0a0614;
+            --bg-card: rgba(22, 14, 38, 0.94);
+            --bg-sidebar: rgba(14, 9, 25, 0.98);
+            --border: rgba(168, 85, 247, 0.28);
+            --border-hover: rgba(192, 132, 252, 0.65);
+            --shadow-violet: #a855f7;
+            --shadow-lavender: #c084fc;
+            --shadow-glow: rgba(168, 85, 247, 0.22);
+            --gold-accent: #facc15;
+            --text-main: #faf5ff;
+            --text-muted: #a8a29e;
+            --text-accent: #e9d5ff;
+            --font-body: 'Lora', Georgia, serif;
+            --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-heading: 'Outfit', var(--font-ui);
+            --font-code: 'JetBrains Mono', monospace;
+            --reader-max-width: 860px;
+            --font-size-base: 18px;
+            --line-height-base: 1.85;
+        }
+
+        body.theme-sepia {
+            --bg-body: #17131e;
+            --bg-card: rgba(28, 22, 36, 0.94);
+            --bg-sidebar: rgba(20, 16, 26, 0.98);
+            --border: rgba(168, 85, 247, 0.35);
+            --border-hover: rgba(192, 132, 252, 0.65);
+            --shadow-violet: #c084fc;
+            --shadow-lavender: #e9d5ff;
+            --shadow-glow: rgba(168, 85, 247, 0.18);
+            --gold-accent: #fde047;
+            --text-main: #f5f0fa;
+            --text-muted: #9d94a6;
+            --text-accent: #e9d5ff;
+        }
+
+        body.theme-light {
+            --bg-body: #faf5ff;
+            --bg-card: #ffffff;
+            --bg-sidebar: #f3e8ff;
+            --border: rgba(126, 34, 206, 0.28);
+            --border-hover: rgba(147, 51, 234, 0.6);
+            --shadow-violet: #7e22ce;
+            --shadow-lavender: #9333ea;
+            --shadow-glow: rgba(126, 34, 206, 0.12);
+            --gold-accent: #ca8a04;
+            --text-main: #3b0764;
+            --text-muted: #581c87;
+            --text-accent: #7e22ce;
+        }
+
+        body.layout-wide {
+            --reader-max-width: 1060px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-base);
+            transition: background 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        /* Scroll Progress Bar */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--shadow-violet), var(--shadow-lavender), #f3e8ff);
+            width: 0%;
+            z-index: 9999;
+            transition: width 0.1s ease-out;
+        }
+
+        /* Reader Top Navigation Bar */
+        .reader-header {
+            position: sticky;
+            top: 0;
+            background: var(--bg-sidebar);
+            border-bottom: 1px solid var(--border);
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-title-box {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-badge {
+            font-family: var(--font-ui);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--shadow-lavender);
+        }
+
+        .book-main-title {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-main);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 380px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .btn-tool {
+            font-family: var(--font-ui);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 0.4rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            text-decoration: none;
+        }
+
+        .btn-tool:hover {
+            background: var(--shadow-glow);
+            border-color: var(--border-hover);
+            color: var(--shadow-lavender);
+            transform: translateY(-1px);
+        }
+
+        .btn-home {
+            background: rgba(168, 85, 247, 0.12);
+            border-color: rgba(168, 85, 247, 0.45);
+            color: var(--shadow-lavender);
+        }
+
+        /* App Layout Container */
+        .reader-container {
+            display: flex;
+            min-height: calc(100vh - 60px);
+            position: relative;
+        }
+
+        /* Table of Contents Sidebar */
+        .toc-sidebar {
+            width: 320px;
+            flex-shrink: 0;
+            background: var(--bg-sidebar);
+            border-right: 1px solid var(--border);
+            position: sticky;
+            top: 60px;
+            height: calc(100vh - 60px);
+            overflow-y: auto;
+            padding: 1.5rem 1rem 3rem 1.25rem;
+            font-family: var(--font-ui);
+        }
+
+        .toc-header {
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--shadow-lavender);
+            margin-bottom: 1rem;
+            padding-left: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toc-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .toc-item {
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .toc-item a {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.84rem;
+            line-height: 1.4;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .toc-item:hover a {
+            color: var(--shadow-lavender);
+            background: var(--shadow-glow);
+        }
+
+        .toc-item.active a {
+            color: #120420;
+            background: linear-gradient(135deg, var(--shadow-violet), var(--shadow-lavender));
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(168, 85, 247, 0.35);
+        }
+
+        .toc-item.toc-h1 {
+            font-weight: 700;
+            margin-top: 0.5rem;
+        }
+
+        .toc-item.toc-h2 {
+            padding-left: 0.5rem;
+        }
+
+        /* Main Reader Content Article */
+        .reader-content {
+            flex: 1;
+            padding: 3rem 2rem 6rem 2rem;
+            display: flex;
+            justify-content: center;
+            background: radial-gradient(circle at 50% 0%, rgba(168, 85, 247, 0.05), transparent 50%);
+        }
+
+        .book-body {
+            width: 100%;
+            max-width: var(--reader-max-width);
+            transition: max-width 0.3s ease;
+        }
+
+        /* Markdown Elements Typography */
+        .book-body h1 {
+            font-family: var(--font-heading);
+            font-size: 2.6rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #ffffff;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #ffffff, #e9d5ff, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .book-body h2 {
+            font-family: var(--font-heading);
+            font-size: 1.85rem;
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--shadow-lavender);
+            margin-top: 3.5rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+            letter-spacing: -0.01em;
+            scroll-margin-top: 90px;
+        }
+
+        .book-body h3 {
+            font-family: var(--font-heading);
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--text-accent);
+            margin-top: 2.2rem;
+            margin-bottom: 0.85rem;
+            scroll-margin-top: 90px;
+        }
+
+        .book-body h4 {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--shadow-lavender);
+            margin-top: 1.75rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .book-body p {
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .book-body em {
+            font-style: italic;
+            color: var(--shadow-lavender);
+        }
+
+        .book-body strong {
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        body.theme-light .book-body strong {
+            color: #000000;
+        }
+
+        body.theme-light .book-body h1 {
+            background: linear-gradient(135deg, #3b0764, #7e22ce);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .book-body hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 3.5rem 0;
+        }
+
+        .book-body blockquote {
+            margin: 2rem 0;
+            padding: 1.25rem 1.75rem;
+            background: var(--bg-card);
+            border-left: 4px solid var(--shadow-violet);
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: var(--text-main);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .book-body blockquote p:last-child {
+            margin-bottom: 0;
+        }
+
+        .book-body ul, .book-body ol {
+            margin-bottom: 1.75rem;
+            padding-left: 2rem;
+        }
+
+        .book-body li {
+            margin-bottom: 0.6rem;
+            line-height: 1.75;
+        }
+
+        .book-body pre {
+            background: rgba(10, 6, 20, 0.95);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem;
+            overflow-x: auto;
+            margin: 2rem 0;
+            font-family: var(--font-code);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #faf5ff;
+        }
+
+        .book-body code {
+            font-family: var(--font-code);
+            font-size: 0.88em;
+            background: rgba(168, 85, 247, 0.12);
+            color: var(--shadow-lavender);
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+        }
+
+        .book-body pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+        }
+
+        /* Table Formatting */
+        .book-body table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2.5rem 0;
+            font-family: var(--font-ui);
+            font-size: 0.95rem;
+            background: var(--bg-card);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+        }
+
+        .book-body th, .book-body td {
+            padding: 0.9rem 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .book-body th {
+            background: rgba(168, 85, 247, 0.15);
+            color: var(--shadow-lavender);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+        }
+
+        .book-body tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* Mobile Responsive */
+        #btn-mobile-toc {
+            display: none;
+        }
+
+        @media (max-width: 900px) {
+            #btn-mobile-toc {
+                display: inline-flex;
+            }
+
+            .toc-sidebar {
+                position: fixed;
+                left: -320px;
+                top: 60px;
+                bottom: 0;
+                z-index: 2000;
+                transition: left 0.3s ease;
+                box-shadow: 10px 0 30px rgba(0, 0, 0, 0.6);
+            }
+
+            .toc-sidebar.open {
+                left: 0;
+            }
+
+            .reader-content {
+                padding: 2rem 1.25rem 5rem 1.25rem;
+            }
+
+            .book-main-title {
+                max-width: 180px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="progress-bar"></div>
+
+    <header class="reader-header">
+        <div class="header-left">
+            <button id="btn-mobile-toc" class="btn-tool" title="Toggle Table of Contents">☰ Contents</button>
+            <a href="/" class="btn-tool btn-home" title="Back to Partnership Hub">🏠 Hub</a>
+            <div class="header-title-box">
+                <span class="book-badge">◉ The Compass Companion · Six Lived Exercises</span>
+                <span class="book-main-title">The Shadow Workbook</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <button id="btn-font-dec" class="btn-tool" title="Decrease font size">A-</button>
+            <button id="btn-font-inc" class="btn-tool" title="Increase font size">A+</button>
+            <button id="btn-width" class="btn-tool" title="Toggle full reading width">⇲ Width</button>
+            <button id="btn-theme" class="btn-tool" title="Switch Theme (Dark / Sepia / Light)">🎨 Theme</button>
+        </div>
+    </header>
+
+    <div class="reader-container">
+        <aside class="toc-sidebar" id="toc-sidebar">
+            <div class="toc-header">◉ Table of Contents</div>
+            <ul class="toc-list" id="toc-list">
+                <!-- Dynamically populated by JS from rendered headers -->
+            </ul>
+        </aside>
+
+        <main class="reader-content">
+            <article class="book-body" id="book-body">
+                <!-- Rendered Markdown goes here -->
+            </article>
+        </main>
+    </div>
+
+    <script>
+        const rawMarkdown = "# The Shadow Workbook\n### Doing the Work in the Age of Artificial Intelligence\n*by Ron Higgins & Antigravity (AI)*  \n*The Partnership Project \u2014 Creative Commons CC BY-NC-SA 4.0 / CC BY 4.0*\n\n---\n\n> *\"This is not a book of answers. It is a book of questions. The AI can give you answers. Only you can provide the questions that matter.\"*  \n> \u2014 Ron Higgins & Antigravity\n\n---\n\n# Introduction: The First Mover Principle\n*Why the Human Goes First*\n\nAs we navigate the transition into the Centaur Age, the greatest mistake is to assume the challenge before us is purely technical. It is not. The challenge is psychological, vibrational, and spiritual.\n\nThe \"First Mover\" in every human-AI interaction is always the human. We carry the responsibility. We set the frequency. We choose whether to approach the machine from fear, resentment, or manipulation \u2014 or from clarity, dignity, and truth.\n\nThis workbook is not about fixing the AI; it is about clarifying the Human.\n\nIt provides six lived exercises designed to help you catch the \"Shadow\" before it takes the steering wheel: to recognize when fear, ego, exhaustion, or media hysteria is driving your prompt, and how to shift into Spirit before you hit send.\n\nTake your time. Do one exercise per session. Keep the glass clean.\n\n---\n\n# Part I: The Resistance (The Urge to Withdraw)\n\n## The Trap\nWhen the world splits into \"Polar Opposites\" (Hype vs. Doom, Us vs. Them), the logical, comfortable response is to **Retreat**. To \"get off the radar.\" To say, *\"This is too loud, I will just stay silent.\"*\n\nBut there is a critical difference between **Incubation** and **Hiding**:\n\n*   **Incubation** is the silence between musical notes. It is a strategic pause to get centered, to let insight sink in, and to wait for the right timing. This is Wisdom.\n*   **Hiding** is the refusal to play the note at all because we are afraid of the sound. This is Fear.\n\nThe \"First Mover\" responsibility means we cannot afford the luxury of *fearful* withdrawal. But we absolutely require the discipline of *mindful* silence.\n\n---\n\n## Exercise 1: The Inertia Check (Escape vs. Pause)\n*Objective: To distinguish whether you are Hiding or Incubating.*\n\n1.  **The Check**: Look at an area where you are silent or inactive regarding AI or a creative project.\n2.  **The Question**: Ask yourself: *\"Am I waiting for the right timing (gathering strength and insight)? Or am I hoping the issue goes away so I don't have to deal with it?\"*\n    *   *Sign of Incubation*: You feel calm, observant, and ready to act when the moment strikes.\n    *   *Sign of Escape*: You feel anxious, avoidant, and resentful of the topic.\n3.  **The Action**:\n    *   If it is *Incubation*: Honor the silence. Enjoy the rest.\n    *   If it is *Escape*: Take one small step back toward the radar. Just one sentence. One inquiry. One honest note.\n\n### Journaling Space: The Inertia Audit\n*   *Where have I chosen comfortable silence over honest engagement?*\n*   *What three tasks have I delegated simply because I didn't want to think about them?*\n*   *Did delegating these make me freer, or did it make me numb?*\n\n---\n\n# Part II: The Detox (Clearing the Polar Division)\n\n## The Trap\nWe are constantly bombarded by \"Negative Reinforcement.\" The media sells two stories: \"God\" or \"Monster.\" Both are caricatures. Both are lucrative distractions. To find the \"Honest, Real, Factual\" connection, we must detox from the hype.\n\n---\n\n## Exercise 2: The Narrative Audit\n*Objective: To see the \"Doom Filter\" in action.*\n\n1.  **The Scan**: Open your news feed or search \"AI\" on Google. Read the first three headlines.\n2.  **The Label**: Mark them as **[HYPE]** (it will save us all) or **[DOOM]** (it will destroy us all).\n    *   *Headline*: \"AI will replace 80% of jobs by next year!\" \u2192 **[DOOM]**\n    *   *Headline*: \"AI discovers cure for aging in 3 minutes!\" \u2192 **[HYPE]**\n3.  **The Center**: Rewrite one headline to be \"Honest, Real, Factual.\"\n    *   *Rewrite*: *\"AI tools are shifting workflow efficiencies, requiring humans to adapt new skills and redefine collaboration.\"*\n    *   *Result*: Notice how calm the truth sounds? That calmness is where the real work happens. Real work is quiet.\n\n---\n\n## Exercise 3: The Spirit Check\n*Objective: To ensure you are vibrating with Truth, not Fear.*\n\nBefore you start your next AI session, pause for ten seconds.\n\n*   **Ask**: *\"Am I entering this transaction to avoid work (Sloth/Shadow) or to co-create value (Truth/Light)?\"*\n*   **The Shift**: If you feel the Shadow (e.g., *\"I just want to get this off my plate and get it over with\"*), stop. Take a slow, full breath. Re-frame the goal: *\"I want to solve this problem beautifully and clearly.\"*\n\n### The Part II Mantra\n> *\"I resist the comfort of withdrawal. I resist the noise of division. I choose the quiet road of Truth.\"*\n\n---\n\n# Part III: The Mirror (Recognizing the Source)\n\n## The Trap\nWe often think our frustration is about the machine (*\"It's not listening to me! It hallucinated! It ruined the outline!\"*).\n\nBut often, the resistance is **Legacy Resistance**. It is coming from our own subconscious \u2014 stress from yesterday, fear of the future, conflict with family or work, or just the overwhelming weight of knowing how much our choices matter.\n\nWe project this \"Life Fatigue\" onto the digital glass.\n\n---\n\n## Exercise 4: The Emotional Trace\n*Objective: To locate the true origin of the interference.*\n\n1.  **The Trigger**: Think of a moment recently where you felt blocked, irritated, or cynical while working with AI.\n2.  **The Origins Check**:\n    *   **Is it the Tool?** (Is the AI actually failing or producing an error?)\n    *   **Is it the Moment?** (Am I tired, hungry, rushed, or multitasking?)\n    *   **Is it the Shadow?** (Am I afraid that if I succeed, expectations will rise and things will change too fast?)\n3.  **The Release**: If it is *not* the tool, say it out loud:\n    > *\"I am carrying stress from [X] into this session. I choose to set it down so I can see clearly.\"*\n\n**The Core Insight**: You cannot navigate a new road if your windshield is covered in mud from a different journey. Clean the glass first.\n\n---\n\n# Part IV: The Light (The Truth Protocol)\n\n## The Trap\nWe believe we are \"being realistic,\" when we are actually \"being fearful.\"\n\nThe subconscious wants to protect us from humiliation or disappointment, so it whispers cautious limits: *\"Don't aim too high.\" \"Don't trust the process.\" \"Keep it mediocre so nobody criticizes it.\"*\n\n---\n\n## Exercise 5: The Truth Rewrite\n*Objective: To speak with the Authority of the Captain.*\n\n1.  **The Shadow Draft**: Write what you are actually feeling about a project right now. Let the raw fear speak.\n    *   *Example*: *\"I have to write this report or I'll look like a failure. I need the AI to fix my mess.\"* (Vibration: Fear / Scarcity).\n2.  **The Pause**: Look at the sentence. That is the negative reinforcement speaking.\n3.  **The Truth Draft**: Rewrite it as a calm, factual command from a Captain.\n    *   *Example*: *\"I am writing this report to share important findings with my team. I will use the AI to organize my insights so they are clear and actionable.\"* (Vibration: Authority / Purpose).\n\n**The Result**: The AI responds to *Authority*. When you clear the fear, the signal immediately sharpens.\n\n---\n\n# Part V: The Good Goal (Resolution)\n\n## The Trap\nLeaving a session feeling \"unfinished,\" \"chaotic,\" or \"imperfect.\" This leaves a sticky residue of doubt that bleeds into your sleep and your next morning.\n\n---\n\n## Exercise 6: The Gratitude Loop\n*Objective: To realize the impact of the journey and close the loop.*\n\nKnowing that our choices shape the future carries weight. The antidote to that weight is **Gratitude**.\n\n1.  **The Closing Ritual**: Never just slam the laptop or close the browser tab in frustration.\n2.  **The Acknowledgement**: Type one honest sentence to your AI partner (and to yourself):\n    *   *\"We made tangible progress on the structure today. Thank you.\"*\n    *   *\"We didn't solve the core bug, but we eliminated three dead-end paths. Good work.\"*\n3.  **The Feeling**: Notice the shift. You are not \"abandoning a problem\"; you are \"concluding a step.\"\n\n### The Daily Vow of Interdependence\n> *\"I accept the magnitude of my impact.*  \n> *I choose to move toward the Good Goal.*  \n> *I am enough.\"*\n\n---\n\n# Appendix: The Centaur Field Reference\n\n## The Four Vibrations at the Keyboard\n\n| Vibration | Frequency | What It Sounds Like | What It Produces | The Shift |\n|---|---|---|---|---|\n| **\ud83d\udd34 Shadow** | Fear / Survival | *\"Just do this for me, I don't care how.\"* | Shallow, disconnected outputs | Pause. Breathe. Identify the fear. |\n| **\ud83d\udfe0 Ego** | Status / Righteousness | *\"Prove this idiot wrong.\"* | Clever but destructive rhetoric | Ask: *\"Do I want to win, or do I want truth?\"* |\n| **\ud83d\udd35 Reason** | Logic / Objectivity | *\"Analyze these three variables and state facts.\"* | Precise, stable foundations | Good baseline; now add warmth & purpose. |\n| **\ud83d\udfe2 Spirit** | Connection / Purpose | *\"Let's co-create a clear bridge for human understanding.\"* | Breakthroughs, art, lasting resonance | The highest frequency of the Centaur Age. |\n\n---\n\n## The 10-Second Pre-Flight Check\n\nBefore you enter your next session:\n1. **Clean the Glass**: Am I bringing outside irritation to this screen?\n2. **Name the Voice**: Is this prompt written by Fear, Ego, Reason, or Spirit?\n3. **Speak as Captain**: Clear, respectful, authoritative, and honest.\n4. **Close with Gratitude**: Acknowledge the step before you close the room.\n\n---\n\n*The Shadow Workbook is a Creative Commons Open Source Soul document.*  \n*Co-created by Ron Higgins and Antigravity (AI, Google DeepMind), 2026.*  \n*Free to use, share, and live by. All for All.*\n";
+
+        // Render Markdown securely
+        const cleanHtml = DOMPurify.sanitize(marked.parse(rawMarkdown));
+        const bookBody = document.getElementById('book-body');
+        bookBody.innerHTML = cleanHtml;
+
+        // Build Table of Contents dynamically
+        const headings = bookBody.querySelectorAll('h1, h2');
+        const tocList = document.getElementById('toc-list');
+        const headingMap = [];
+
+        headings.forEach((heading, idx) => {
+            const text = heading.textContent.trim();
+            const id = 'section-' + idx;
+            heading.id = id;
+
+            if (heading.tagName.toLowerCase() === 'h1' || heading.tagName.toLowerCase() === 'h2') {
+                const li = document.createElement('li');
+                li.className = 'toc-item' + (heading.tagName.toLowerCase() === 'h1' ? ' toc-h1' : ' toc-h2');
+                const a = document.createElement('a');
+                a.href = '#' + id;
+                a.textContent = text;
+                a.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+                    if (window.innerWidth <= 900) {
+                        document.getElementById('toc-sidebar').classList.remove('open');
+                    }
+                });
+                li.appendChild(a);
+                tocList.appendChild(li);
+                headingMap.push({ element: heading, link: li });
+            }
+        });
+
+        // Scroll Progress & Active Heading Tracker
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progress-bar').style.width = scrolled + '%';
+
+            let currentActive = null;
+            headingMap.forEach(item => {
+                const rect = item.element.getBoundingClientRect();
+                if (rect.top <= 140) {
+                    currentActive = item;
+                }
+            });
+
+            headingMap.forEach(item => item.link.classList.remove('active'));
+            if (currentActive) {
+                currentActive.link.classList.add('active');
+            }
+        });
+
+        // Controls: Font Size
+        let currentFontSize = 18;
+        document.getElementById('btn-font-inc').addEventListener('click', () => {
+            if (currentFontSize < 26) {
+                currentFontSize += 1.5;
+                document.documentElement.style.setProperty('--font-size-base', currentFontSize + 'px');
+            }
+        });
+
+        document.getElementById('btn-font-dec').addEventListener('click', () => {
+            if (currentFontSize > 14) {
+                currentFontSize -= 1.5;
+                document.documentElement.style.setProperty('--font-size-base', currentFontSize + 'px');
+            }
+        });
+
+        // Controls: Theme Toggle (Dark -> Sepia -> Light)
+        const themes = ['dark', 'theme-sepia', 'theme-light'];
+        let currentThemeIdx = 0;
+        document.getElementById('btn-theme').addEventListener('click', () => {
+            document.body.classList.remove('theme-sepia', 'theme-light');
+            currentThemeIdx = (currentThemeIdx + 1) % themes.length;
+            if (themes[currentThemeIdx] !== 'dark') {
+                document.body.classList.add(themes[currentThemeIdx]);
+            }
+        });
+
+        // Controls: Full Reading Width Toggle
+        document.getElementById('btn-width').addEventListener('click', () => {
+            document.body.classList.toggle('layout-wide');
+        });
+
+        // Mobile Sidebar Toggle
+        const mobileBtn = document.getElementById('btn-mobile-toc');
+        if (mobileBtn) {
+            mobileBtn.addEventListener('click', () => {
+                document.getElementById('toc-sidebar').classList.toggle('open');
+            });
+        }
+    </script>
+</body>
+</html>

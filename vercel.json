@@ -96,6 +96,14 @@
         {
             "source": "/return-of-the-dream",
             "destination": "/dream.html"
+        },
+        {
+            "source": "/shadow",
+            "destination": "/shadow.html"
+        },
+        {
+            "source": "/shadow-workbook",
+            "destination": "/shadow.html"
         }
     ]
 }
