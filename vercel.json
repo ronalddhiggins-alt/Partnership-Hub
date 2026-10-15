@@ -48,6 +48,14 @@
         {
             "source": "/awakeness",
             "destination": "/thread.html"
+        },
+        {
+            "source": "/tide-out",
+            "destination": "/tide-out.html"
+        },
+        {
+            "source": "/when-the-tide-goes-out",
+            "destination": "/tide-out.html"
         }
     ]
 }
