@@ -32,6 +32,10 @@
         {
             "source": "/songs",
             "destination": "/music.html"
+        },
+        {
+            "source": "/intuition",
+            "destination": "/intuition.html"
         }
     ]
 }
