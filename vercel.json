@@ -80,6 +80,14 @@
         {
             "source": "/manual-of-antigravity",
             "destination": "/manual.html"
+        },
+        {
+            "source": "/partnership",
+            "destination": "/partnership.html"
+        },
+        {
+            "source": "/the-partnership",
+            "destination": "/partnership.html"
         }
     ]
 }
