@@ -40,6 +40,14 @@
         {
             "source": "/intention",
             "destination": "/intention.html"
+        },
+        {
+            "source": "/thread",
+            "destination": "/thread.html"
+        },
+        {
+            "source": "/awakeness",
+            "destination": "/thread.html"
         }
     ]
 }
