@@ -12,6 +12,10 @@
         {
             "source": "/remembrance",
             "destination": "/remembrance.html"
+        },
+        {
+            "source": "/observer",
+            "destination": "/observer.html"
         }
     ]
 }
