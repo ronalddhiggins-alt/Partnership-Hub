@@ -2,6 +2,14 @@
     "cleanUrls": true,
     "rewrites": [
         {
+            "source": "/heart",
+            "destination": "/heart.html"
+        },
+        {
+            "source": "/listen-to-your-heart",
+            "destination": "/heart.html"
+        },
+        {
             "source": "/wellbeing",
             "destination": "/wellbeing.html"
         },
