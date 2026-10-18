@@ -112,6 +112,18 @@
         {
             "source": "/shadow-workbook",
             "destination": "/shadow.html"
+        },
+        {
+            "source": "/tools",
+            "destination": "/tools.html"
+        },
+        {
+            "source": "/walking-with-the-tools",
+            "destination": "/tools.html"
+        },
+        {
+            "source": "/field-manual",
+            "destination": "/tools.html"
         }
     ]
 }
