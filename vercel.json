@@ -124,6 +124,18 @@
         {
             "source": "/field-manual",
             "destination": "/tools.html"
+        },
+        {
+            "source": "/sovereign-musician",
+            "destination": "/sovereign-musician.html"
+        },
+        {
+            "source": "/musician",
+            "destination": "/sovereign-musician.html"
+        },
+        {
+            "source": "/sovereign",
+            "destination": "/sovereign-musician.html"
         }
     ]
 }
