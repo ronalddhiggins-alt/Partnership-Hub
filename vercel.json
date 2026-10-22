@@ -126,11 +126,7 @@
             "destination": "/tools.html"
         },
         {
-            "source": "/sovereign-musician",
-            "destination": "/sovereign-musician.html"
-        },
-        {
-            "source": "/sovereign-musician:path*",
+            "source": "/sovereign-musician(.*)",
             "destination": "/sovereign-musician.html"
         },
         {
