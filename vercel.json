@@ -130,6 +130,10 @@
             "destination": "/sovereign-musician.html"
         },
         {
+            "source": "/sovereign-musician:path*",
+            "destination": "/sovereign-musician.html"
+        },
+        {
             "source": "/musician",
             "destination": "/sovereign-musician.html"
         },
