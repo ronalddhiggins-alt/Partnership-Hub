@@ -136,6 +136,18 @@
         {
             "source": "/sovereign",
             "destination": "/sovereign-musician.html"
+        },
+        {
+            "source": "/museum",
+            "destination": "/higgins-family-productions.html"
+        },
+        {
+            "source": "/hfp",
+            "destination": "/higgins-family-productions.html"
+        },
+        {
+            "source": "/higgins-family-productions",
+            "destination": "/higgins-family-productions.html"
         }
     ]
 }

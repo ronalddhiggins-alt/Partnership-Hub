@@ -92,3 +92,43 @@ document.head.appendChild(style);
 document.querySelectorAll('.tool-card, .book-card, .story-column, .music-card').forEach(el => {
     observer.observe(el);
 });
+
+// ── LOCAL FILE PROTOCOL LINK RESOLVER ──────────────────────────────────────
+if (window.location.protocol === 'file:') {
+    document.addEventListener('click', (e) => {
+        const a = e.target.closest('a');
+        if (!a) return;
+        const href = a.getAttribute('href');
+        if (href && href.startsWith('/') && !href.startsWith('//')) {
+            e.preventDefault();
+            const route = href.substring(1).replace(/\/$/, '');
+            const routeMap = {
+                'museum': 'higgins-family-productions.html',
+                'hfp': 'higgins-family-productions.html',
+                'higgins-family-productions': 'higgins-family-productions.html',
+                'sovereign-musician': 'sovereign-musician.html',
+                'music': 'music.html',
+                'songs': 'music.html',
+                'vibecoding': 'vibecoding.html',
+                'heart': 'heart.html',
+                'wellbeing': 'wellbeing.html',
+                'observer': 'observer.html',
+                'making-of-observer': 'making-of-observer.html',
+                'remembrance': 'remembrance.html',
+                'tools': 'tools.html',
+                'manual': 'manual.html',
+                'battles': 'battles.html',
+                'dream': 'dream.html',
+                'shadow': 'shadow.html',
+                'thread': 'thread.html',
+                'tide-in': 'tide-in.html',
+                'tide-out': 'tide-out.html',
+                'intention': 'intention.html',
+                'intuition': 'intuition.html',
+                'partnership': 'partnership.html'
+            };
+            const target = routeMap[route] || (route + '.html');
+            window.location.href = target;
+        }
+    });
+}

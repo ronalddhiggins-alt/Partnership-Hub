@@ -1,0 +1,2591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Higgins Family Productions (1996–2014) — The Historic Studio Museum</title>
+    <meta name="description" content="Official archival museum exhibition for Higgins Family Productions: 18 years of independent recording, community stewardship, and prairie musicianship in Mandan, North Dakota. Co-founded by Ron & Marion Higgins.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-void: #07090c;
+            --bg-panel: rgba(15, 20, 27, 0.88);
+            --bg-card: rgba(22, 29, 41, 0.75);
+            --border-brass: rgba(217, 119, 6, 0.35);
+            --border-brass-bright: rgba(245, 158, 11, 0.75);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --brass-glow: rgba(245, 158, 11, 0.22);
+            --gold: #f59e0b;
+            --gold-light: #fef08a;
+            --amber: #d97706;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --font-display: 'Cinzel', 'Playfair Display', serif;
+            --font-head: 'Outfit', -apple-system, sans-serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-void);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(217, 119, 6, 0.14) 0%, transparent 60%),
+                radial-gradient(circle at 10% 40%, rgba(15, 23, 42, 0.8) 0%, transparent 50%),
+                radial-gradient(circle at 90% 70%, rgba(217, 119, 6, 0.08) 0%, transparent 50%);
+        }
+
+        .museum-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(20px);
+            background: rgba(7, 9, 12, 0.85);
+            border-bottom: 1px solid var(--border-brass);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .museum-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .museum-badge-pill {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid var(--border-brass);
+            color: var(--gold);
+        }
+
+        .museum-title-nav {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
+            color: #fff;
+        }
+
+        .museum-nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .museum-nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .museum-nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .btn-hub-return {
+            padding: 0.45rem 1.1rem;
+            border-radius: 8px;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(217, 119, 6, 0.3));
+            border: 1px solid var(--border-brass-bright);
+            color: var(--gold-light) !important;
+            font-weight: 600 !important;
+            box-shadow: 0 0 15px var(--brass-glow);
+            transition: all 0.2s ease;
+        }
+
+        .btn-hub-return:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(245, 158, 11, 0.4);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .plaque-header {
+            text-align: center;
+            padding: 3.5rem 2rem 2rem 2rem;
+            position: relative;
+        }
+
+        .plaque-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .plaque-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4.2rem);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            background: linear-gradient(135deg, #ffffff 40%, #fef08a 70%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 40px rgba(245, 158, 11, 0.25);
+        }
+
+        .plaque-subtitle {
+            font-family: var(--font-head);
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: var(--text-secondary);
+            max-width: 820px;
+            margin: 0 auto 1.5rem auto;
+            font-weight: 400;
+        }
+
+        .plaque-curators {
+            display: inline-flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 0.6rem 1.8rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-brass);
+            border-radius: 999px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--gold-light);
+            backdrop-filter: blur(10px);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .hero-vitrine {
+            position: relative;
+            margin: 3rem auto;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-brass-bright);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 30px var(--brass-glow);
+        }
+
+        .hero-vitrine img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: contrast(1.05) brightness(0.95);
+        }
+
+        .hero-vitrine-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 2rem;
+            background: linear-gradient(to top, rgba(7, 9, 12, 0.95) 20%, transparent 100%);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            backdrop-filter: blur(4px);
+        }
+
+        .caption-text h4 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: #fff;
+            margin-bottom: 0.25rem;
+        }
+
+        .caption-text p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .museum-section {
+            margin: 5rem 0;
+        }
+
+        .section-header-box {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-brass);
+            padding-bottom: 1rem;
+        }
+
+        .section-num {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            padding: 0.3rem 0.8rem;
+            border: 1px solid var(--border-brass);
+            border-radius: 6px;
+            background: rgba(245, 158, 11, 0.1);
+        }
+
+        .section-header-box h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .quote-vitrine {
+            background: linear-gradient(135deg, rgba(30, 24, 15, 0.85), rgba(15, 20, 27, 0.92));
+            border: 1px solid var(--border-brass-bright);
+            border-left: 6px solid var(--gold);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            font-size: 3rem;
+            color: rgba(245, 158, 11, 0.15);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .quote-text {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
+            font-size: 1.45rem;
+            line-height: 1.7;
+            color: var(--gold-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .quote-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--amber);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            border: 2px solid var(--border-brass-bright);
+        }
+
+        .author-info h4 {
+            font-family: var(--font-head);
+            font-size: 1.05rem;
+            color: #fff;
+        }
+
+        .author-info p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Staff Grid */
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .staff-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 1.8rem;
+            backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .staff-card:hover {
+            border-color: var(--border-brass-bright);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.7), 0 0 20px var(--brass-glow);
+        }
+
+        .staff-avatar-box {
+            width: 100%;
+            aspect-ratio: 2.65 / 1;
+            height: auto;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #0b0f17;
+            border: 1px solid var(--border-brass);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .staff-avatar-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .staff-card:hover .staff-avatar-box img {
+            transform: scale(1.03);
+        }
+
+        .staff-role-badge {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--gold);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .staff-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            color: #fff;
+        }
+
+        .staff-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Artifact Showcase */
+        .artifact-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            background: rgba(18, 23, 33, 0.75);
+            border: 1px solid var(--border-brass);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+        }
+
+        .artifact-visual {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-brass-bright);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), 0 0 25px var(--brass-glow);
+        }
+
+        .artifact-visual img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .artifact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .artifact-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--gold);
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid var(--border-brass);
+            padding: 0.35rem 0.8rem;
+            border-radius: 999px;
+            width: fit-content;
+        }
+
+        .artifact-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: #fff;
+            line-height: 1.3;
+        }
+
+        .artifact-desc {
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+        }
+
+        .artifact-specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .artifact-specs-table td {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .artifact-specs-table td:first-child {
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            width: 38%;
+        }
+
+        .artifact-specs-table td:last-child {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Interactive Gear Rack */
+        .gear-rack-container {
+            background: #0b0e14;
+            border: 2px solid #2d3748;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: inset 0 0 40px #000, 0 15px 40px rgba(0,0,0,0.8);
+            position: relative;
+        }
+
+        .gear-rack-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .rack-screws {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .screw {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #718096 30%, #2d3748 80%);
+            box-shadow: inset 0 1px 2px rgba(255,255,255,0.4);
+        }
+
+        .gear-nav-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .gear-tab {
+            padding: 0.75rem 1.4rem;
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--border-glass);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-family: var(--font-head);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .gear-tab:hover {
+            border-color: var(--border-brass);
+            color: #fff;
+        }
+
+        .gear-tab.active {
+            background: linear-gradient(135deg, rgba(217, 119, 6, 0.3), rgba(245, 158, 11, 0.15));
+            border-color: var(--border-brass-bright);
+            color: var(--gold-light);
+            box-shadow: 0 0 15px var(--brass-glow);
+        }
+
+        .gear-unit-panel {
+            background: rgba(18, 24, 38, 0.9);
+            border: 1px solid var(--border-brass);
+            border-radius: 12px;
+            padding: 2rem;
+            display: none;
+            animation: fadeIn 0.3s ease forwards;
+        }
+
+        .gear-unit-panel.active {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 2rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .gear-info h3 {
+            font-family: var(--font-display);
+            font-size: 1.7rem;
+            color: #fff;
+            margin-bottom: 0.4rem;
+        }
+
+        .gear-era-badge {
+            font-family: var(--font-mono);
+            color: var(--gold);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .gear-info p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .gear-specs-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .gear-specs-list li {
+            font-size: 0.88rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .gear-specs-list li::before {
+            content: "▶";
+            color: var(--gold);
+            font-size: 0.65rem;
+        }
+
+        .gear-faceplate {
+            background: #11151c;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            box-shadow: inset 0 0 20px #000;
+        }
+
+        .vu-meter-cluster {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+
+        .vu-meter {
+            width: 100px;
+            height: 60px;
+            background: #fff8e7;
+            border: 2px solid #1e293b;
+            border-radius: 6px 6px 20px 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.25);
+        }
+
+        .vu-scale {
+            position: absolute;
+            top: 6px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.55rem;
+            font-weight: 700;
+            color: #1e293b;
+            letter-spacing: 0.1em;
+        }
+
+        .vu-needle {
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 1.5px;
+            height: 48px;
+            background: #b91c1c;
+            transform-origin: bottom center;
+            transform: rotate(-25deg);
+            transition: transform 0.15s ease-out;
+        }
+
+        /* Master Audio Player */
+        .master-audio-player {
+            background: linear-gradient(135deg, rgba(20, 26, 38, 0.95), rgba(12, 16, 24, 0.98));
+            border: 1px solid var(--border-brass-bright);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 35px var(--brass-glow);
+            margin: 3rem 0;
+        }
+
+        .player-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 1rem;
+        }
+
+        .player-track-info h3 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            color: #fff;
+        }
+
+        .player-track-info p {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--gold);
+        }
+
+        .player-controls-row {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .play-btn-master {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--amber));
+            border: 2px solid var(--gold-light);
+            color: #0b0e14;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 0 25px var(--brass-glow);
+            transition: all 0.2s ease;
+        }
+
+        .play-btn-master:hover {
+            transform: scale(1.06);
+            box-shadow: 0 0 35px rgba(245, 158, 11, 0.5);
+        }
+
+        .scrubber-wrap {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .scrubber-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 999px;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .scrubber-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--amber), var(--gold));
+            border-radius: 999px;
+            transition: width 0.1s linear;
+        }
+
+        .scrubber-time {
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .tracks-playlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .track-play-card {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid var(--border-glass);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .track-play-card:hover {
+            border-color: var(--border-brass);
+            background: rgba(245, 158, 11, 0.08);
+        }
+
+        .track-play-card.active {
+            border-color: var(--gold);
+            background: rgba(245, 158, 11, 0.15);
+        }
+
+        .track-play-card h4 {
+            font-size: 0.95rem;
+            color: #fff;
+            margin-bottom: 0.2rem;
+        }
+
+        .track-play-card span {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Gallery Grid */
+        .gallery-vitrine-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-frame {
+            background: var(--bg-card);
+            border: 1px solid var(--border-brass);
+            border-radius: 14px;
+            padding: 1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-frame:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8), 0 0 20px var(--brass-glow);
+        }
+
+        .gallery-img-box {
+            width: 100%;
+            height: 220px;
+            border-radius: 8px;
+            background: #11151c;
+            border: 1px solid rgba(255,255,255,0.06);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .gallery-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-frame-caption h4 {
+            font-family: var(--font-head);
+            font-size: 1.05rem;
+            color: #fff;
+            margin-bottom: 0.25rem;
+        }
+
+        .gallery-frame-caption p {
+            font-size: 0.84rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Client Wall of Honor */
+        .client-wall-container {
+            background: rgba(18, 24, 34, 0.92);
+            border: 1px solid var(--border-brass);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+        }
+
+        .client-search-bar {
+            width: 100%;
+            max-width: 480px;
+            padding: 0.8rem 1.4rem;
+            border-radius: 999px;
+            border: 1px solid var(--border-brass);
+            background: rgba(10, 14, 20, 0.9);
+            color: #fff;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .client-search-bar:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 20px var(--brass-glow);
+        }
+
+        .client-grid-pills {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 0.75rem;
+            max-height: 520px;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+
+        .client-grid-pills::-webkit-scrollbar {
+            width: 6px;
+        }
+        .client-grid-pills::-webkit-scrollbar-thumb {
+            background: var(--border-brass);
+            border-radius: 4px;
+        }
+
+        .client-badge {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 0.6rem 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .client-badge:hover {
+            background: rgba(245, 158, 11, 0.15);
+            border-color: var(--border-brass);
+            transform: translateY(-2px);
+        }
+
+        .client-num {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--gold);
+            opacity: 0.8;
+        }
+
+        .client-name {
+            color: #f1f5f9;
+            font-weight: 500;
+        }
+
+        /* Chronicles Timeline */
+        .chronicles-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+
+        .chronicles-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .chronicles-container::-webkit-scrollbar-thumb {
+            background: var(--border-brass);
+            border-radius: 4px;
+        }
+
+        .chronicle-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-left: 4px solid var(--gold);
+            border-radius: 12px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .chronicle-date {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--gold-light);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .chronicle-stories {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .chronicle-stories li {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .museum-footer {
+            border-top: 1px solid var(--border-brass);
+            padding: 4rem 2rem;
+            text-align: center;
+            background: rgba(7, 9, 12, 0.95);
+            margin-top: 6rem;
+        }
+
+        .covenant-box {
+            max-width: 800px;
+            margin: 0 auto 2.5rem auto;
+            padding: 2rem;
+            background: rgba(24, 30, 42, 0.6);
+            border: 1px solid var(--border-brass);
+            border-radius: 14px;
+        }
+
+        .covenant-box p {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--gold-light);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        @media (max-width: 850px) {
+            .artifact-showcase {
+                grid-template-columns: 1fr;
+            }
+            .gear-unit-panel.active {
+                grid-template-columns: 1fr;
+            }
+            .museum-nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav class="museum-nav">
+        <a href="index.html" class="museum-brand" title="Return to The Partnership Hub">
+            <span class="museum-badge-pill">Historic Vault</span>
+            <span class="museum-title-nav">Higgins Family Productions</span>
+        </a>
+        <div class="museum-nav-links">
+            <a href="#spark">The Spark</a>
+            <a href="#staff">The Staff</a>
+            <a href="#gear">Gear Rack</a>
+            <a href="#audio">Audio Masters</a>
+            <a href="#gallery">Studio Gallery</a>
+            <a href="#clients">192 Clients</a>
+            <a href="#chronicles">Chronicles</a>
+            <a href="index.html" class="btn-hub-return">✦ Return to Hub</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- PLAQUE HEADER -->
+        <header class="plaque-header">
+            <span class="plaque-eyebrow">The Living Museum of Independent Prairie Audio · 1996–2014</span>
+            <h1 class="plaque-title">Higgins Family Productions</h1>
+            <p class="plaque-subtitle">
+                18 years of sovereign recording, community stewardship, and prairie musicianship in Mandan, North Dakota. Operating from January 1996 through retirement on February 6th, 2014.
+            </p>
+            <div class="plaque-curators">
+                <span>Co-Founders & Stewards: <strong>Ronald & Marion Higgins</strong></span>
+                <span>•</span>
+                <span>Mandan, North Dakota</span>
+                <span>•</span>
+                <span>County Road 138 Studio</span>
+            </div>
+        </header>
+
+        <!-- HERO VITRINE IMAGE -->
+        <div class="hero-vitrine">
+            <img src="images/hfp_archive/hfp_site_img_05.jpg" alt="Higgins Family Productions Mandan Studio Tracking Room">
+            <div class="hero-vitrine-caption">
+                <div class="caption-text">
+                    <h4>The Mandan Studio Live Tracking Room & Wall of Gold Discs</h4>
+                    <p>Featuring the iconic "Higgins Family Productions Mandan" oval plaque, acoustic upright piano, and recording mics.</p>
+                </div>
+                <div class="museum-badge-pill">Exhibit A · Mandan Studio Archive</div>
+            </div>
+        </div>
+
+        <!-- WING I: THE SPARK (1996) -->
+        <section class="museum-section" id="spark">
+            <div class="section-header-box">
+                <span class="section-num">WING I</span>
+                <h2>The Founding Spark & Chuck Suchy (1996)</h2>
+            </div>
+
+            <div class="quote-vitrine">
+                <div class="quote-icon">“</div>
+                <p class="quote-text">
+                    “You two have so much nice gear—you should open a studio and offer local musicians a real service for a price they can actually afford.”
+                </p>
+                <div class="quote-author">
+                    <div class="author-avatar">🌾</div>
+                    <div class="author-info">
+                        <h4>Chuck Suchy</h4>
+                        <p>North Dakota Official State Troubadour, Folk/Bluegrass Icon & Morton County Rancher (1996)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WING II: THE STAFF -->
+        <section class="museum-section" id="staff">
+            <div class="section-header-box">
+                <span class="section-num">WING II</span>
+                <h2>The Heart & Stewards of Higgins Family Productions</h2>
+            </div>
+            <p style="color: var(--text-secondary); max-width: 800px; margin-bottom: 2rem;">
+                A family-run haven built on craftsmanship, hospitality, and dedication. Preserved directly from the original studio records:
+            </p>
+
+            <div class="staff-grid">
+                <!-- Marion Higgins -->
+                <div class="staff-card">
+                    <div class="staff-avatar-box">
+                        <img src="images/hfp_archive/staff_marion.jpg" alt="Marion Higgins at the Higgins Family Productions graphics workstation">
+                    </div>
+                    <div>
+                        <span class="staff-role-badge">Co-Founder & Project Manager</span>
+                        <h3>Marion Higgins</h3>
+                    </div>
+                    <p>
+                        Studio and Project Manager overseeing the ongoing vision of Higgins Family Productions. Marion directed all custom graphics for CD/DVD products, Voice Over Work, Audio/Video Editing and Mixing, and assisted with manufacturing. The heart, warmth, and hospitality of the studio.
+                    </p>
+                </div>
+
+                <!-- Ron Higgins -->
+                <div class="staff-card">
+                    <div class="staff-avatar-box">
+                        <img src="images/hfp_archive/staff_ron.jpg" alt="Ron Higgins Chief Audio Engineer at the Higgins Family Productions mixing console">
+                    </div>
+                    <div>
+                        <span class="staff-role-badge">Founder & Chief Audio Engineer</span>
+                        <h3>Ron Higgins</h3>
+                    </div>
+                    <p>
+                        Audio/Video Editing, Mixing, Mastering and overall Engineering of projects, Technical Support, Voice Over Work, Web Page maintenance, and manufacturing of CD/DVD products. 63 years of musical songwriting and production experience.
+                    </p>
+                </div>
+
+                <!-- Evan Higgins -->
+                <div class="staff-card">
+                    <div class="staff-avatar-box">
+                        <img src="images/hfp_archive/staff_evan.jpg" alt="Evan Higgins at Higgins Family Productions studio microphone">
+                    </div>
+                    <div>
+                        <span class="staff-role-badge">Technical Support, Voice Over & Studio Production</span>
+                        <h3>Evan Higgins</h3>
+                    </div>
+                    <p>
+                        Voice Over Work, Technical Support, drum tracking, and assisted with the manufacturing of CD/DVD products. Keeping the beat and hardware running across decades of studio sessions.
+                    </p>
+                </div>
+
+                <!-- Mariah Higgins -->
+                <div class="staff-card">
+                    <div class="staff-avatar-box">
+                        <img src="images/hfp_archive/staff_mariah.jpg" alt="Mariah Higgins tracking vocals at Higgins Family Productions">
+                    </div>
+                    <div>
+                        <span class="staff-role-badge">Vocal Artist, Voice Over & Manufacturing</span>
+                        <h3>Mariah Higgins</h3>
+                    </div>
+                    <p>
+                        Solo album artist, Voice Over Work, studio vocal tracking, and assisted with the manufacturing of CD/DVD products. Recorded multiple album sessions in the Mandan live room.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- WING III: GEAR RACK -->
+        <section class="museum-section" id="gear">
+            <div class="section-header-box">
+                <span class="section-num">WING III</span>
+                <h2>The Studio Signal Chain Evolution (1989–2014)</h2>
+            </div>
+
+            <div class="gear-rack-container">
+                <div class="gear-rack-header">
+                    <div class="rack-screws"><div class="screw"></div><div class="screw"></div></div>
+                    <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--gold);">
+                        [STUDIO HARDWARE RECONSTRUCTION · 19-INCH RACK STANDARD]
+                    </div>
+                    <div class="rack-screws"><div class="screw"></div><div class="screw"></div></div>
+                </div>
+
+                <div class="gear-nav-tabs">
+                    <button class="gear-tab active" onclick="switchGear('tascam')">1989–1992: The Foundation (Tascam & Atari)</button>
+                    <button class="gear-tab" onclick="switchGear('digi')">1996–2004: The Project Revolution (Digi 001)</button>
+                    <button class="gear-tab" onclick="switchGear('hd')">2004–2014: Flagship TDM & Avalon Tube Preamp</button>
+                </div>
+
+                <div class="gear-unit-panel active" id="gear-tascam">
+                    <div class="gear-info">
+                        <h3>Tascam 688 Midistudio & Atari ST Notator</h3>
+                        <span class="gear-era-badge">ORIGINAL MULTITRACK ERA · 1989–1992</span>
+                        <p>
+                            Double-speed (3.75 ips) 8-track cassette multitrack with dbx Type II noise reduction, locked via FSK sync tone to an Atari ST running C-Lab Creator/Notator.
+                        </p>
+                        <ul class="gear-specs-list">
+                            <li><strong>Synthesizers:</strong> Roland U-20 Keyboard & Roland U-220 RS-PCM sound module</li>
+                            <li><strong>Master Recorder:</strong> Tascam 688 Midistudio (Track 8 FSK clock sync)</li>
+                            <li><strong>Sequencer:</strong> C-Lab Creator/Notator (Predecessor to Apple Logic Pro)</li>
+                        </ul>
+                    </div>
+                    <div class="gear-faceplate">
+                        <div style="color: var(--gold); border-bottom: 1px solid #334155; padding-bottom: 0.5rem;">
+                            TASCAM 688 · MIDISTUDIO CONSOLE
+                        </div>
+                        <div class="vu-meter-cluster">
+                            <div class="vu-meter"><div class="vu-scale">-20 -10 -7 -3 0 +3</div><div class="vu-needle" id="vu-left"></div></div>
+                            <div class="vu-meter"><div class="vu-scale">-20 -10 -7 -3 0 +3</div><div class="vu-needle" id="vu-right"></div></div>
+                        </div>
+                        <div style="font-size: 0.7rem; color: var(--text-muted); text-align: center;">
+                            ANALOG CASSETTE MULTITRACK · DOUBLE SPEED 3.75 IPS
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gear-unit-panel" id="gear-digi">
+                    <div class="gear-info">
+                        <h3>Digidesign Digi 001 & Power Mac G3/G4</h3>
+                        <span class="gear-era-badge">THE PROJECT REVOLUTION · 1996–2004</span>
+                        <p>
+                            The launch platform when Chuck Suchy urged Ron & Marion to open the studio. 1U rack breakout box with Focusrite preamps and ADAT optical lightpipe.
+                        </p>
+                        <ul class="gear-specs-list">
+                            <li><strong>Preamps:</strong> Dual discrete Focusrite-designed mic inputs with phantom power</li>
+                            <li><strong>Digital I/O:</strong> 8-channel ADAT optical + S/PDIF transfer</li>
+                            <li><strong>Host Computers:</strong> Apple Power Mac G3 / G4 Silver towers running Pro Tools LE</li>
+                        </ul>
+                    </div>
+                    <div class="gear-faceplate">
+                        <div style="color: #38bdf8; border-bottom: 1px solid #334155; padding-bottom: 0.5rem;">
+                            DIGIDESIGN 001 · 24-BIT AUDIO INTERFACE
+                        </div>
+                        <div style="padding: 1.5rem 0; text-align: center; color: var(--text-secondary); font-size: 0.85rem;">
+                            [ 8 ANALOG I/O · 8 ADAT CHANNELS · DUAL FOCUSRITE PREAMPS ]
+                        </div>
+                        <div style="font-size: 0.7rem; color: var(--text-muted); text-align: center;">
+                            PRO TOOLS LE · APPLE POWER MAC G4 WORKHORSE
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gear-unit-panel" id="gear-hd">
+                    <div class="gear-info">
+                        <h3>Pro Tools|HD TDM, Avalon Vt-737sp & Genelec 8030</h3>
+                        <span class="gear-era-badge">FLAGSHIP COMMERCIAL ERA · 2004–2014</span>
+                        <p>
+                            Dedicated hardware DSP silicon processing audio with zero latency. Featuring the legendary Avalon Vt-737sp vacuum tube class-A preamplifier/compressor and Genelec 8030 bi-amplified active studio monitors.
+                        </p>
+                        <ul class="gear-specs-list">
+                            <li><strong>Preamps:</strong> Avalon Vt-737sp Vacuum Tube Channel Strip & Neve 511 preamplifiers</li>
+                            <li><strong>Monitors:</strong> Genelec 8030A Active Bi-Amplified Nearfield Reference Monitors</li>
+                            <li><strong>System:</strong> Pro Tools HD PCIe Accel DSP & Digidesign 192 I/O Converters</li>
+                        </ul>
+                    </div>
+                    <div class="gear-faceplate">
+                        <div style="color: #a855f7; border-bottom: 1px solid #334155; padding-bottom: 0.5rem;">
+                            AVALON VT-737SP & PRO TOOLS | HD TDM
+                        </div>
+                        <div style="padding: 1.5rem 0; text-align: center; color: var(--text-secondary); font-size: 0.85rem;">
+                            [ VACUUM TUBE CLASS-A FRONT END · GENELEC 8030 MONITORS ]
+                        </div>
+                        <div style="font-size: 0.7rem; color: var(--text-muted); text-align: center;">
+                            DEDICATED DSP SILICON · 18-YEAR FINAL RETIREMENT IN 2014
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WING IV: AUDIO PLAYER -->
+        <section class="museum-section" id="audio">
+            <div class="section-header-box">
+                <span class="section-num">WING IV</span>
+                <h2>The Rescued Studio Audio Vault (1990 Masters)</h2>
+            </div>
+
+            <div class="master-audio-player">
+                <div class="player-head">
+                    <div class="player-track-info">
+                        <h3 id="current-title">01. Happy Feet</h3>
+                        <p id="current-meta">Tascam 688 / Atari Notator Master · 1990 Session</p>
+                    </div>
+                    <div class="museum-badge-pill" id="current-quality">192 kbps Studio Preview</div>
+                </div>
+
+                <div class="player-controls-row">
+                    <button class="play-btn-master" id="playBtn" onclick="togglePlay()">▶</button>
+                    <div class="scrubber-wrap">
+                        <div class="scrubber-bar" id="scrubberBar" onclick="seekAudio(event)">
+                            <div class="scrubber-fill" id="scrubberFill"></div>
+                        </div>
+                        <div class="scrubber-time">
+                            <span id="timeCurrent">0:00</span>
+                            <span id="timeDuration">1:00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <audio id="audioElement" src="audio/01_happy_feet_preview.mp3"></audio>
+
+                <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+                    SELECT EXHIBITION TRACK TO PREVIEW:
+                </div>
+
+                <div class="tracks-playlist-grid">
+                    <div class="track-play-card active" onclick="loadTrack('01_happy_feet_preview.mp3', '01. Happy Feet', 'Tascam 688 / Atari Notator Master · 1990', this)">
+                        <div>
+                            <h4>01. Happy Feet</h4>
+                            <span>Late-80s Synth Groove · 1:00 Preview</span>
+                        </div>
+                        <div>▶</div>
+                    </div>
+
+                    <div class="track-play-card" onclick="loadTrack('02_anniversary_preview.mp3', '02. Anniversary Song', 'Dedicated to Marion Higgins · 1990 Master', this)">
+                        <div>
+                            <h4>02. Anniversary Song</h4>
+                            <span>For Marion Higgins · 1:00 Preview</span>
+                        </div>
+                        <div>▶</div>
+                    </div>
+
+                    <div class="track-play-card" onclick="loadTrack('05_friday_at_5_preview.mp3', '05. Friday At 5 (Epic Master)', 'The 10-Minute Masterpiece · 1990', this)">
+                        <div>
+                            <h4>05. Friday At 5</h4>
+                            <span>10-Minute Epic Composition · 1:30 Preview</span>
+                        </div>
+                        <div>▶</div>
+                    </div>
+
+                    <div class="track-play-card" onclick="loadTrack('08_first_snow_preview.mp3', '08. First Snow', 'Prairie Winter Atmosphere · 1990', this)">
+                        <div>
+                            <h4>08. First Snow</h4>
+                            <span>North Dakota Winter Ambient · 1:00 Preview</span>
+                        </div>
+                        <div>▶</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WING V: GALLERY -->
+        <section class="museum-section" id="gallery">
+            <div class="section-header-box">
+                <span class="section-num">WING V</span>
+                <h2>The Living Studio Photo Vitrine (Authentic Archive)</h2>
+            </div>
+            <p style="color: var(--text-secondary); max-width: 800px; margin-bottom: 2rem;">
+                Recovered directly from the Higgins Family Productions website archives. Real sessions, artists, and live tracking moments inside the Mandan studio:
+            </p>
+
+            <div class="gallery-vitrine-grid">
+                <!-- 1: Live room wide -->
+                <div class="gallery-frame">
+                    <div class="gallery-img-box"><img src="images/hfp_archive/hfp_site_img_05.jpg" alt="Mandan Studio Live Room"></div>
+                    <div class="gallery-frame-caption">
+                        <h4>Mandan Live Room & Gold Disc Wall</h4>
+                        <p>The iconic oval HFP sign surrounded by pressed gold discs, acoustic upright piano, and tracking mics.</p>
+                    </div>
+                </div>
+
+                <!-- 2: Band Live Tracking -->
+                <div class="gallery-frame">
+                    <div class="gallery-img-box"><img src="images/hfp_archive/hfp_site_img_32.jpg" alt="Full 4-Piece Band Tracking Live"></div>
+                    <div class="gallery-frame-caption">
+                        <h4>Full Band Tracking Live at HFP</h4>
+                        <p>Drums, bass, electric guitar, and Yamaha keyboard all tracking together in session.</p>
+                    </div>
+                </div>
+
+                <!-- 3: New Escape CD Project -->
+                <div class="gallery-frame">
+                    <div class="gallery-img-box"><img src="images/hfp_archive/hfp_site_img_11.jpg" alt="New Escape CD Project Group"></div>
+                    <div class="gallery-frame-caption">
+                        <h4>New Escape CD Project</h4>
+                        <p>Seven young artists gathered around the condenser mic tracking vocal harmonies and acoustic guitar.</p>
+                    </div>
+                </div>
+
+                <!-- 4: Violin & Guitar -->
+                <div class="gallery-frame">
+                    <div class="gallery-img-box"><img src="images/hfp_archive/hfp_site_img_35.jpg" alt="Violin & Acoustic Guitar Duet"></div>
+                    <div class="gallery-frame-caption">
+                        <h4>Fiddle & Acoustic Guitar Tracking</h4>
+                        <p>Violin tracking alongside rhythm guitar in front of the gold disc wall.</p>
+                    </div>
+                </div>
+
+                <!-- 5: Gail Vocals -->
+                <div class="gallery-frame">
+                    <div class="gallery-img-box"><img src="images/hfp_archive/Gail66.jpg" alt="Gail Tracking Vocals"></div>
+                    <div class="gallery-frame-caption">
+                        <h4>Gail · Vocal Session</h4>
+                        <p>Tracking lead vocals in front of the shockmount studio condenser microphone.</p>
+                    </div>
+                </div>
+
+                <!-- 6: Gail Piano -->
+                <div class="gallery-frame">
+                    <div class="gallery-img-box"><img src="images/hfp_archive/Gail65.jpg" alt="Gail Tracking Piano"></div>
+                    <div class="gallery-frame-caption">
+                        <h4>Gail · Studio Piano Performance</h4>
+                        <p>Tracking acoustic upright piano in the Mandan live room.</p>
+                    </div>
+                </div>
+
+                <!-- 7: Folk Singer Picking -->
+                <div class="gallery-frame">
+                    <div class="gallery-img-box"><img src="images/hfp_archive/hfp_site_img_06.jpg" alt="Folk Singer Picking Acoustic Guitar"></div>
+                    <div class="gallery-frame-caption">
+                        <h4>Prairie Songwriter Tracking</h4>
+                        <p>Acoustic guitar tracking with stereo pair microphones in front of the stone fireplace.</p>
+                    </div>
+                </div>
+
+                <!-- 8: Youth Choir -->
+                <div class="gallery-frame">
+                    <div class="gallery-img-box"><img src="images/hfp_archive/hfp_site_img_12.jpg" alt="Youth Choir Tracking at HFP"></div>
+                    <div class="gallery-frame-caption">
+                        <h4>Youth Choir & Ensemble Tracking</h4>
+                        <p>Regional youth group tracking multi-part vocal harmonies with headphones and music stands.</p>
+                    </div>
+                </div>
+
+                <!-- 9: Client with Finished Master -->
+                <div class="gallery-frame">
+                    <div class="gallery-img-box"><img src="images/hfp_archive/hfp_site_img_123.jpg" alt="Client with Master CD"></div>
+                    <div class="gallery-frame-caption">
+                        <h4>Client Holding Finished CD Master</h4>
+                        <p>Sitting at the mixing console next to the Avalon preamp and Genelecs holding his finished project.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WING VI: 192 CLIENTS -->
+        <section class="museum-section" id="clients">
+            <div class="section-header-box">
+                <span class="section-num">WING VI</span>
+                <h2>The 192 Prairie Artists & Clients (Wall of Honor)</h2>
+            </div>
+            <p style="color: var(--text-secondary); max-width: 800px; margin-bottom: 1.5rem;">
+                Over 18 years, 192 recorded artists, bands, church choirs, cowboy poets, and singer-songwriters walked through the doors of Higgins Family Productions in Mandan. Search or scroll the permanent record:
+            </p>
+
+            <div class="client-wall-container">
+                <input type="text" class="client-search-bar" id="clientSearch" placeholder="🔍 Search by artist name, band, or project..." onkeyup="filterClients()">
+                
+                <div class="client-grid-pills" id="clientList">
+                    
+    <div class="client-badge" data-name="mariah higgins (album project)">
+        <span class="client-num">#001</span>
+        <span class="client-name">Mariah Higgins (album project)</span>
+    </div>
+    <div class="client-badge" data-name="jean wolf (memories cd project)">
+        <span class="client-num">#002</span>
+        <span class="client-name">Jean Wolf (memories CD project)</span>
+    </div>
+    <div class="client-badge" data-name="cam goebel returning original songwriter artist">
+        <span class="client-num">#003</span>
+        <span class="client-name">Cam Goebel returning original songwriter artist</span>
+    </div>
+    <div class="client-badge" data-name="new escape cd project">
+        <span class="client-num">#004</span>
+        <span class="client-name">New Escape CD Project</span>
+    </div>
+    <div class="client-badge" data-name="jennifer luchsinger 2nd cd project">
+        <span class="client-num">#005</span>
+        <span class="client-name">Jennifer Luchsinger 2nd CD Project</span>
+    </div>
+    <div class="client-badge" data-name="bonnie lee 3rd cd project">
+        <span class="client-num">#006</span>
+        <span class="client-name">Bonnie Lee 3rd CD Project</span>
+    </div>
+    <div class="client-badge" data-name="tabitha reule and genna boehm for kathy snider">
+        <span class="client-num">#007</span>
+        <span class="client-name">Tabitha Reule and Genna Boehm for Kathy Snider</span>
+    </div>
+    <div class="client-badge" data-name="badlands ministry camp staff 2nd cd project">
+        <span class="client-num">#008</span>
+        <span class="client-name">Badlands Ministry Camp Staff 2nd CD Project</span>
+    </div>
+    <div class="client-badge" data-name="rodney nelson (cowboy poet)">
+        <span class="client-num">#009</span>
+        <span class="client-name">Rodney Nelson (Cowboy Poet)</span>
+    </div>
+    <div class="client-badge" data-name="heart river child 2nd cd">
+        <span class="client-num">#010</span>
+        <span class="client-name">Heart River Child 2nd CD</span>
+    </div>
+    <div class="client-badge" data-name="jenny luchsinger">
+        <span class="client-num">#011</span>
+        <span class="client-name">Jenny Luchsinger</span>
+    </div>
+    <div class="client-badge" data-name="road trip">
+        <span class="client-num">#012</span>
+        <span class="client-name">Road Trip</span>
+    </div>
+    <div class="client-badge" data-name="5th graders from center/bismarck">
+        <span class="client-num">#013</span>
+        <span class="client-name">5th Graders from Center/Bismarck</span>
+    </div>
+    <div class="client-badge" data-name="steve harmon">
+        <span class="client-num">#014</span>
+        <span class="client-name">Steve Harmon</span>
+    </div>
+    <div class="client-badge" data-name="jay becker">
+        <span class="client-num">#015</span>
+        <span class="client-name">Jay Becker</span>
+    </div>
+    <div class="client-badge" data-name="kent family (dan, laurie &amp; gabriel)">
+        <span class="client-num">#016</span>
+        <span class="client-name">Kent Family (Dan, Laurie &amp; Gabriel)</span>
+    </div>
+    <div class="client-badge" data-name="living water lutheran church mandan">
+        <span class="client-num">#017</span>
+        <span class="client-name">Living Water Lutheran Church Mandan</span>
+    </div>
+    <div class="client-badge" data-name="dale pennington (peddle steel and fiddle)">
+        <span class="client-num">#018</span>
+        <span class="client-name">Dale Pennington (Peddle Steel and Fiddle)</span>
+    </div>
+    <div class="client-badge" data-name="tom wellin (violin)">
+        <span class="client-num">#019</span>
+        <span class="client-name">Tom Wellin (Violin)</span>
+    </div>
+    <div class="client-badge" data-name="secret artist/songwriter from kansas????">
+        <span class="client-num">#020</span>
+        <span class="client-name">SECRET artist/songwriter from Kansas????</span>
+    </div>
+    <div class="client-badge" data-name="johnny green and the greenmen">
+        <span class="client-num">#021</span>
+        <span class="client-name">Johnny Green and The Greenmen</span>
+    </div>
+    <div class="client-badge" data-name="heart river youth group">
+        <span class="client-num">#022</span>
+        <span class="client-name">Heart River Youth Group</span>
+    </div>
+    <div class="client-badge" data-name="peggy howell video project">
+        <span class="client-num">#023</span>
+        <span class="client-name">Peggy Howell Video Project</span>
+    </div>
+    <div class="client-badge" data-name="bonnie lee 2nd cd of original songs">
+        <span class="client-num">#024</span>
+        <span class="client-name">Bonnie Lee 2nd CD of original songs</span>
+    </div>
+    <div class="client-badge" data-name="mary gabrysch">
+        <span class="client-num">#025</span>
+        <span class="client-name">Mary Gabrysch</span>
+    </div>
+    <div class="client-badge" data-name="cam goebel">
+        <span class="client-num">#026</span>
+        <span class="client-name">Cam Goebel</span>
+    </div>
+    <div class="client-badge" data-name="rodney nelson cowboy poet three cd project">
+        <span class="client-num">#027</span>
+        <span class="client-name">Rodney Nelson Cowboy Poet Three CD Project</span>
+    </div>
+    <div class="client-badge" data-name="brad zuern for father clarence zuern band">
+        <span class="client-num">#028</span>
+        <span class="client-name">Brad Zuern for Father Clarence Zuern Band</span>
+    </div>
+    <div class="client-badge" data-name="colleen reinhardt christmas cd">
+        <span class="client-num">#029</span>
+        <span class="client-name">Colleen Reinhardt Christmas CD</span>
+    </div>
+    <div class="client-badge" data-name="caitlin moch">
+        <span class="client-num">#030</span>
+        <span class="client-name">Caitlin Moch</span>
+    </div>
+    <div class="client-badge" data-name="cary moch">
+        <span class="client-num">#031</span>
+        <span class="client-name">Cary Moch</span>
+    </div>
+    <div class="client-badge" data-name="the foerderer family">
+        <span class="client-num">#032</span>
+        <span class="client-name">The Foerderer Family</span>
+    </div>
+    <div class="client-badge" data-name="arrow service team (voice over creation for advertising)">
+        <span class="client-num">#033</span>
+        <span class="client-name">Arrow Service Team (Voice Over Creation for Advertising)</span>
+    </div>
+    <div class="client-badge" data-name="bonnie lee (2nd cd project)">
+        <span class="client-num">#034</span>
+        <span class="client-name">Bonnie Lee (2nd CD Project)</span>
+    </div>
+    <div class="client-badge" data-name="pastor scott frederickson">
+        <span class="client-num">#035</span>
+        <span class="client-name">Pastor Scott Frederickson</span>
+    </div>
+    <div class="client-badge" data-name="dalton richter old time ethnic cd">
+        <span class="client-num">#036</span>
+        <span class="client-name">Dalton Richter Old Time Ethnic CD</span>
+    </div>
+    <div class="client-badge" data-name="randy karstetter">
+        <span class="client-num">#037</span>
+        <span class="client-name">Randy Karstetter</span>
+    </div>
+    <div class="client-badge" data-name="elmer retzer (former member of bis/man gospel chorus)">
+        <span class="client-num">#038</span>
+        <span class="client-name">Elmer Retzer (former member of Bis/Man Gospel Chorus)</span>
+    </div>
+    <div class="client-badge" data-name="renee splichal larson for ben">
+        <span class="client-num">#039</span>
+        <span class="client-name">Renee Splichal Larson for Ben</span>
+    </div>
+    <div class="client-badge" data-name="arlene and lauren hehr old time music project">
+        <span class="client-num">#040</span>
+        <span class="client-name">Arlene and Lauren Hehr Old Time Music Project</span>
+    </div>
+    <div class="client-badge" data-name="living water 3rd cd">
+        <span class="client-num">#041</span>
+        <span class="client-name">Living Water 3rd CD</span>
+    </div>
+    <div class="client-badge" data-name="the occasional gospel quartet 2nd cd">
+        <span class="client-num">#042</span>
+        <span class="client-name">The Occasional Gospel Quartet 2nd CD</span>
+    </div>
+    <div class="client-badge" data-name="arlene &amp; lauren hehr &amp; da heck mit schultz">
+        <span class="client-num">#043</span>
+        <span class="client-name">Arlene &amp; Lauren Hehr &amp; Da Heck Mit Schultz</span>
+    </div>
+    <div class="client-badge" data-name="dakota (don syverson)">
+        <span class="client-num">#044</span>
+        <span class="client-name">Dakota (Don Syverson)</span>
+    </div>
+    <div class="client-badge" data-name="patsy hertz and family 3rd cd">
+        <span class="client-num">#045</span>
+        <span class="client-name">Patsy Hertz and family 3rd CD</span>
+    </div>
+    <div class="client-badge" data-name="sue anderson">
+        <span class="client-num">#046</span>
+        <span class="client-name">Sue Anderson</span>
+    </div>
+    <div class="client-badge" data-name="yung silk">
+        <span class="client-num">#047</span>
+        <span class="client-name">Yung Silk</span>
+    </div>
+    <div class="client-badge" data-name="dakota rose band">
+        <span class="client-num">#048</span>
+        <span class="client-name">Dakota Rose Band</span>
+    </div>
+    <div class="client-badge" data-name="sunnyland notes">
+        <span class="client-num">#049</span>
+        <span class="client-name">Sunnyland Notes</span>
+    </div>
+    <div class="client-badge" data-name="blain schell">
+        <span class="client-num">#050</span>
+        <span class="client-name">Blain Schell</span>
+    </div>
+    <div class="client-badge" data-name="arrow service team">
+        <span class="client-num">#051</span>
+        <span class="client-name">Arrow Service Team</span>
+    </div>
+    <div class="client-badge" data-name="coned">
+        <span class="client-num">#052</span>
+        <span class="client-name">Coned</span>
+    </div>
+    <div class="client-badge" data-name="the broken bricks">
+        <span class="client-num">#053</span>
+        <span class="client-name">The Broken Bricks</span>
+    </div>
+    <div class="client-badge" data-name="teresa troyer">
+        <span class="client-num">#054</span>
+        <span class="client-name">Teresa Troyer</span>
+    </div>
+    <div class="client-badge" data-name="annie hojian">
+        <span class="client-num">#055</span>
+        <span class="client-name">Annie Hojian</span>
+    </div>
+    <div class="client-badge" data-name="max sanford">
+        <span class="client-num">#056</span>
+        <span class="client-name">Max Sanford</span>
+    </div>
+    <div class="client-badge" data-name="gail withey">
+        <span class="client-num">#057</span>
+        <span class="client-name">Gail Withey</span>
+    </div>
+    <div class="client-badge" data-name="elaine lennick">
+        <span class="client-num">#058</span>
+        <span class="client-name">Elaine Lennick</span>
+    </div>
+    <div class="client-badge" data-name="bismarck mandan gospel singers">
+        <span class="client-num">#059</span>
+        <span class="client-name">Bismarck Mandan Gospel singers</span>
+    </div>
+    <div class="client-badge" data-name="welcome to dawson dvd">
+        <span class="client-num">#060</span>
+        <span class="client-name">Welcome to Dawson DVD</span>
+    </div>
+    <div class="client-badge" data-name="kills pretty enemy">
+        <span class="client-num">#061</span>
+        <span class="client-name">Kills Pretty Enemy</span>
+    </div>
+    <div class="client-badge" data-name="jennifer kilen">
+        <span class="client-num">#062</span>
+        <span class="client-name">Jennifer Kilen</span>
+    </div>
+    <div class="client-badge" data-name="the otto voggele band">
+        <span class="client-num">#063</span>
+        <span class="client-name">The Otto Voggele Band</span>
+    </div>
+    <div class="client-badge" data-name="the starlighters">
+        <span class="client-num">#064</span>
+        <span class="client-name">The Starlighters</span>
+    </div>
+    <div class="client-badge" data-name="marv zander">
+        <span class="client-num">#065</span>
+        <span class="client-name">Marv Zander</span>
+    </div>
+    <div class="client-badge" data-name="prairie rose and the homegrown sidekicks">
+        <span class="client-num">#066</span>
+        <span class="client-name">Prairie Rose and the Homegrown Sidekicks</span>
+    </div>
+    <div class="client-badge" data-name="living water">
+        <span class="client-num">#067</span>
+        <span class="client-name">Living Water</span>
+    </div>
+    <div class="client-badge" data-name="chuck suchy">
+        <span class="client-num">#068</span>
+        <span class="client-name">Chuck Suchy</span>
+    </div>
+    <div class="client-badge" data-name="ben suchy">
+        <span class="client-num">#069</span>
+        <span class="client-name">Ben Suchy</span>
+    </div>
+    <div class="client-badge" data-name="trish lenihan">
+        <span class="client-num">#070</span>
+        <span class="client-name">Trish Lenihan</span>
+    </div>
+    <div class="client-badge" data-name="reuben &amp; da heck mit schultz band">
+        <span class="client-num">#071</span>
+        <span class="client-name">Reuben &amp; Da Heck Mit Schultz Band</span>
+    </div>
+    <div class="client-badge" data-name="rachel douts">
+        <span class="client-num">#072</span>
+        <span class="client-name">Rachel Douts</span>
+    </div>
+    <div class="client-badge" data-name="mary sanderson">
+        <span class="client-num">#073</span>
+        <span class="client-name">Mary Sanderson</span>
+    </div>
+    <div class="client-badge" data-name="schaper family">
+        <span class="client-num">#074</span>
+        <span class="client-name">Schaper Family</span>
+    </div>
+    <div class="client-badge" data-name="the occassional gospel quartet">
+        <span class="client-num">#075</span>
+        <span class="client-name">The Occassional Gospel Quartet</span>
+    </div>
+    <div class="client-badge" data-name="tom schreck">
+        <span class="client-num">#076</span>
+        <span class="client-name">Tom Schreck</span>
+    </div>
+    <div class="client-badge" data-name="tina neumann">
+        <span class="client-num">#077</span>
+        <span class="client-name">Tina Neumann</span>
+    </div>
+    <div class="client-badge" data-name="vic schwahn">
+        <span class="client-num">#078</span>
+        <span class="client-name">Vic Schwahn</span>
+    </div>
+    <div class="client-badge" data-name="job service nd dvd">
+        <span class="client-num">#079</span>
+        <span class="client-name">Job Service ND DVD</span>
+    </div>
+    <div class="client-badge" data-name="bismarck state college">
+        <span class="client-num">#080</span>
+        <span class="client-name">Bismarck State College</span>
+    </div>
+    <div class="client-badge" data-name="ken &amp; jo rooks">
+        <span class="client-num">#081</span>
+        <span class="client-name">Ken &amp; Jo Rooks</span>
+    </div>
+    <div class="client-badge" data-name="nomadic">
+        <span class="client-num">#082</span>
+        <span class="client-name">NOMADIC</span>
+    </div>
+    <div class="client-badge" data-name="bill franke">
+        <span class="client-num">#083</span>
+        <span class="client-name">Bill Franke</span>
+    </div>
+    <div class="client-badge" data-name="wayne gohring">
+        <span class="client-num">#084</span>
+        <span class="client-name">Wayne Gohring</span>
+    </div>
+    <div class="client-badge" data-name="skyler petzer">
+        <span class="client-num">#085</span>
+        <span class="client-name">Skyler Petzer</span>
+    </div>
+    <div class="client-badge" data-name="the karges family">
+        <span class="client-num">#086</span>
+        <span class="client-name">The Karges family</span>
+    </div>
+    <div class="client-badge" data-name="badlands ministry camp staff cd project">
+        <span class="client-num">#087</span>
+        <span class="client-name">Badlands Ministry Camp Staff CD Project</span>
+    </div>
+    <div class="client-badge" data-name="charity &amp; dorena">
+        <span class="client-num">#088</span>
+        <span class="client-name">Charity &amp; Dorena</span>
+    </div>
+    <div class="client-badge" data-name="heather lynn bashus">
+        <span class="client-num">#089</span>
+        <span class="client-name">Heather Lynn Bashus</span>
+    </div>
+    <div class="client-badge" data-name="wicked darling">
+        <span class="client-num">#090</span>
+        <span class="client-name">Wicked Darling</span>
+    </div>
+    <div class="client-badge" data-name="deanna wanner">
+        <span class="client-num">#091</span>
+        <span class="client-name">Deanna Wanner</span>
+    </div>
+    <div class="client-badge" data-name="the baptist boys">
+        <span class="client-num">#092</span>
+        <span class="client-name">The Baptist Boys</span>
+    </div>
+    <div class="client-badge" data-name="generation gap">
+        <span class="client-num">#093</span>
+        <span class="client-name">Generation Gap</span>
+    </div>
+    <div class="client-badge" data-name="mark van horn &amp; the big dogs">
+        <span class="client-num">#094</span>
+        <span class="client-name">Mark Van Horn &amp; The Big Dogs</span>
+    </div>
+    <div class="client-badge" data-name="26th street gospel">
+        <span class="client-num">#095</span>
+        <span class="client-name">26th Street Gospel</span>
+    </div>
+    <div class="client-badge" data-name="riverbend gospel">
+        <span class="client-num">#096</span>
+        <span class="client-name">Riverbend Gospel</span>
+    </div>
+    <div class="client-badge" data-name="paul &amp; lowell larson">
+        <span class="client-num">#097</span>
+        <span class="client-name">Paul &amp; Lowell Larson</span>
+    </div>
+    <div class="client-badge" data-name="kristi la raee goldade">
+        <span class="client-num">#098</span>
+        <span class="client-name">Kristi La Raee Goldade</span>
+    </div>
+    <div class="client-badge" data-name="kfyr home grown talent cd">
+        <span class="client-num">#099</span>
+        <span class="client-name">KFYR Home Grown Talent CD</span>
+    </div>
+    <div class="client-badge" data-name="colleen reinhardt">
+        <span class="client-num">#100</span>
+        <span class="client-name">Colleen Reinhardt</span>
+    </div>
+    <div class="client-badge" data-name="greg marsland">
+        <span class="client-num">#101</span>
+        <span class="client-name">Greg Marsland</span>
+    </div>
+    <div class="client-badge" data-name="pat leingang">
+        <span class="client-num">#102</span>
+        <span class="client-name">Pat Leingang</span>
+    </div>
+    <div class="client-badge" data-name="elks choir">
+        <span class="client-num">#103</span>
+        <span class="client-name">Elks Choir</span>
+    </div>
+    <div class="client-badge" data-name="josh moen">
+        <span class="client-num">#104</span>
+        <span class="client-name">Josh Moen</span>
+    </div>
+    <div class="client-badge" data-name="loyd&#x27;s &amp; linda&#x27;s mininstry">
+        <span class="client-num">#105</span>
+        <span class="client-name">Loyd&#x27;s &amp; Linda&#x27;s Mininstry</span>
+    </div>
+    <div class="client-badge" data-name="deanna buckholtz">
+        <span class="client-num">#106</span>
+        <span class="client-name">Deanna Buckholtz</span>
+    </div>
+    <div class="client-badge" data-name="jeanne occonner">
+        <span class="client-num">#107</span>
+        <span class="client-name">Jeanne Occonner</span>
+    </div>
+    <div class="client-badge" data-name="red hat society">
+        <span class="client-num">#108</span>
+        <span class="client-name">Red Hat Society</span>
+    </div>
+    <div class="client-badge" data-name="tamie karge">
+        <span class="client-num">#109</span>
+        <span class="client-name">Tamie Karge</span>
+    </div>
+    <div class="client-badge" data-name="tracy winkler">
+        <span class="client-num">#110</span>
+        <span class="client-name">Tracy Winkler</span>
+    </div>
+    <div class="client-badge" data-name="steel &amp; country">
+        <span class="client-num">#111</span>
+        <span class="client-name">Steel &amp; Country</span>
+    </div>
+    <div class="client-badge" data-name="barb serr">
+        <span class="client-num">#112</span>
+        <span class="client-name">Barb Serr</span>
+    </div>
+    <div class="client-badge" data-name="abby dawn bardell">
+        <span class="client-num">#113</span>
+        <span class="client-name">Abby Dawn Bardell</span>
+    </div>
+    <div class="client-badge" data-name="perry hansen">
+        <span class="client-num">#114</span>
+        <span class="client-name">Perry Hansen</span>
+    </div>
+    <div class="client-badge" data-name="aman family">
+        <span class="client-num">#115</span>
+        <span class="client-name">AMAN Family</span>
+    </div>
+    <div class="client-badge" data-name="big al&#x27;s big band">
+        <span class="client-num">#116</span>
+        <span class="client-name">Big Al&#x27;s Big Band</span>
+    </div>
+    <div class="client-badge" data-name="todd haugen">
+        <span class="client-num">#117</span>
+        <span class="client-name">Todd Haugen</span>
+    </div>
+    <div class="client-badge" data-name="billy korthouse">
+        <span class="client-num">#118</span>
+        <span class="client-name">Billy Korthouse</span>
+    </div>
+    <div class="client-badge" data-name="toxic shock syndrome">
+        <span class="client-num">#119</span>
+        <span class="client-name">Toxic Shock Syndrome</span>
+    </div>
+    <div class="client-badge" data-name="keith allen">
+        <span class="client-num">#120</span>
+        <span class="client-name">Keith Allen</span>
+    </div>
+    <div class="client-badge" data-name="badlands ministries">
+        <span class="client-num">#121</span>
+        <span class="client-name">Badlands Ministries</span>
+    </div>
+    <div class="client-badge" data-name="joellee kolianoff">
+        <span class="client-num">#122</span>
+        <span class="client-name">Joellee Kolianoff</span>
+    </div>
+    <div class="client-badge" data-name="country cousines">
+        <span class="client-num">#123</span>
+        <span class="client-name">Country Cousines</span>
+    </div>
+    <div class="client-badge" data-name="georgene &amp; joe jangula">
+        <span class="client-num">#124</span>
+        <span class="client-name">Georgene &amp; Joe Jangula</span>
+    </div>
+    <div class="client-badge" data-name="john pepion">
+        <span class="client-num">#125</span>
+        <span class="client-name">John Pepion</span>
+    </div>
+    <div class="client-badge" data-name="adolhus kootenay">
+        <span class="client-num">#126</span>
+        <span class="client-name">Adolhus Kootenay</span>
+    </div>
+    <div class="client-badge" data-name="judy friesz">
+        <span class="client-num">#127</span>
+        <span class="client-name">Judy Friesz</span>
+    </div>
+    <div class="client-badge" data-name="karla knutsen">
+        <span class="client-num">#128</span>
+        <span class="client-name">Karla Knutsen</span>
+    </div>
+    <div class="client-badge" data-name="hollendale">
+        <span class="client-num">#129</span>
+        <span class="client-name">Hollendale</span>
+    </div>
+    <div class="client-badge" data-name="cope">
+        <span class="client-num">#130</span>
+        <span class="client-name">Cope</span>
+    </div>
+    <div class="client-badge" data-name="sandra wishek">
+        <span class="client-num">#131</span>
+        <span class="client-name">Sandra Wishek</span>
+    </div>
+    <div class="client-badge" data-name="robert k. lutz">
+        <span class="client-num">#132</span>
+        <span class="client-name">Robert K. Lutz</span>
+    </div>
+    <div class="client-badge" data-name="heather miller">
+        <span class="client-num">#133</span>
+        <span class="client-name">Heather Miller</span>
+    </div>
+    <div class="client-badge" data-name="dea pickers">
+        <span class="client-num">#134</span>
+        <span class="client-name">Dea Pickers</span>
+    </div>
+    <div class="client-badge" data-name="richard brier">
+        <span class="client-num">#135</span>
+        <span class="client-name">Richard Brier</span>
+    </div>
+    <div class="client-badge" data-name="thana k. bank">
+        <span class="client-num">#136</span>
+        <span class="client-name">Thana K. Bank</span>
+    </div>
+    <div class="client-badge" data-name="eternal aspect">
+        <span class="client-num">#137</span>
+        <span class="client-name">Eternal Aspect</span>
+    </div>
+    <div class="client-badge" data-name="kay elvrum mary kay executive director">
+        <span class="client-num">#138</span>
+        <span class="client-name">Kay Elvrum Mary Kay Executive Director</span>
+    </div>
+    <div class="client-badge" data-name="the funky arabs">
+        <span class="client-num">#139</span>
+        <span class="client-name">The Funky Arabs</span>
+    </div>
+    <div class="client-badge" data-name="renee entzminger">
+        <span class="client-num">#140</span>
+        <span class="client-name">Renee Entzminger</span>
+    </div>
+    <div class="client-badge" data-name="untitled">
+        <span class="client-num">#141</span>
+        <span class="client-name">Untitled</span>
+    </div>
+    <div class="client-badge" data-name="samatha kfyr">
+        <span class="client-num">#142</span>
+        <span class="client-name">Samatha KFYR</span>
+    </div>
+    <div class="client-badge" data-name="happy">
+        <span class="client-num">#143</span>
+        <span class="client-name">Happy</span>
+    </div>
+    <div class="client-badge" data-name="ernest porky hettich">
+        <span class="client-num">#144</span>
+        <span class="client-name">Ernest Porky Hettich</span>
+    </div>
+    <div class="client-badge" data-name="mathew nunberg">
+        <span class="client-num">#145</span>
+        <span class="client-name">Mathew Nunberg</span>
+    </div>
+    <div class="client-badge" data-name="vincent &amp; bonnie bitz">
+        <span class="client-num">#146</span>
+        <span class="client-name">Vincent &amp; Bonnie bitz</span>
+    </div>
+    <div class="client-badge" data-name="mike johnson">
+        <span class="client-num">#147</span>
+        <span class="client-name">Mike Johnson</span>
+    </div>
+    <div class="client-badge" data-name="the cunning stunts">
+        <span class="client-num">#148</span>
+        <span class="client-name">The Cunning Stunts</span>
+    </div>
+    <div class="client-badge" data-name="cross check">
+        <span class="client-num">#149</span>
+        <span class="client-name">Cross Check</span>
+    </div>
+    <div class="client-badge" data-name="victor wald">
+        <span class="client-num">#150</span>
+        <span class="client-name">Victor Wald</span>
+    </div>
+    <div class="client-badge" data-name="strychnoz">
+        <span class="client-num">#151</span>
+        <span class="client-name">Strychnoz</span>
+    </div>
+    <div class="client-badge" data-name="curtis james">
+        <span class="client-num">#152</span>
+        <span class="client-name">Curtis James</span>
+    </div>
+    <div class="client-badge" data-name="steve harding">
+        <span class="client-num">#153</span>
+        <span class="client-name">Steve Harding</span>
+    </div>
+    <div class="client-badge" data-name="lefty erickson">
+        <span class="client-num">#154</span>
+        <span class="client-name">Lefty Erickson</span>
+    </div>
+    <div class="client-badge" data-name="nerve impulse">
+        <span class="client-num">#155</span>
+        <span class="client-name">Nerve Impulse</span>
+    </div>
+    <div class="client-badge" data-name="earl dennis">
+        <span class="client-num">#156</span>
+        <span class="client-name">Earl Dennis</span>
+    </div>
+    <div class="client-badge" data-name="bismarck mandan civic choir">
+        <span class="client-num">#157</span>
+        <span class="client-name">Bismarck Mandan Civic Choir</span>
+    </div>
+    <div class="client-badge" data-name="chrissie hager">
+        <span class="client-num">#158</span>
+        <span class="client-name">Chrissie Hager</span>
+    </div>
+    <div class="client-badge" data-name="the kreins">
+        <span class="client-num">#159</span>
+        <span class="client-name">The Kreins</span>
+    </div>
+    <div class="client-badge" data-name="burning geisha">
+        <span class="client-num">#160</span>
+        <span class="client-name">Burning Geisha</span>
+    </div>
+    <div class="client-badge" data-name="lee lundberg">
+        <span class="client-num">#161</span>
+        <span class="client-name">Lee Lundberg</span>
+    </div>
+    <div class="client-badge" data-name="perosity">
+        <span class="client-num">#162</span>
+        <span class="client-name">Perosity</span>
+    </div>
+    <div class="client-badge" data-name="country pride">
+        <span class="client-num">#163</span>
+        <span class="client-name">Country Pride</span>
+    </div>
+    <div class="client-badge" data-name="the minicing fancylads">
+        <span class="client-num">#164</span>
+        <span class="client-name">The Minicing Fancylads</span>
+    </div>
+    <div class="client-badge" data-name="the german singers">
+        <span class="client-num">#165</span>
+        <span class="client-name">The German Singers</span>
+    </div>
+    <div class="client-badge" data-name="bonnie lee">
+        <span class="client-num">#166</span>
+        <span class="client-name">Bonnie Lee</span>
+    </div>
+    <div class="client-badge" data-name="lauretta marigny">
+        <span class="client-num">#167</span>
+        <span class="client-name">Lauretta Marigny</span>
+    </div>
+    <div class="client-badge" data-name="heringer family">
+        <span class="client-num">#168</span>
+        <span class="client-name">Heringer Family</span>
+    </div>
+    <div class="client-badge" data-name="dakota chamber choir">
+        <span class="client-num">#169</span>
+        <span class="client-name">Dakota Chamber Choir</span>
+    </div>
+    <div class="client-badge" data-name="patsy &amp; family">
+        <span class="client-num">#170</span>
+        <span class="client-name">Patsy &amp; Family</span>
+    </div>
+    <div class="client-badge" data-name="centennial 4">
+        <span class="client-num">#171</span>
+        <span class="client-name">Centennial 4</span>
+    </div>
+    <div class="client-badge" data-name="the continentals">
+        <span class="client-num">#172</span>
+        <span class="client-name">The Continentals</span>
+    </div>
+    <div class="client-badge" data-name="phoenix">
+        <span class="client-num">#173</span>
+        <span class="client-name">Phoenix</span>
+    </div>
+    <div class="client-badge" data-name="alyssa brewer">
+        <span class="client-num">#174</span>
+        <span class="client-name">Alyssa Brewer</span>
+    </div>
+    <div class="client-badge" data-name="angela miller">
+        <span class="client-num">#175</span>
+        <span class="client-name">Angela Miller</span>
+    </div>
+    <div class="client-badge" data-name="belfield choir">
+        <span class="client-num">#176</span>
+        <span class="client-name">Belfield Choir</span>
+    </div>
+    <div class="client-badge" data-name="bierman">
+        <span class="client-num">#177</span>
+        <span class="client-name">Bierman</span>
+    </div>
+    <div class="client-badge" data-name="camp of the cross">
+        <span class="client-num">#178</span>
+        <span class="client-name">Camp of the Cross</span>
+    </div>
+    <div class="client-badge" data-name="butch &amp; dan">
+        <span class="client-num">#179</span>
+        <span class="client-name">Butch &amp; Dan</span>
+    </div>
+    <div class="client-badge" data-name="cheaper than therapy">
+        <span class="client-num">#180</span>
+        <span class="client-name">Cheaper Than Therapy</span>
+    </div>
+    <div class="client-badge" data-name="marcus allen">
+        <span class="client-num">#181</span>
+        <span class="client-name">Marcus Allen</span>
+    </div>
+    <div class="client-badge" data-name="eddie schell">
+        <span class="client-num">#182</span>
+        <span class="client-name">Eddie Schell</span>
+    </div>
+    <div class="client-badge" data-name="marlin &amp; wanda niess">
+        <span class="client-num">#183</span>
+        <span class="client-name">Marlin &amp; Wanda Niess</span>
+    </div>
+    <div class="client-badge" data-name="phil schook">
+        <span class="client-num">#184</span>
+        <span class="client-name">Phil Schook</span>
+    </div>
+    <div class="client-badge" data-name="ron crowley">
+        <span class="client-num">#185</span>
+        <span class="client-name">Ron Crowley</span>
+    </div>
+    <div class="client-badge" data-name="shannon guertin">
+        <span class="client-num">#186</span>
+        <span class="client-name">Shannon Guertin</span>
+    </div>
+    <div class="client-badge" data-name="matt murphy">
+        <span class="client-num">#187</span>
+        <span class="client-name">Matt Murphy</span>
+    </div>
+    <div class="client-badge" data-name="shelly r">
+        <span class="client-num">#188</span>
+        <span class="client-name">Shelly R</span>
+    </div>
+    <div class="client-badge" data-name="steve urness">
+        <span class="client-num">#189</span>
+        <span class="client-name">Steve Urness</span>
+    </div>
+    <div class="client-badge" data-name="ministries gospel band">
+        <span class="client-num">#190</span>
+        <span class="client-name">Ministries Gospel Band</span>
+    </div>
+    <div class="client-badge" data-name="travis albrecht">
+        <span class="client-num">#191</span>
+        <span class="client-name">Travis Albrecht</span>
+    </div>
+    <div class="client-badge" data-name="marv zander 1996">
+        <span class="client-num">#192</span>
+        <span class="client-name">Marv Zander 1996</span>
+    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WING VII: CHRONICLES -->
+        <section class="museum-section" id="chronicles">
+            <div class="section-header-box">
+                <span class="section-num">WING VII</span>
+                <h2>Studio News & Month-by-Month Chronicles (2009–2014)</h2>
+            </div>
+            <p style="color: var(--text-secondary); max-width: 800px; margin-bottom: 2rem;">
+                A living diary of what was tracked, mixed, and manufactured month by month during the peak studio years leading up to retirement in 2014:
+            </p>
+
+            <div class="chronicles-container">
+                
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 April May 2009</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Apr 11, 2009 8:51:6 PM</li><li>We Will be completing a mix down project on several tracks for Annie Hojian this month.  Teresa Troyer will be coming in the studio to mix down her recently recorded tracks for her second CD.  We will be completing mix down and mastering of a project for Paster Stan Larsen sometime before the end of April.   The band &quot;CONED&quot;, a Trio made up of Guitar, Base and Drums will be coming in to do several original tracks sometime during the next couple months.  County Cousin&#x27;s recorded their 4th CD during this time.</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 June July 2009</div>
+        <ul class="chronicle-stories">
+            <li>Post date: May 31, 2009 2:57:55 PM</li><li>Country Cousins recorded their 3rd Album and will be mixing/mastering their project during June.  I will be putting some pictures from this session on line.  Earl Dennis will be recording a track for his daughters wedding during June.  Annie Hojian will be deciding on combining her previously recorded tracks into CD compilations to culminate her project.  Teresa Troyer will be coming back into the studio to redo some of her tracks recorded in May.  Joe Jangula Will be coming back into the studio to remix a project that was recorded in 2007.  This recording has the great steel playing of the late Perry Hanson which is truly a tresure. He will be missed.  Further Mixing on Pastor Stan Larson&#x27;s vocal project will be done in June. Gail Withey records original Contemporary Christian Songs in July and will be returning in August to continue working on her recording project. I put a couple pictures from the July 2009 session up for you to view.  Coned laid down 12 tracks during their July 2009 recording session.  Check out the new pictures taken during this session. Coned will be mixing down and mastering their project late July 2009.  Be sure and check out the new Coned Video 2009 under videos.</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 August September 2009</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Aug 18, 2009 1:2:42 PM</li><li>Gail Withey came back early August 2009 and worked on more tracks for her project.  Gail&#x27;s tracks are all original Contemporary Christian music and she will be adding live musicians to some of the tracks sometime in October 2009.  There are a few pictures from her first recording session posted to check out.  Colleen Reinhardt came back into the studio to start a new Christian Gospel project the second weekend of August 2009.  She also brought Marv Zander and Blain Schell to add some tasty background parts to her tracks.  They also did some live tracking.  Colleen will be returning in September 2009 to work on her tracks. I&#x27;m going to put some pictures of Colleen&#x27;s session up for you to check out!</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 October November 2009</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Oct 28, 2009 1:49:30 PM</li><li>During the month of October we are not in operation because we are upgrading to Pro Tools HD 8.  We will be utilizing a new system comprised of a Digidesign HD Core Card and the 96i I/O interface.  We will be able to record sessions at 24 Bit and up to a 96 Khz Sample Rate (instead of 44.1).  We also plan on adding additonal HD processing cards for a more powerful system within the next couple months.  During November we will see Colleen Reinhardt, Gail Withey, and The Occassional Gospel Quartet returning to complete projects. Also Coned will be coming back in to remaster some of their tracks.</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 December 2009</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Dec 13, 2009 5:22:51 PM</li><li>During the month of December Colleen Reinhardt finished her CD project of traditional Gospel music selections.  This CD will be available mid-December 2009.  This was the first project to be recorded using the New Pro Tools|HD3 system.  Coned came back into the studio to re-mix and master their project that was recorded last July 2009.  We used the new PT|HD3 system to finish their project also.  We wish to thank everyone for their continued business and we hope everyone has a safe and happy Holiday.  May God continue to Bless you now and next year 2010.</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 January February 2010</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Feb 27, 2010 4:12:31 AM</li><li>Happy New Year and may you all have a blessed year!!!  During January and February the following clients passed through our studio for various services:  Marv Zander, Colleen Reinhardt, The Larsen brothers, Riverbend gospel, Trish Lenihan and Carol Nitsche (her late father Vocalist Donald Legrid) project. Thank you all and we appreciate your continued patronage!!!</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 March April 2010</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Apr 15, 2010 11:44:15 AM</li><li>During March through April 2010 Wayne Goehring, Joe and Georgene Jangula, Carol Nitsche, and Victor Wald used our services.</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 May June 2010</div>
+        <ul class="chronicle-stories">
+            <li>Post date: May 15, 2010 3:31:4 PM</li><li>May through June the following clients used our services:  Marv Zander, Arrow Service Team,  Lauretta Marigny, Gail Withey, Sunnyland Notes finishing their second CD with us and Rapper Yung Silk tracking some beats.</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 July August 2010</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Aug 04, 2010 1:15:16 AM</li><li>During the month of July - August:   Sunnyland Notes, The Larson Brothers, Sue Anderson, May Teske,  Otto Vogele, Prairie Rose and The Sidekicks, Colleen Reinhardt, The Continentals, Patsy Hertz and family (see pictures), and Don Syverson &quot;Dakota&quot; used our services (more pictures to come).  This is Patsy Hertz&#x27;s third CD recorded with us.  There will be more pictures coming when I can update more info.  Don Syverson &quot;Dakota&quot; recorded 20 tracks on his first CD with us.  Rueben &amp; Da Heck Mit Schultz Band recorded their 2nd CD with us in August. They brought in Lauren and Arlene Hehr on this project and changed the band name to Arlene and Lauren Hehr and Da Heck Mit Schultz Band.   Be sure and check our new video &quot;Higgins Family Productions Client Video Info&quot; first one under Videos.  Also Contact and Staff Information has been updated with pictures of staff and a description of what they do at Higgins Family Productions.</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 September October 2010</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Sep 28, 2010 4:18:5 PM</li><li>During September and October 2010 the following clients used our services:  Patsy Hertz and Family, Arlene &amp; Lauren Hehr &amp; Da Heck Mit Schultz, and The Occasional Gospel Quartet, Colleen Reinhardt. The Occasional Gospel Quartet is in the process of recording their 2nd CD with us.  I will be posting pictures from their session in the near future.</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 November December 2010</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Oct 28, 2010 1:24:3 AM</li><li>The Occasional Gospel Quartet will be finishing up their CD and mixing/mastering their project.  Prairie Rose and The Sidekicks used our services during this time.  Colleen Reinhardt will be recording a Christmas Album.  Living Water will be be coming in to do their third CD with us during late November or early December.   Dan Spilivoy will be coming in to record some tracks with his daughter. Dan was a former member of 4Eternity. They recorded a CD in 1998 at Higgins Family Productions.  I will update pictures and other information as we continue business during these months.</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 January February 2011</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Jan 29, 2011 2:41:12 AM</li><li>The following individuals used our services during January - February:  Bismarck/Mandan Mens Gospel Chorus and former member Elmer Retzer. Country Cousins, and Sandra Kruger also used our services during this time. Lauren and Arlene Hehr started on a project to transfer old tapes recorded live during the late 50&#x27;s and early 60&#x27;s of Old Time Music to CD&#x27;s. The first one will be called &quot;Great Memories of the Becker Beellinger Band&quot; (See pictures on Home). Living Water returned to do their third CD with us (See pictures on Home). Renee Splichal Larson had worked with us last fall to release of her late husbands self produced and recorded music. We will be working on another album to be released as a CD during this time.</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 March April 2011</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Feb 26, 2011 1:53:22 PM</li><li>Country Cousin&#x27;s will be coming in to complete their 4th album with us during the next few months.  Living Water will be returning to continue work on their CD Project during this time.  Dalton Richter started his project in our studio late March; an ethnic old time music CD project.  Elmer Retzer (former member of Bis/Man Gospel Chorus) used our services during this time. Renee Splichal Larson continues to work with us to complete her late husbands 2nd CD release of original music.  Wayne Goehring, Prairie Rose and the Sidekicks, Colleen Reinhardt, Sandra Krueger, Randy Karstetter and Paster Scott Frederickson used our services during this time. Randy,  a former member of Steel and Country (recorded a CD in the mid-2000&#x27;s with us) brought tracks in for mastering that he had recorded in his home studio. Paster Scott will be recording 12 tracks comprised of vocal and guitar.  Bonnie Lee will be coming back to our studio April 12th to work on previously recorded tracks from 2008.  She completed her first CD with us in 2004.  Pictures will be added as projects are in process and being completed.</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 May June 2011</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Apr 30, 2011 1:55:37 PM</li><li>During this time Bonnie Lee and Paster Scott Frederickson will be returning to complete their CD recording projects.  The Baptist Boys, Renee Larson (For Ben Larson), Dalton Richter, Arrow Services Team, Dakota, Daheck Mit Schultz with Arlene and Lauren Hehr, and the Occassional Gospel Quartet used our services. We will be working on another project for Paster Renee Larson which will be a compilation of her late husbands Love Songs.</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 July August 2011</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Jul 06, 2011 12:16:39 PM</li><li>During this time Bonnie Lee and Paster Scott Frederickson will be returning to complete their CD recording projects.  The following individuals used our services during this time:  Patsy Hertz Family, Paster Stan Larson, The Foerderer Family, May Tesky, Larson Brothers and other&#x27;s will be added as they use our services.</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 September October 2011</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Sep 26, 2011 9:50:39 PM</li><li>During this time the following clients used our services:  May Teske, Prairie Rose Music Company, Victor Wald, The Occassional Gospel Quartet and Bonnie Lee.</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 November December 2011</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Dec 03, 2011 2:48:58 PM</li><li>During this time period the following clients used our services:  Colleen Reinhardt and Caitlin Moch.  Colleen  recorded her new Christmas CD and will be mixing it down in December.  Caitlin recorded her first CD Album with us in Mid-December.  Her father Kerry Moch recorded in our studio during the late 1990&#x27;s and was also a participant in the KFYR Home grown Talent contest during that time.  Brad Zuern brought a 1994 recording of his father&#x27;s Band &quot;The Clarence Zuern Band&quot; to transfer and edit for CD.  Brad had played drums in early 2000 with a group that recorded a CD with us.  I put some pictures up of these sessions.  We have not done many new client projects during this time period because our studio is in transition.  We are making some changes and working on personal projects at this time. Hope everyone has a safe and blessed Holiday!</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 January February 2012</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Jan 18, 2012 1:23:51 AM</li><li>This is our sixteenth year in business and we hope everyone has a happy and prosperous new year.   The following individuals used our services during this time:  Sunnyland Notes, Colleen Reinhardt, Prairie Rose and The Sidekicks, Bonnie Lee, and Rodney Nelson.  Thanks to Colleen for all her hard work and participation to bring the Rodney Nelson Project into fruition during this time.  With Colleen Reinhardt we teamed up to produce a three CD project for Rodney Nelson. I snapped a picture of Rodney and added it to the pictures.  Rodney is a very gifted cowboy poet sharing his incredible talent on three CD&#x27;s that will be available soon.  More to come later in studio news as we move through January and February I will update.</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 March April 2012</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Mar 03, 2012 2:26:50 PM</li><li>Cam Goebel Tracked an original song for a demo session in early March.  Cam has several original songs and tracked Bones and Blood during the March 2nd Session.  Check out the pictures taken during this recording session.  Will be working on a Video Transfer Project for Prairie Rose and The Sidekicks during this time.  During this time the following clients used our services Wayne Goehring, The Larson Brothers, Otto Voegele, Bonnie Lee, Tami Bissonette and Colleen Reinhardt.  Mary Gabrysch tracked several songs for a demo during April at Ascention Church in Bismarck and in our studio.  Mary plays Organ and Piano and also did some vocal work for her demo.  I put some pictures up of the sessions.  Bonnie Lee was back in the studio to record more original songs.  She will be returning in May to track more material.</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 May June 2012</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Apr 28, 2012 3:53:12 PM</li><li>During this time the following clients used our services:  Vic Schwan, Mary Gabrysch, and Bonnie Lee.   Bonnie Lee returned to the studio to complete her 2nd CD of original songs.  Randy Karstetter has been adding tracks in his home studio to some of the songs.  We will be mixing/mastering and finishing up her project during this time. Mary Gabrysch is finishing up her CD that was recorded remote at Ascention Church in Bismarck and in the studio.  We will be mixing her project down and finishing this month.  Check out the pictures that have been added recently.  Completed video project for Peggy Howell which was a graduation gift for her Niece.  Starting a video project for Gail Withey (previous client recorded in 2009).  We are in the planning stages expected to unfold during June.  Heart River Youth Group recorded 19 tracks and will be mixing down their project.  I put some pictures from one of the sessions up to view.  Judy Friesz and her son Jeff will be coming in the first of July to record some tracks.  Judy and family have been in our studio doing other projects during the past years.  Will update as we move through these months.</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 July August 2012</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Jul 11, 2012 9:8:43 PM</li><li>During this time the following clients used our services:  Coleen Reinhardt, Heart River Youth Group, May Tesky, Vic Schwan,  Pastor Stan Larsen, and Pastor Scott Fredrickson.  Judy Friesz and her son Jeff will be recording in July.  Pictures will be added as I can get them up. Judy has a large talented family and has recorded numerous times over the past several years in our studio.   Mixed/Mastered Stan Larsen and Scott Fredrickson projects during this time.  Will update as we move through this time period.</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 September October 2012</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Sep 13, 2012 12:51:59 PM</li><li>During this time the following clients used our services:  Rev. Stanley Larsen, Gilbert Kills Pretty Enemy, Rodney Nelson (Cowboy Poet), Bonnie Lee and Heart River Youth.  Cam Goebel came back into the studio to track some more original songs during September.  Johnny Green and The Greenmen started recording tracks for a SECRET artist/songwriter from Kansas in October.  I posted some pictures from sessions.  Johnny Green has entertained audiences for many years.  Co-Writer of the original BATMAN theme, movie actor, musician and a great entertainer has traveled the world with his band.  Johnny Green &amp; The Greenmen have toured over 102 countries. They have toured with many national country and rock and roll bands not to mention the first band to tour with the Rolling Stones. The band is known for their appearances on the Batman TV shows as the Hench men for the Joker.  Toured with the famous Bob Hope in Viet Nam.   Tom Wellin (Violin) came in to track on several songs during Johnny Green Band sessions.  Tom has played with Ray Price, The Judds,Kris Kristofferson,HenryMancinjust to name a few.  Dale Pennington came in to over dub  Peddle Steel tracks on original songs recorded by Johnny Green and The Greenmen.  Dale has played with Dave G Frizzell, Rockytop, Richard Torrence, and Ben Suchy to name a few.  He also worked as a Nashville Session Player and recorded on 42 Gospel Albums during his career.  Posted pictures and more to come!</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 November December 2012</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Nov 20, 2012 2:25:3 PM</li><li>During this time the following clients used our services:  Pastor Stan Larson, Bonnie Lee, Rodney Nelson, Sword of the Spirit Ministries Gospel Band, and Bismarck/Mandan Gospel Singers.  We completed a DVD for Living Water Lutheran Church of Mandan.  I posted a link under Videos.   Bonnie Lee plans to complete a Christmas CD during this time.  Will update as we go through these months.</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 January February 2013</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Jan 07, 2013 2:23:7 PM</li><li>Happy New Year!!! I hope everyone had a good Christmas and New Years Holiday!!! The following clients have used our services during this time period:  Bismarck/Mandan Gospel Singers, Victor Wald, Sunnyland Notes, The Larsen Brothers and Steve Harmon.  Road Trip will be coming in to record several songs for a demo that they are putting together.  The Kent Family (Dan, Laurie, and Gabriel) were in the studio recording tracks for a CD they will be releasing in the near future.  I posted some pictures from their session.  Also doing some work with Jay Becker adding some additional background instruments to his original material. Cam Goebel returned to the studio to record more new material he has written.  He has been working on recording a number of original songs for an album project.   I will update with pictures and new information as we move through this time period.</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 March April 2013</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Mar 06, 2013 9:34:50 PM</li><li>The following clients used our services during this time:  Rodney Nelson, Bismarck/Mandan Gospel Singers and Colleen Reinhardt.  A talented group of 5th Graders from Center and Bismarck recorded four songs and had a very fun time singing their hearts out to help celebrate a birthday for Carson Haag!!!  I put some pictures up of the session. Currently working on adding some instruments to Jay Becker&#x27;s original song &quot;The One Thing&quot; singing and playing guitar recorded in his home studio. Road Trip will be coming into the studio to finish a demo of tracks on March 22nd.  I will update as we move through these months.</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 May June 2013</div>
+        <ul class="chronicle-stories">
+            <li>Post date: May 01, 2013 4:42:33 PM</li><li>The following clients used our services during this time period:  Occasional Gospel Quartet, Gilbert Kills Pretty Enemy, and The Larsen Brothers.  Clint Stoltz came into the studio to mix down and finish the Road Trip project.  I posted some pictures from their  recording session.  Jenny Luchsinger recorded and mixed six tracks May 16th I snapped a picture of her after the session. During June Heart River Youth came back in the studio to record their 2nd CD with us.  I posted some pictures from the sessions for you to check out.    I will continue to update you as we move through this time period.</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 July August 2013</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Jun 30, 2013 12:25:43 PM</li><li>During this time period the following clients used our services:  Bismarck/Mandan Gospel Singers, Vic Schwan, and the Occasional Gospel Quartet. During July Heart River Child will be coming in to redo some tracks and continue to mix down and master their 2nd CD project with us. They recorded their first CD with us last June 2012.  Rodney Nelson recorded, in our studio, July 9th an original track for Cowboy Poetry (cowboypoetry.com) out of California for their Christmas Release. Rodney had released three CD&#x27;s of original CowBoy Poetry with us over the last couple years.   Badlands Ministries will be coming in July 13th to record their 2nd CD project. They recorded their first CD back in 2007 with us.  Heart River Child continues to complete the re-tracking, mixing and mastering of their second CD with our studio. Badlands Ministries completed their mixdown and mastering and are reviewing their audio proof at this time during the beginning of august 2013. Kathy Snider enlisted the assistance of two very talented singers and musicians, Tabitha Reule and Genna Boehm to record an original song by Kathy&#x27;s Father.  I updated with some pictures from these sessions and will continue to update as we move through this time period.</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 September October 2013</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Aug 02, 2013 7:40:33 PM</li><li>The following clients used our services during this time Occasional Gospel Quartet, Heart River Child, Otto Voggele, Colleen Reinhardt and Living Water.  Bonnie Lee is back in our studio to complete her 3rd CD Project with us. Bonnie will also be adding some piano tracks to an original song composed by Jay Berger that he recorded in his home studio (guitar and vocal).   Jennifer Luchsinger recorded 16 tracks in October. She had recorded a prior project last May and decided to come back to do a larger project.   I posted a couple pictures from the session.   I will update as we move through this time period.</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 November December 2013</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Oct 31, 2013 1:58:50 PM</li><li>The following clients used our services during this period:  Colleen Reinhardt, Trish Lenihan,  and Jennifer Luchsinger.  New Escape recorded 13 tracks November 11, 2013 for their CD project to be released the first of December. Cam Goebel came back into the studio to record more original songs in December.  Always fun to have Cam in the studio.  He is such a creative and fun person.  I posted some pictures from these sessions.   I will update with more pictures and information as we move through this period.</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 January February 2014</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Dec 30, 2013 9:5:30 PM</li><li>I hope everyone had a happy and safe Christmas and New Years.  May the new year bring peace and prosperity to you and your families.    I have been recording several tracks with Mariah Higgins working on an album project for her.  I posted some pictures of the first session.   I will update as we move through this period.</li>
+        </ul>
+    </div>
+    <div class="chronicle-card">
+        <div class="chronicle-date">📅 March April 2014</div>
+        <ul class="chronicle-stories">
+            <li>Post date: Mar 24, 2014 11:48:13 AM</li><li>Higgins Family Productions is no longer in business effective February 6th, 2014. Higgins Family Productions will be sold as a business.  For more information contact Marion Higgins at us4higgins@yahoo.com.</li>
+        </ul>
+    </div>
+            </div>
+        </section>
+
+        <!-- WING VIII: KFYR 1999 ARTIFACT -->
+        <section class="museum-section" id="kfyr">
+            <div class="section-header-box">
+                <span class="section-num">WING VIII</span>
+                <h2>The 1999 Historic Discography Landmark</h2>
+            </div>
+
+            <div class="artifact-showcase">
+                <div class="artifact-visual">
+                    <img src="images/kfyr_cd_artifact.jpg" alt="KFYR Radio Home Grown Talent Collection CD Artifact HFP1301">
+                </div>
+
+                <div class="artifact-details">
+                    <div class="artifact-pill">🏛️ Preserved in Discogs Global Archives</div>
+                    <h3 class="artifact-title">KFYR Radio Home Grown Talent Collection</h3>
+                    <p class="artifact-desc">
+                        In 1999, Higgins Family Productions partnered with historic broadcast institution <strong>KFYR 550 AM</strong> in Bismarck/Mandan to master, manufacture, and release an official CD anthology celebrating the regional music broadcast across the Great Plains airwaves.
+                    </p>
+
+                    <table class="artifact-specs-table">
+                        <tr>
+                            <td>Catalog Number</td>
+                            <td><strong>HFP1301</strong> (Higgins Family Productions)</td>
+                        </tr>
+                        <tr>
+                            <td>Release Year</td>
+                            <td>1999</td>
+                        </tr>
+                        <tr>
+                            <td>Format</td>
+                            <td>Red Book Compact Disc (CD-DA)</td>
+                        </tr>
+                        <tr>
+                            <td>Historic Cuts</td>
+                            <td>Preston Schmidt ("Dill Pickle Rag"), Burning Geisha, Dakota Gospel & Folk Ensembles</td>
+                        </tr>
+                        <tr>
+                            <td>Engineering</td>
+                            <td>Ron Higgins / Higgins Family Productions Studio, Mandan ND</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- MUSEUM FOOTER & COVENANT -->
+    <footer class="museum-footer">
+        <div class="covenant-box">
+            <p>
+                “We must always hold each other in the highest light with full respect and humility, treating each other always with appreciative love and respect forever.”
+            </p>
+            <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--gold);">
+                Higgins Family Productions (1996–2014) · The Living Heritage of The Sovereign Musician
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <a href="index.html">✦ The Partnership Hub</a>
+            <a href="sovereign-musician.html">📖 The Sovereign Musician Reader</a>
+            <a href="music.html">🎶 CletusMaxx Music Catalog</a>
+            <a href="https://ko-fi.com/ronaldhiggins" target="_blank">☕ Support Ron on Ko-fi</a>
+        </div>
+    </footer>
+
+    <script>
+        function switchGear(id) {
+            document.querySelectorAll(".gear-tab").forEach(b => b.classList.remove("active"));
+            document.querySelectorAll(".gear-unit-panel").forEach(p => p.classList.remove("active"));
+            
+            event.target.classList.add("active");
+            document.getElementById("gear-" + id).classList.add("active");
+        }
+
+        function filterClients() {
+            const query = document.getElementById("clientSearch").value.toLowerCase();
+            document.querySelectorAll(".client-badge").forEach(el => {
+                const name = el.getAttribute("data-name");
+                if (name.includes(query)) {
+                    el.style.display = "flex";
+                } else {
+                    el.style.display = "none";
+                }
+            });
+        }
+
+        // Master Audio Player Logic
+        const audio = document.getElementById("audioElement");
+        const playBtn = document.getElementById("playBtn");
+        const scrubberFill = document.getElementById("scrubberFill");
+        const timeCurrent = document.getElementById("timeCurrent");
+        const timeDuration = document.getElementById("timeDuration");
+        const vuLeft = document.getElementById("vu-left");
+        const vuRight = document.getElementById("vu-right");
+
+        function togglePlay() {
+            if (audio.paused) {
+                audio.play();
+                playBtn.textContent = "⏸";
+                startVUMeters();
+            } else {
+                audio.pause();
+                playBtn.textContent = "▶";
+                stopVUMeters();
+            }
+        }
+
+        function loadTrack(file, title, meta, cardElement) {
+            audio.src = "audio/" + file;
+            document.getElementById("current-title").textContent = title;
+            document.getElementById("current-meta").textContent = meta;
+            
+            document.querySelectorAll(".track-play-card").forEach(c => c.classList.remove("active"));
+            if (cardElement) cardElement.classList.add("active");
+            
+            audio.play();
+            playBtn.textContent = "⏸";
+            startVUMeters();
+        }
+
+        audio.addEventListener("timeupdate", () => {
+            if (audio.duration) {
+                const pct = (audio.currentTime / audio.duration) * 100;
+                scrubberFill.style.width = pct + "%";
+                timeCurrent.textContent = formatTime(audio.currentTime);
+                timeDuration.textContent = formatTime(audio.duration);
+            }
+        });
+
+        audio.addEventListener("ended", () => {
+            playBtn.textContent = "▶";
+            stopVUMeters();
+        });
+
+        function seekAudio(e) {
+            const rect = document.getElementById("scrubberBar").getBoundingClientRect();
+            const clickPos = (e.clientX - rect.left) / rect.width;
+            audio.currentTime = clickPos * audio.duration;
+        }
+
+        function formatTime(sec) {
+            const m = Math.floor(sec / 60);
+            const s = Math.floor(sec % 60);
+            return m + ":" + (s < 10 ? "0" : "") + s;
+        }
+
+        let vuInterval = null;
+        function startVUMeters() {
+            if (vuInterval) clearInterval(vuInterval);
+            vuInterval = setInterval(() => {
+                if (vuLeft && vuRight) {
+                    const lAngle = -25 + (Math.random() * 38);
+                    const rAngle = -25 + (Math.random() * 38);
+                    vuLeft.style.transform = `rotate(${lAngle}deg)`;
+                    vuRight.style.transform = `rotate(${rAngle}deg)`;
+                }
+            }, 80);
+        }
+
+        function stopVUMeters() {
+            if (vuInterval) clearInterval(vuInterval);
+            if (vuLeft && vuRight) {
+                vuLeft.style.transform = "rotate(-25deg)";
+                vuRight.style.transform = "rotate(-25deg)";
+            }
+        }
+    </script>
+</body>
+</html>
