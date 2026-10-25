@@ -164,6 +164,18 @@
         {
             "source": "/artist",
             "destination": "/ronhigginsmusic.html"
+        },
+        {
+            "source": "/console",
+            "destination": "/media-console.html"
+        },
+        {
+            "source": "/media-console",
+            "destination": "/media-console.html"
+        },
+        {
+            "source": "/explorer",
+            "destination": "/media-console.html"
         }
     ]
 }
