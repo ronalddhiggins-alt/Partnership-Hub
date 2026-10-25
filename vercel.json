@@ -148,6 +148,22 @@
         {
             "source": "/higgins-family-productions",
             "destination": "/higgins-family-productions.html"
+        },
+        {
+            "source": "/ronhigginsmusic",
+            "destination": "/ronhigginsmusic.html"
+        },
+        {
+            "source": "/rhm",
+            "destination": "/ronhigginsmusic.html"
+        },
+        {
+            "source": "/cletusmaxx",
+            "destination": "/ronhigginsmusic.html"
+        },
+        {
+            "source": "/artist",
+            "destination": "/ronhigginsmusic.html"
         }
     ]
 }
