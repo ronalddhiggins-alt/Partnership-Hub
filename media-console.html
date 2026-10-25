@@ -187,10 +187,37 @@
             box-shadow: 0 0 35px rgba(245, 158, 11, 0.7);
         }
 
+        .btn-open-files {
+            background: rgba(15, 20, 31, 0.95);
+            color: var(--gold-light);
+            font-family: var(--font-main);
+            font-size: 1.05rem;
+            font-weight: 700;
+            padding: 0.9rem 1.6rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-gold);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            transition: all 0.2s ease;
+        }
+
+        .btn-open-files:hover {
+            transform: translateY(-2px) scale(1.02);
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(217, 119, 6, 0.35));
+            border-color: var(--gold);
+            box-shadow: 0 0 30px rgba(245, 158, 11, 0.5);
+        }
+
         .drop-hint {
             font-family: var(--font-mono);
             font-size: 0.75rem;
             color: var(--text-muted);
+            text-align: right;
+            max-width: 480px;
+            line-height: 1.4;
         }
 
         /* Stats & Status Strip */
@@ -616,11 +643,17 @@
                 </p>
             </div>
             <div class="deck-actions">
-                <button class="btn-open-drive" id="btnOpenDrive" onclick="openDrivePicker()">
-                    <span>📂 Select Any Drive or Folder...</span>
-                </button>
+                <div style="display:flex;gap:0.75rem;flex-wrap:wrap;justify-content:flex-end;">
+                    <button class="btn-open-drive" id="btnOpenDrive" onclick="openDrivePicker()" title="Selects an entire drive or folder at once">
+                        <span>📂 Open Entire Folder or Drive...</span>
+                    </button>
+                    <button class="btn-open-files" id="btnOpenFiles" onclick="document.getElementById('fileInput').click()" title="Select specific photos or videos directly">
+                        <span>🖼️ Select Specific Photos / Videos...</span>
+                    </button>
+                </div>
                 <input type="file" id="folderInput" webkitdirectory directory multiple onchange="handleFallbackInput(event)">
-                <span class="drop-hint">💡 Or drag &amp; drop any folder directly from Finder into this window!</span>
+                <input type="file" id="fileInput" multiple accept="image/*,audio/*,video/*" onchange="handleIndividualFiles(event)" style="display:none;">
+                <span class="drop-hint">💡 <strong>Why are files greyed out in the folder picker?</strong> macOS grays out files when picking a <em>Folder</em> because it selects the whole folder at once! To pick individual files, click <strong>"Select Specific Photos / Videos"</strong> or drag and drop files directly.</span>
             </div>
         </div>
     </div>
@@ -788,7 +821,35 @@
             finishScan(rootName);
         }
 
-        // Drag and drop handler for anywhere on window
+        // Handle individual file selection directly (no graying out!)
+        function handleIndividualFiles(e) {
+            const files = e.target.files;
+            if (!files || files.length === 0) return;
+            
+            allItems = [];
+            document.getElementById('activeSourceLabel').textContent = `${files.length} Selected File(s)`;
+            document.getElementById('scanStatus').textContent = 'Loading selected files...';
+
+            for (let i = 0; i < files.length; i++) {
+                const f = files[i];
+                if (f.name.startsWith('.')) continue;
+                const type = getMediaType(f.name);
+                if (type !== 'other') {
+                    allItems.push({
+                        name: f.name,
+                        path: f.name,
+                        type: type,
+                        size: f.size,
+                        sizeFormatted: formatBytes(f.size),
+                        fileObj: f,
+                        url: null
+                    });
+                }
+            }
+            finishScan(`${files.length} Selected File(s)`);
+        }
+
+        // Drag and drop handler for anywhere on window (folders OR loose files!)
         window.addEventListener('dragover', (e) => {
             e.preventDefault();
             document.getElementById('dropOverlay').classList.add('active');
@@ -804,29 +865,88 @@
             e.preventDefault();
             document.getElementById('dropOverlay').classList.remove('active');
             
-            const items = e.dataTransfer.items;
-            if (!items || items.length === 0) return;
-
             allItems = [];
-            document.getElementById('scanStatus').textContent = 'Scanning dropped folder...';
+            document.getElementById('scanStatus').textContent = 'Scanning dropped items...';
 
-            for (let i = 0; i < items.length; i++) {
-                const item = items[i];
-                if (item.getAsFileSystemHandle) {
-                    const handle = await item.getAsFileSystemHandle();
-                    if (handle && handle.kind === 'directory') {
-                        document.getElementById('activeSourceLabel').textContent = handle.name;
-                        await scanDirectoryHandle(handle, handle.name);
+            if (e.dataTransfer.items && e.dataTransfer.items.length > 0) {
+                const items = e.dataTransfer.items;
+                for (let i = 0; i < items.length; i++) {
+                    const item = items[i];
+                    if (item.getAsFileSystemHandle) {
+                        try {
+                            const handle = await item.getAsFileSystemHandle();
+                            if (handle) {
+                                if (handle.kind === 'directory') {
+                                    document.getElementById('activeSourceLabel').textContent = handle.name;
+                                    await scanDirectoryHandle(handle, handle.name);
+                                } else if (handle.kind === 'file') {
+                                    const file = await handle.getFile();
+                                    const type = getMediaType(file.name);
+                                    if (type !== 'other') {
+                                        allItems.push({
+                                            name: file.name,
+                                            path: file.name,
+                                            type: type,
+                                            size: file.size,
+                                            sizeFormatted: formatBytes(file.size),
+                                            fileObj: file,
+                                            url: null
+                                        });
+                                    }
+                                }
+                            }
+                        } catch (err) {
+                            console.warn("Handle error:", err);
+                        }
+                    } else if (item.webkitGetAsEntry) {
+                        const entry = item.webkitGetAsEntry();
+                        if (entry) {
+                            if (entry.isDirectory) {
+                                document.getElementById('activeSourceLabel').textContent = entry.name;
+                                await scanWebkitEntry(entry, entry.name);
+                            } else if (entry.isFile) {
+                                await new Promise((res) => {
+                                    entry.file((file) => {
+                                        const type = getMediaType(file.name);
+                                        if (type !== 'other') {
+                                            allItems.push({
+                                                name: file.name,
+                                                path: file.name,
+                                                type: type,
+                                                size: file.size,
+                                                sizeFormatted: formatBytes(file.size),
+                                                fileObj: file,
+                                                url: null
+                                            });
+                                        }
+                                        res();
+                                    });
+                                });
+                            }
+                        }
                     }
-                } else if (item.webkitGetAsEntry) {
-                    const entry = item.webkitGetAsEntry();
-                    if (entry && entry.isDirectory) {
-                        document.getElementById('activeSourceLabel').textContent = entry.name;
-                        await scanWebkitEntry(entry, entry.name);
+                }
+            } else if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+                const files = e.dataTransfer.files;
+                for (let i = 0; i < files.length; i++) {
+                    const f = files[i];
+                    const type = getMediaType(f.name);
+                    if (type !== 'other') {
+                        allItems.push({
+                            name: f.name,
+                            path: f.name,
+                            type: type,
+                            size: f.size,
+                            sizeFormatted: formatBytes(f.size),
+                            fileObj: f,
+                            url: null
+                        });
                     }
                 }
             }
-            finishScan(document.getElementById('activeSourceLabel').textContent);
+
+            const currentLabel = document.getElementById('activeSourceLabel').textContent;
+            finishScan(currentLabel !== 'No Drive Selected' ? currentLabel : 'Dropped Items');
         });
 
         async function scanWebkitEntry(entry, currentPath) {
