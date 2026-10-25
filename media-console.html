@@ -603,6 +603,89 @@
         }
 
         .modal-close:hover { color: var(--gold); }
+
+        /* iPhone & Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .top-nav {
+                padding: 0.75rem 1rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            .top-nav-links {
+                display: none; /* Keep clean on small mobile screens */
+            }
+            .hero {
+                padding: 1.5rem 1rem 1rem;
+            }
+            .hero-title {
+                font-size: 1.85rem;
+            }
+            .hero-subtitle {
+                font-size: 0.95rem;
+                margin-bottom: 1.25rem;
+            }
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+                gap: 0.75rem;
+            }
+            .btn-open-drive, .btn-open-files {
+                width: 100%;
+                justify-content: center;
+                padding: 0.85rem 1.25rem;
+                font-size: 0.95rem;
+            }
+            .status-strip {
+                padding: 0 1rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+            .controls-bar {
+                padding: 0 1rem;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.75rem;
+            }
+            .type-filters {
+                width: 100%;
+                justify-content: space-around;
+            }
+            .btn-tab {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.8rem;
+            }
+            .search-container {
+                max-width: 100%;
+                width: 100%;
+            }
+            .grid-container {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+                gap: 0.75rem;
+                padding: 1rem;
+            }
+            .card-title {
+                font-size: 0.78rem;
+            }
+            .modal {
+                padding: 1rem;
+            }
+            .modal-body {
+                max-width: 95vw;
+                max-height: 70vh;
+            }
+            .modal-media {
+                max-height: 70vh;
+            }
+            .modal-nav-btn {
+                display: none; /* On mobile swipe or tap is natural */
+            }
+            .modal-close {
+                top: 0.75rem;
+                right: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
