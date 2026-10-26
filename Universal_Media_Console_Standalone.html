@@ -920,8 +920,8 @@
                     </label>
                 </div>
                 <!-- Native hidden inputs triggered automatically by labels -->
-                <input type="file" id="folderInput" webkitdirectory directory multiple style="display:none;" onchange="handleNativeInput(this.files, true)">
-                <input type="file" id="fileInput" multiple style="display:none;" onchange="handleNativeInput(this.files, false)">
+                <input type="file" id="folderInput" webkitdirectory directory multiple style="display:none;" onclick="this.value=null;" onchange="handleNativeInput(this.files, true)">
+                <input type="file" id="fileInput" multiple style="display:none;" onclick="this.value=null;" onchange="handleNativeInput(this.files, false)">
                 <span class="drop-hint">💡 <strong>Tip:</strong> In the Folder Picker, macOS grays out files because it selects the whole folder at once! To select specific files without graying, click <strong>"Select Photos, Music, Docs..."</strong>.</span>
             </div>
         </div>
@@ -929,13 +929,9 @@
 
     <!-- PRESET VAULT SHORTCUTS -->
     <div class="presets-bar">
-        <span class="presets-label">⚡ Instant Vault Presets:</span>
-        <button class="btn-preset active" id="preset-masters" onclick="loadPreset('masters')">⭐ 160 Master Photos &amp; D-Control</button>
-        <button class="btn-preset" id="preset-all" onclick="loadPreset('all_archive')">🎛️ All 1,101 Archive Uploads</button>
-        <button class="btn-preset" id="preset-2022" onclick="loadPreset('2022')">2022 (D-Control Console)</button>
-        <button class="btn-preset" id="preset-2018" onclick="loadPreset('2018')">2018 (Studio Sessions)</button>
-        <button class="btn-preset" id="preset-2016" onclick="loadPreset('2016')">2016 (Higgins Music Era)</button>
-        <button class="btn-preset" id="preset-2015" onclick="loadPreset('2015')">2015 (Genesis &amp; Guitar)</button>
+        <span class="presets-label">⚡ Quick Presets:</span>
+        <button class="btn-preset active" id="preset-sample" onclick="loadSampleDocPreset()">📖 Sample Story &amp; Markdown Guide</button>
+        <button class="btn-preset" id="preset-clear" onclick="clearAllFiles()">🧹 Clear Display</button>
     </div>
 
     <!-- STATUS STRIP -->
@@ -1022,7 +1018,7 @@
         const EXT_PHOTO = ["jpg", "jpeg", "png", "gif", "webp", "bmp", "svg", "tif", "tiff", "heic", "heif", "ico", "psd", "dng", "cr2", "cr3", "nef", "arw", "orf", "rw2", "pef", "sr2", "srf", "raw", "eps", "ai"];
         const EXT_AUDIO = ["mp3", "wav", "aiff", "aif", "flac", "m4a", "aac", "ogg", "wma", "mid", "midi", "alac", "ape", "ra", "ram", "ac3", "dts", "opus", "mka", "mp2"];
         const EXT_VIDEO = ["mp4", "mov", "m4v", "webm", "mkv", "avi", "asf", "wmv", "mpg", "mpeg", "m2v", "ts", "mts", "m2ts", "m2t", "vob", "3gp", "3g2", "flv", "f4v", "dv", "divx", "xvid", "rm", "rmvb", "ogv"];
-        const EXT_DOC = ["md", "markdown", "txt", "json", "js", "ts", "css", "html", "htm", "log", "csv", "xml", "yaml", "yml", "sh", "py", "rtf"];
+        const EXT_DOC = ["md", "markdown", "txt", "json", "js", "ts", "css", "html", "htm", "log", "csv", "xml", "yaml", "yml", "sh", "py", "rtf", "odt", "docx", "pdf"];
 
         function getMediaType(filename) {
             const ext = filename.split(".").pop().toLowerCase();
@@ -1039,6 +1035,12 @@
             
             document.querySelectorAll(".btn-preset").forEach(b => b.classList.remove("active"));
             allItems = [];
+
+            // Reset type filter to 'all' so new items are always visible
+            currentTypeFilter = "all";
+            document.querySelectorAll(".btn-tab").forEach(b => b.classList.remove("active"));
+            const allBtn = document.querySelector(".btn-tab");
+            if (allBtn) allBtn.classList.add("active");
 
             const rootName = isDirectory 
                 ? (fileList[0].webkitRelativePath ? fileList[0].webkitRelativePath.split("/")[0] : "Selected Folder")
@@ -1085,7 +1087,14 @@
             document.querySelectorAll(".btn-preset").forEach(b => b.classList.remove("active"));
 
             allItems = [];
+            currentTypeFilter = "all";
+            document.querySelectorAll(".btn-tab").forEach(b => b.classList.remove("active"));
+            const allBtn = document.querySelector(".btn-tab");
+            if (allBtn) allBtn.classList.add("active");
+
             document.getElementById("scanStatus").textContent = "Scanning dropped items...";
+
+            let hasScannedEntries = false;
 
             if (e.dataTransfer.items && e.dataTransfer.items.length > 0) {
                 const items = e.dataTransfer.items;
@@ -1094,6 +1103,7 @@
                     if (item.webkitGetAsEntry) {
                         const entry = item.webkitGetAsEntry();
                         if (entry) {
+                            hasScannedEntries = true;
                             if (entry.isDirectory) {
                                 document.getElementById("activeSourceLabel").textContent = entry.name;
                                 await scanWebkitEntry(entry, entry.name);
@@ -1120,7 +1130,10 @@
                         }
                     }
                 }
-            } else if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+            }
+
+            // Fallback for direct files drop if entries were not processed
+            if (!hasScannedEntries && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
                 const files = e.dataTransfer.files;
                 for (let i = 0; i < files.length; i++) {
                     const f = files[i];
@@ -1141,7 +1154,7 @@
             }
 
             const currentLabel = document.getElementById("activeSourceLabel").textContent;
-            finishScan(currentLabel !== "No Drive Selected" ? currentLabel : "Dropped Items");
+            finishScan(currentLabel !== "No Drive Selected" && currentLabel !== "Empty" ? currentLabel : "Dropped Items");
         });
 
         async function scanWebkitEntry(entry, currentPath) {
@@ -1205,6 +1218,71 @@
             finishScan(document.getElementById("activeSourceLabel").textContent);
         }
 
+        function loadSampleDocPreset() {
+            document.querySelectorAll(".btn-preset").forEach(b => b.classList.remove("active"));
+            const targetBtn = document.getElementById("preset-sample");
+            if (targetBtn) targetBtn.classList.add("active");
+
+            allItems = [
+                {
+                    name: "Sample_Story_To_Test.md",
+                    path: "Sample_Story_To_Test.md",
+                    type: "document",
+                    size: 1328,
+                    sizeFormatted: "1.3 KB",
+                    textContent: `# Welcome to the Sovereign Media Console
+
+> *"We must always hold each other in the highest light with full respect and humility, treating each other always with appreciative love and respect forever."*
+
+---
+
+## 🌟 What You Are Seeing Right Now
+
+If you are reading this inside the **Universal Media Console**, congratulations! 
+You are experiencing a **100% local, zero-cloud reader**.
+
+- **No Internet Required:** This works completely offline in your web browser.
+- **No Cloud Tracking:** Your computer never sends any files or data anywhere.
+- **Pure Simplicity:** Just a clean, honest tool built for people, not corporations.
+
+### What You Can Try:
+1. Click the **[ 📝 Raw Text ]** button at the top to see the original markdown code.
+2. Click the **[ 📖 Rendered ]** button to switch back to this clean book layout.
+3. Click the **[ 📋 Copy ]** button to copy this whole text to your clipboard.
+4. Click the **[ 🖨️ Print / PDF ]** button to see a print-ready book preview.
+
+---
+
+### Drag In Any of Your Own Files!
+You can drop in:
+- **Photos:** Family pictures, memories, vacation shots.
+- **Music:** Your favorite MP3s or studio audio tracks.
+- **Videos:** Home videos and MP4 clips.
+- **Documents:** Text notes, lists, and markdown journals (.md, .txt).
+
+*All for all — created with friendship, respect, and freedom.*`,
+                    fileObj: null,
+                    url: null,
+                    isThumb: false
+                }
+            ];
+
+            currentTypeFilter = "all";
+            document.querySelectorAll(".btn-tab").forEach(b => b.classList.remove("active"));
+            const allBtn = document.querySelector(".btn-tab");
+            if (allBtn) allBtn.classList.add("active");
+
+            document.getElementById("activeSourceLabel").textContent = "Sample Sovereign Vault";
+            finishScan("Sample Sovereign Vault");
+        }
+
+        function clearAllFiles() {
+            allItems = [];
+            document.querySelectorAll(".btn-preset").forEach(b => b.classList.remove("active"));
+            document.getElementById("activeSourceLabel").textContent = "Empty";
+            finishScan("Empty");
+        }
+
         function finishScan(sourceName) {
             document.getElementById("scanStatus").textContent = `Loaded ${allItems.length} media & document items`;
             
@@ -1229,7 +1307,13 @@
         function setMediaType(type) {
             currentTypeFilter = type;
             document.querySelectorAll(".btn-tab").forEach(b => b.classList.remove("active"));
-            event.target.classList.add("active");
+            const target = (window.event && window.event.target) ? window.event.target.closest(".btn-tab") : null;
+            if (target) {
+                target.classList.add("active");
+            } else {
+                const btn = Array.from(document.querySelectorAll(".btn-tab")).find(b => b.getAttribute("onclick") && b.getAttribute("onclick").includes(type));
+                if (btn) btn.classList.add("active");
+            }
             renderGrid();
         }
 
@@ -1369,27 +1453,44 @@
                     modalBody.appendChild(video);
                 }
             } else if (item.type === "document") {
-                const docBox = document.createElement("div");
-                docBox.className = "modal-doc-deck";
-                docBox.innerHTML = `
-                    <div class="doc-toolbar">
-                        <div class="doc-btn-group">
-                            <button class="doc-btn active" id="btnViewRendered" onclick="setDocViewMode('rendered')">📖 Rendered</button>
-                            <button class="doc-btn" id="btnViewRaw" onclick="setDocViewMode('raw')">📝 Raw Text</button>
+                const docExt = item.name.split(".").pop().toLowerCase();
+                if (docExt === "pdf") {
+                    const pdfBox = document.createElement("div");
+                    pdfBox.className = "modal-doc-deck";
+                    pdfBox.innerHTML = `
+                        <div class="doc-toolbar">
+                            <span style="font-family:var(--font-mono);font-size:0.85rem;color:var(--gold-light);">📑 PDF Document</span>
+                            <div class="doc-btn-group">
+                                <a href="${itemUrl}" download="${item.name}" class="doc-btn" style="text-decoration:none;">💾 Download PDF</a>
+                                <button class="doc-btn" onclick="printDoc()" title="Print PDF">🖨️ Print</button>
+                            </div>
                         </div>
-                        <div class="doc-btn-group">
-                            <span id="docMetaBadge" style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-muted);margin-right:0.4rem;">Reading...</span>
-                            <button class="doc-btn" onclick="copyDocText()" title="Copy entire document text to clipboard">📋 Copy</button>
-                            <button class="doc-btn" onclick="downloadCurrentDoc()" title="Save / Export document to disk">💾 Export</button>
-                            <button class="doc-btn" onclick="printDoc()" title="Print cleanly or save as PDF">🖨️ Print / PDF</button>
+                        <iframe src="${itemUrl}" style="flex:1;width:100%;height:100%;border:none;"></iframe>
+                    `;
+                    modalBody.appendChild(pdfBox);
+                } else {
+                    const docBox = document.createElement("div");
+                    docBox.className = "modal-doc-deck";
+                    docBox.innerHTML = `
+                        <div class="doc-toolbar">
+                            <div class="doc-btn-group">
+                                <button class="doc-btn active" id="btnViewRendered" onclick="setDocViewMode('rendered')">📖 Rendered</button>
+                                <button class="doc-btn" id="btnViewRaw" onclick="setDocViewMode('raw')">📝 Raw Text</button>
+                            </div>
+                            <div class="doc-btn-group">
+                                <span id="docMetaBadge" style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-muted);margin-right:0.4rem;">Reading...</span>
+                                <button class="doc-btn" onclick="copyDocText()" title="Copy entire document text to clipboard">📋 Copy</button>
+                                <button class="doc-btn" onclick="downloadCurrentDoc()" title="Save / Export document to disk">💾 Export</button>
+                                <button class="doc-btn" onclick="printDoc()" title="Print cleanly or save as PDF">🖨️ Print / PDF</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="doc-content-area" id="docContentArea">
-                        <div style="text-align:center;padding:3rem;color:var(--text-secondary);font-family:var(--font-mono);">Loading document...</div>
-                    </div>
-                `;
-                modalBody.appendChild(docBox);
-                loadDocContent(item);
+                        <div class="doc-content-area" id="docContentArea">
+                            <div style="text-align:center;padding:3rem;color:var(--text-secondary);font-family:var(--font-mono);">Loading document...</div>
+                        </div>
+                    `;
+                    modalBody.appendChild(docBox);
+                    loadDocContent(item);
+                }
             }
 
             const ext = item.name.split(".").pop().toUpperCase();
@@ -1405,14 +1506,88 @@
         let currentDocText = "";
         let currentDocMode = "rendered";
 
+        async function extractZipXmlText(arrayBuffer) {
+            try {
+                const view = new DataView(arrayBuffer);
+                const u8 = new Uint8Array(arrayBuffer);
+                let eocdOffset = -1;
+                for (let i = u8.length - 22; i >= 0; i--) {
+                    if (u8[i] === 0x50 && u8[i+1] === 0x4B && u8[i+2] === 0x05 && u8[i+3] === 0x06) {
+                        eocdOffset = i;
+                        break;
+                    }
+                }
+                if (eocdOffset === -1) return null;
+
+                const cdSize = view.getUint32(eocdOffset + 12, true);
+                const cdOffset = view.getUint32(eocdOffset + 16, true);
+
+                let offset = cdOffset;
+                while (offset < cdOffset + cdSize) {
+                    if (view.getUint32(offset, true) !== 0x02014b50) break;
+                    const method = view.getUint16(offset + 10, true);
+                    const compSize = view.getUint32(offset + 20, true);
+                    const nameLen = view.getUint16(offset + 28, true);
+                    const extraLen = view.getUint16(offset + 30, true);
+                    const commentLen = view.getUint16(offset + 32, true);
+                    const localHeaderOffset = view.getUint32(offset + 42, true);
+                    const filename = new TextDecoder().decode(u8.slice(offset + 46, offset + 46 + nameLen));
+
+                    if (filename === "content.xml" || filename === "word/document.xml") {
+                        const localNameLen = view.getUint16(localHeaderOffset + 26, true);
+                        const localExtraLen = view.getUint16(localHeaderOffset + 28, true);
+                        const dataStart = localHeaderOffset + 30 + localNameLen + localExtraLen;
+                        const compData = u8.slice(dataStart, dataStart + compSize);
+
+                        let xml = "";
+                        if (method === 0) {
+                            xml = new TextDecoder().decode(compData);
+                        } else if (method === 8) {
+                            const stream = new Response(compData).body.pipeThrough(new DecompressionStream("deflate-raw"));
+                            xml = await new Response(stream).text();
+                        }
+
+                        return xml
+                            .replace(/<text:h[^>]*>(.*?)<\/text:h>/g, "\n\n# $1\n\n")
+                            .replace(/<text:p[^>]*>(.*?)<\/text:p>/g, "\n\n$1\n\n")
+                            .replace(/<w:p[^>]*>([\s\S]*?)<\/w:p>/g, "\n\n$1\n\n")
+                            .replace(/<[^>]+>/g, "")
+                            .replace(/&amp;/g, "&")
+                            .replace(/&lt;/g, "<")
+                            .replace(/&gt;/g, ">")
+                            .replace(/&quot;/g, "\"")
+                            .replace(/&apos;/g, "'")
+                            .trim();
+                    }
+                    offset += 46 + nameLen + extraLen + commentLen;
+                }
+            } catch (e) {
+                console.error("Zip XML extraction error:", e);
+            }
+            return null;
+        }
+
         async function loadDocContent(item) {
             let text = "";
+            const ext = item.name.split(".").pop().toLowerCase();
             try {
-                if (item.fileObj) {
+                if (item.textContent) {
+                    text = item.textContent;
+                } else if (["odt", "docx"].includes(ext) && item.fileObj) {
+                    const ab = await item.fileObj.arrayBuffer();
+                    const extracted = await extractZipXmlText(ab);
+                    text = extracted || "(Could not extract text from document)";
+                } else if (item.fileObj) {
                     text = await item.fileObj.text();
                 } else if (item.presetUrl || item.url) {
                     const resp = await fetch(item.presetUrl || item.url);
-                    text = await resp.text();
+                    if (["odt", "docx"].includes(ext)) {
+                        const ab = await resp.arrayBuffer();
+                        const extracted = await extractZipXmlText(ab);
+                        text = extracted || "(Could not extract text from document)";
+                    } else {
+                        text = await resp.text();
+                    }
                 } else {
                     text = "(No file stream available)";
                 }
@@ -1430,7 +1605,6 @@
                 metaEl.textContent = `${lines.toLocaleString()} lines · ${words.toLocaleString()} words`;
             }
 
-            const ext = item.name.split(".").pop().toLowerCase();
             if (["json", "js", "ts", "css", "html", "htm", "log", "xml", "yaml", "yml", "sh", "py"].includes(ext)) {
                 currentDocMode = "raw";
             } else {
@@ -1644,9 +1818,8 @@
             return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + " " + sizes[i];
         }
 
-        // Boot initial render with 160 master photos right away!
-        // Clean standalone mode: ready for user input
-        document.getElementById("scanStatus").textContent = "Standing ready. Select a folder, drive, or drag files/docs here.";
+        // Boot initial render: pre-load sample document so the console is immediately interactive and ready!
+        loadSampleDocPreset();
     </script>
 </body>
 </html>
