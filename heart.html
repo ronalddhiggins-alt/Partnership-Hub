@@ -460,6 +460,60 @@
             }
         }
 
+        @media (max-width: 600px) {
+            .reader-header {
+                padding: 0.4rem 0.6rem;
+                height: 54px;
+            }
+            .book-badge, .btn-tool[title*="Observer"] {
+                display: none;
+            }
+            .book-main-title {
+                max-width: 105px;
+                font-size: 0.82rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            #btn-width {
+                display: none;
+            }
+            .btn-tool {
+                padding: 0.3rem 0.45rem;
+                font-size: 0.75rem;
+            }
+            .reader-content {
+                padding: 1.25rem 0.75rem 3rem;
+            }
+            .book-body {
+                font-size: 1.02rem;
+                line-height: 1.72;
+            }
+            .book-body h1 {
+                font-size: 1.95rem;
+            }
+            .book-body h2 {
+                font-size: 1.3rem;
+                margin-top: 2rem;
+            }
+            .book-body h3 {
+                font-size: 1.12rem;
+            }
+            .book-body pre {
+                padding: 0.85rem;
+                font-size: 0.8rem;
+                border-radius: 8px;
+            }
+            .book-body blockquote {
+                padding: 0.85rem 1rem;
+                margin: 1.25rem 0;
+            }
+            .toc-sidebar {
+                width: 82vw;
+                top: 54px;
+            }
+        }
+
         #btn-mobile-toc {
             display: none;
         }

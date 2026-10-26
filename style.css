@@ -927,31 +927,183 @@ cite {
     color: var(--gold);
 }
 
-/* ─── RESPONSIVE ─── */
+/* ─── RESPONSIVE (IPHONE & MOBILE OPTIMIZED) ─── */
 @media (max-width: 768px) {
+    html, body {
+        overflow-x: hidden;
+        max-width: 100vw;
+    }
+
+    /* Mobile Nav Bar with Horizontal Pill Scrolling */
+    .nav {
+        padding: 0.6rem 0.8rem;
+    }
+
+    .nav-inner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+
+    .nav-logo {
+        text-align: center;
+        font-size: 1.1rem;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+    }
+
     .nav-links {
+        display: flex !important;
+        overflow-x: auto;
+        white-space: nowrap;
+        gap: 0.45rem;
+        padding-bottom: 0.2rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
         display: none;
     }
 
-    .tools-grid {
-        grid-template-columns: 1fr;
+    .nav-links a {
+        padding: 0.35rem 0.75rem;
+        font-size: 0.78rem;
+        font-weight: 600;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 999px;
+        flex-shrink: 0;
     }
 
-    .books-grid {
-        grid-template-columns: 1fr;
+    /* Hero Section Scaling */
+    .hero {
+        padding: 3.5rem 1.25rem 2.5rem !important;
+        min-height: auto;
     }
 
+    .hero-title {
+        font-size: clamp(1.85rem, 6.5vw, 2.35rem) !important;
+        line-height: 1.22 !important;
+        letter-spacing: -0.02em;
+    }
+
+    .hero-subtitle {
+        font-size: 0.98rem !important;
+        line-height: 1.6 !important;
+        margin-top: 0.85rem !important;
+    }
+
+    .hero-ctas {
+        flex-direction: column;
+        gap: 0.75rem;
+        width: 100%;
+        margin-top: 1.5rem;
+    }
+
+    .hero-ctas .btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        padding: 0.85rem 1.25rem;
+    }
+
+    /* Section Spacing */
+    .section {
+        padding: 3rem 1rem !important;
+    }
+
+    .section-header {
+        margin-bottom: 2rem !important;
+    }
+
+    .section-header h2 {
+        font-size: 1.85rem !important;
+        line-height: 1.25 !important;
+    }
+
+    .section-header p {
+        font-size: 0.95rem !important;
+    }
+
+    /* Grids to Single Column */
+    .tools-grid,
+    .books-grid,
     .videos-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
+        gap: 1.25rem !important;
     }
 
+    .tool-card {
+        padding: 1.35rem 1.15rem !important;
+        border-radius: 14px;
+    }
+
+    .tool-info h3 {
+        font-size: 1.15rem !important;
+    }
+
+    /* Featured Book Cards (Fixing Horizontal Breakout!) */
+    .book-card-featured {
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+        border-radius: 16px !important;
+    }
+
+    .book-card-featured > div:first-child,
+    .book-card-featured > div:last-child {
+        width: 100% !important;
+        max-width: 100% !important;
+        border-radius: 16px 16px 0 0 !important;
+    }
+
+    .book-card-featured img {
+        width: 100% !important;
+        height: auto !important;
+        max-height: 320px !important;
+        object-fit: cover !important;
+        border-radius: 16px 16px 0 0 !important;
+    }
+
+    .book-card-featured .book-info {
+        padding: 1.35rem 1.15rem !important;
+        width: 100% !important;
+    }
+
+    .book-card-featured h3 {
+        font-size: 1.2rem !important;
+    }
+
+    /* Book Reader Links & CTAs Full Width on Touch */
+    .book-links {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 0.6rem !important;
+        align-items: stretch !important;
+        margin-top: 1.15rem !important;
+    }
+
+    .book-links .btn-book {
+        width: 100% !important;
+        text-align: center !important;
+        justify-content: center !important;
+        padding: 0.75rem 1rem !important;
+        font-size: 0.92rem !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Story & Philosophy Section */
     .story-content {
         flex-direction: column;
+        gap: 1.5rem;
     }
 
     .story-connector {
         flex-direction: row;
         padding-top: 0;
+        justify-content: center;
     }
 
     .connector-line {
@@ -959,9 +1111,12 @@ cite {
         height: 1px;
     }
 
+    /* Music Section */
     .music-card {
         flex-direction: column;
         text-align: center;
+        padding: 1.5rem 1.15rem;
+        gap: 1.25rem;
     }
 
     .br-desktop {
@@ -970,5 +1125,18 @@ cite {
 
     blockquote {
         padding: 1rem 1.25rem;
+        font-size: 0.95rem;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 3rem 1.25rem 2.5rem;
+        text-align: center;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: center;
     }
 }
