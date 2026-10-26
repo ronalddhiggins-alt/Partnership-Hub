@@ -927,6 +927,17 @@ cite {
     color: var(--gold);
 }
 
+/* ─── TOUCHSCREEN ONE-TAP OPTIMIZATION (ELIMINATES DOUBLE TAP BUG) ─── */
+@media (hover: none) and (pointer: coarse) {
+    .btn, .btn-primary, .btn-ghost, .btn-book, .tool-card, .book-card, a, button {
+        transform: none !important;
+        transition: opacity 0.15s ease !important;
+    }
+    .btn:active, .btn-book:active, .btn-tool:active, .tool-card:active {
+        opacity: 0.75 !important;
+    }
+}
+
 /* ─── RESPONSIVE (IPHONE & MOBILE OPTIMIZED) ─── */
 @media (max-width: 768px) {
     html, body {
