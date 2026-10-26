@@ -452,6 +452,7 @@
         .type-badge.photo { color: #f59e0b; border-color: rgba(245, 158, 11, 0.4); }
         .type-badge.audio { color: #06b6d4; border-color: rgba(6, 182, 212, 0.4); }
         .type-badge.video { color: #a855f7; border-color: rgba(168, 85, 247, 0.4); }
+        .type-badge.document { color: #10b981; border-color: rgba(16, 185, 129, 0.4); }
 
         .master-badge {
             position: absolute;
@@ -604,6 +605,197 @@
 
         .modal-close:hover { color: var(--gold); }
 
+        /* Document Viewer Deck */
+        .modal-doc-deck {
+            width: 960px;
+            max-width: 92vw;
+            height: 78vh;
+            background: rgba(15, 20, 31, 0.98);
+            border: 1px solid var(--border-gold);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9), 0 0 35px var(--gold-glow);
+        }
+
+        .doc-toolbar {
+            padding: 0.75rem 1.25rem;
+            background: rgba(10, 14, 22, 0.95);
+            border-bottom: 1px solid var(--border-glass);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .doc-btn-group {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .doc-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glass);
+            color: var(--text-primary);
+            padding: 0.42rem 0.85rem;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            cursor: pointer;
+            font-family: var(--font-main);
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            transition: all 0.2s ease;
+        }
+
+        .doc-btn:hover {
+            background: rgba(245, 158, 11, 0.15);
+            border-color: var(--gold);
+            color: var(--gold-light);
+        }
+
+        .doc-btn.active {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(217, 119, 6, 0.4));
+            border-color: var(--gold);
+            color: var(--gold-light);
+            box-shadow: 0 0 12px var(--gold-glow);
+        }
+
+        .doc-content-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 2.2rem 2.8rem;
+            line-height: 1.8;
+            font-size: 1.02rem;
+            color: #e2e8f0;
+            scroll-behavior: smooth;
+        }
+
+        .doc-markdown-body h1 {
+            font-family: var(--font-display);
+            font-size: 2.1rem;
+            color: #fff;
+            margin: 1.8rem 0 1rem 0;
+            border-bottom: 1px solid rgba(245, 158, 11, 0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        .doc-markdown-body h1:first-child { margin-top: 0; }
+
+        .doc-markdown-body h2 {
+            font-family: var(--font-display);
+            font-size: 1.55rem;
+            color: var(--gold-light);
+            margin: 1.6rem 0 0.8rem 0;
+        }
+
+        .doc-markdown-body h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: #93c5fd;
+            margin: 1.3rem 0 0.6rem 0;
+        }
+
+        .doc-markdown-body h4 {
+            font-family: var(--font-display);
+            font-size: 1.08rem;
+            color: #cbd5e1;
+            margin: 1.1rem 0 0.5rem 0;
+        }
+
+        .doc-markdown-body p {
+            margin-bottom: 1.2rem;
+            color: #cbd5e1;
+        }
+
+        .doc-markdown-body blockquote {
+            border-left: 3px solid var(--gold);
+            background: rgba(245, 158, 11, 0.05);
+            padding: 0.85rem 1.4rem;
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+            color: #fef3c7;
+            margin: 1.3rem 0;
+        }
+
+        .doc-markdown-body ul, .doc-markdown-body ol {
+            margin: 0.8rem 0 1.2rem 1.8rem;
+            color: #cbd5e1;
+        }
+
+        .doc-markdown-body li {
+            margin-bottom: 0.4rem;
+        }
+
+        .doc-markdown-body a {
+            color: var(--cyan);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: color 0.2s;
+        }
+
+        .doc-markdown-body a:hover {
+            color: var(--gold);
+        }
+
+        .doc-divider {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            margin: 2rem 0;
+        }
+
+        .doc-code-block {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1.2rem;
+            overflow-x: auto;
+            font-family: var(--font-mono);
+            font-size: 0.88rem;
+            color: #67e8f9;
+            margin: 1.2rem 0;
+            line-height: 1.55;
+        }
+
+        .doc-inline-code {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 5px;
+            padding: 0.15rem 0.45rem;
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            color: var(--gold-light);
+        }
+
+        .doc-raw-text {
+            font-family: var(--font-mono);
+            font-size: 0.88rem;
+            color: #cbd5e1;
+            white-space: pre-wrap;
+            word-break: break-word;
+            line-height: 1.6;
+        }
+
+        /* Print / PDF Mode */
+        @media print {
+            body { background: #fff !important; color: #000 !important; }
+            .top-nav, .command-deck, .presets-bar, .status-strip, .controls-bar, .media-grid-area, #dropOverlay, .modal-close, .modal-nav-btn, .modal-info-footer, .doc-toolbar {
+                display: none !important;
+            }
+            .modal { position: static !important; background: transparent !important; padding: 0 !important; display: block !important; }
+            .modal-body { max-width: 100% !important; max-height: none !important; }
+            .modal-doc-deck { width: 100% !important; max-width: 100% !important; height: auto !important; border: none !important; box-shadow: none !important; background: transparent !important; }
+            .doc-content-area { color: #111 !important; background: #fff !important; padding: 0 !important; overflow: visible !important; }
+            .doc-markdown-body h1, .doc-markdown-body h2, .doc-markdown-body h3 { color: #000 !important; }
+            .doc-markdown-body p, .doc-markdown-body li { color: #111 !important; }
+            .doc-markdown-body blockquote { border-left: 3px solid #333 !important; background: #f4f4f4 !important; color: #222 !important; }
+            .doc-code-block, .doc-inline-code { background: #f5f5f5 !important; border: 1px solid #ccc !important; color: #111 !important; }
+        }
+
         /* iPhone & Mobile Responsiveness */
         @media (max-width: 768px) {
             .top-nav {
@@ -715,7 +907,7 @@
             <div class="deck-title-area">
                 <h2>Browse Any Drive, Card, or Folder</h2>
                 <p>
-                    Point to any connected external drive (LaCie 2TB, RED 128GB thumb drive, camera SD card, or local folders) to browse thousands of photos, music tracks, and videos instantly with zero upload and 100% private security.
+                    Point to any connected external drive (LaCie 2TB, RED 128GB thumb drive, camera SD card, or local folders) to browse thousands of photos, music tracks, videos, and documents (.md, .txt, .json) instantly with zero upload and 100% private security.
                 </p>
             </div>
             <div class="deck-actions">
@@ -723,14 +915,14 @@
                     <label for="folderInput" class="btn-open-drive" title="Selects an entire drive or folder at once">
                         <span>📂 Open Entire Folder or Drive...</span>
                     </label>
-                    <label for="fileInput" class="btn-open-files" title="Select specific photos, audio, or videos directly (files not greyed out!)">
-                        <span>🖼️ Select Specific Photos / Videos...</span>
+                    <label for="fileInput" class="btn-open-files" title="Select specific photos, audio, videos, or documents directly (files not greyed out!)">
+                        <span>📄 Select Photos, Music, Docs...</span>
                     </label>
                 </div>
                 <!-- Native hidden inputs triggered automatically by labels -->
                 <input type="file" id="folderInput" webkitdirectory directory multiple style="display:none;" onchange="handleNativeInput(this.files, true)">
                 <input type="file" id="fileInput" multiple style="display:none;" onchange="handleNativeInput(this.files, false)">
-                <span class="drop-hint">💡 <strong>Tip:</strong> In the Folder Picker, macOS grays out files because it selects the whole folder at once! To select specific files without graying, click <strong>"Select Specific Photos / Videos"</strong>.</span>
+                <span class="drop-hint">💡 <strong>Tip:</strong> In the Folder Picker, macOS grays out files because it selects the whole folder at once! To select specific files without graying, click <strong>"Select Photos, Music, Docs..."</strong>.</span>
             </div>
         </div>
     </div>
@@ -738,12 +930,12 @@
     <!-- PRESET VAULT SHORTCUTS -->
     <div class="presets-bar">
         <span class="presets-label">⚡ Instant Vault Presets:</span>
-        <button class="btn-preset active" id="preset-masters" onclick="loadPreset(masters)">⭐ 160 Master Photos &amp; D-Control</button>
-        <button class="btn-preset" id="preset-all" onclick="loadPreset(all_archive)">🎛️ All 1,101 Archive Uploads</button>
-        <button class="btn-preset" id="preset-2022" onclick="loadPreset(2022)">2022 (D-Control Console)</button>
-        <button class="btn-preset" id="preset-2018" onclick="loadPreset(2018)">2018 (Studio Sessions)</button>
-        <button class="btn-preset" id="preset-2016" onclick="loadPreset(2016)">2016 (Higgins Music Era)</button>
-        <button class="btn-preset" id="preset-2015" onclick="loadPreset(2015)">2015 (Genesis &amp; Guitar)</button>
+        <button class="btn-preset active" id="preset-masters" onclick="loadPreset('masters')">⭐ 160 Master Photos &amp; D-Control</button>
+        <button class="btn-preset" id="preset-all" onclick="loadPreset('all_archive')">🎛️ All 1,101 Archive Uploads</button>
+        <button class="btn-preset" id="preset-2022" onclick="loadPreset('2022')">2022 (D-Control Console)</button>
+        <button class="btn-preset" id="preset-2018" onclick="loadPreset('2018')">2018 (Studio Sessions)</button>
+        <button class="btn-preset" id="preset-2016" onclick="loadPreset('2016')">2016 (Higgins Music Era)</button>
+        <button class="btn-preset" id="preset-2015" onclick="loadPreset('2015')">2015 (Genesis &amp; Guitar)</button>
     </div>
 
     <!-- STATUS STRIP -->
@@ -769,6 +961,10 @@
                 <span>🎬 Video:</span>
                 <strong id="statVideo">0</strong>
             </div>
+            <div class="stat-pill">
+                <span>📄 Docs:</span>
+                <strong id="statDocs">0</strong>
+            </div>
         </div>
         <div id="scanStatus" style="font-family:var(--font-mono);font-size:0.8rem;color:var(--gold);">Ready</div>
     </div>
@@ -776,10 +972,11 @@
     <!-- CONTROLS & SEARCH BAR -->
     <div class="controls-bar">
         <div class="type-filters">
-            <button class="btn-tab active" onclick="setMediaType(all)">All Files</button>
-            <button class="btn-tab" onclick="setMediaType(photo)">📷 Photos</button>
-            <button class="btn-tab" onclick="setMediaType(audio)">🎵 Audio</button>
-            <button class="btn-tab" onclick="setMediaType(video)">🎬 Video</button>
+            <button class="btn-tab active" onclick="setMediaType('all')">All Files</button>
+            <button class="btn-tab" onclick="setMediaType('photo')">📷 Photos</button>
+            <button class="btn-tab" onclick="setMediaType('audio')">🎵 Audio</button>
+            <button class="btn-tab" onclick="setMediaType('video')">🎬 Video</button>
+            <button class="btn-tab" onclick="setMediaType('document')">📄 Documents</button>
         </div>
         <div class="search-container">
             <span class="search-icon">🔍</span>
@@ -825,12 +1022,14 @@
         const EXT_PHOTO = ["jpg", "jpeg", "png", "gif", "webp", "bmp", "svg", "tif", "tiff", "heic", "heif", "ico", "psd", "dng", "cr2", "cr3", "nef", "arw", "orf", "rw2", "pef", "sr2", "srf", "raw", "eps", "ai"];
         const EXT_AUDIO = ["mp3", "wav", "aiff", "aif", "flac", "m4a", "aac", "ogg", "wma", "mid", "midi", "alac", "ape", "ra", "ram", "ac3", "dts", "opus", "mka", "mp2"];
         const EXT_VIDEO = ["mp4", "mov", "m4v", "webm", "mkv", "avi", "asf", "wmv", "mpg", "mpeg", "m2v", "ts", "mts", "m2ts", "m2t", "vob", "3gp", "3g2", "flv", "f4v", "dv", "divx", "xvid", "rm", "rmvb", "ogv"];
+        const EXT_DOC = ["md", "markdown", "txt", "json", "js", "ts", "css", "html", "htm", "log", "csv", "xml", "yaml", "yml", "sh", "py", "rtf"];
 
         function getMediaType(filename) {
             const ext = filename.split(".").pop().toLowerCase();
             if (EXT_PHOTO.includes(ext)) return "photo";
             if (EXT_AUDIO.includes(ext)) return "audio";
             if (EXT_VIDEO.includes(ext)) return "video";
+            if (EXT_DOC.includes(ext)) return "document";
             return "other";
         }
 
@@ -1007,19 +1206,22 @@
         }
 
         function finishScan(sourceName) {
-            document.getElementById("scanStatus").textContent = `Loaded ${allItems.length} media items`;
+            document.getElementById("scanStatus").textContent = `Loaded ${allItems.length} media & document items`;
             
-            let photos = 0, audio = 0, video = 0;
+            let photos = 0, audio = 0, video = 0, docs = 0;
             allItems.forEach(item => {
                 if (item.type === "photo") photos++;
                 else if (item.type === "audio") audio++;
                 else if (item.type === "video") video++;
+                else if (item.type === "document") docs++;
             });
 
             document.getElementById("statTotalFiles").textContent = allItems.length;
             document.getElementById("statPhotos").textContent = photos;
             document.getElementById("statAudio").textContent = audio;
             document.getElementById("statVideo").textContent = video;
+            const docStatEl = document.getElementById("statDocs");
+            if (docStatEl) docStatEl.textContent = docs;
 
             renderGrid();
         }
@@ -1079,6 +1281,14 @@
                     previewHtml = `<div class="card-icon-placeholder">🎵</div>`;
                 } else if (item.type === "video") {
                     previewHtml = `<div class="card-icon-placeholder">🎬</div>`;
+                } else if (item.type === "document") {
+                    const ext = item.name.split(".").pop().toUpperCase();
+                    previewHtml = `
+                        <div class="card-icon-placeholder" style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
+                            <div style="font-size:2.8rem;line-height:1;">📄</div>
+                            <div style="font-family:var(--font-mono);font-size:0.75rem;font-weight:700;color:#10b981;margin-top:0.4rem;letter-spacing:0.05em;">.${ext}</div>
+                        </div>
+                    `;
                 }
 
                 card.innerHTML = `
@@ -1158,19 +1368,250 @@
                     video.className = "modal-media";
                     modalBody.appendChild(video);
                 }
+            } else if (item.type === "document") {
+                const docBox = document.createElement("div");
+                docBox.className = "modal-doc-deck";
+                docBox.innerHTML = `
+                    <div class="doc-toolbar">
+                        <div class="doc-btn-group">
+                            <button class="doc-btn active" id="btnViewRendered" onclick="setDocViewMode('rendered')">📖 Rendered</button>
+                            <button class="doc-btn" id="btnViewRaw" onclick="setDocViewMode('raw')">📝 Raw Text</button>
+                        </div>
+                        <div class="doc-btn-group">
+                            <span id="docMetaBadge" style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-muted);margin-right:0.4rem;">Reading...</span>
+                            <button class="doc-btn" onclick="copyDocText()" title="Copy entire document text to clipboard">📋 Copy</button>
+                            <button class="doc-btn" onclick="downloadCurrentDoc()" title="Save / Export document to disk">💾 Export</button>
+                            <button class="doc-btn" onclick="printDoc()" title="Print cleanly or save as PDF">🖨️ Print / PDF</button>
+                        </div>
+                    </div>
+                    <div class="doc-content-area" id="docContentArea">
+                        <div style="text-align:center;padding:3rem;color:var(--text-secondary);font-family:var(--font-mono);">Loading document...</div>
+                    </div>
+                `;
+                modalBody.appendChild(docBox);
+                loadDocContent(item);
             }
 
+            const ext = item.name.split(".").pop().toUpperCase();
+            const typeLabel = item.type === "document" ? `DOCUMENT (.${ext})` : item.type.toUpperCase();
             document.getElementById("modalTitle").textContent = item.name;
             document.getElementById("modalPath").textContent = item.path;
-            document.getElementById("modalSpecs").textContent = `${item.type.toUpperCase()} · ${item.sizeFormatted} · Item ${index + 1} of ${filteredItems.length}`;
+            document.getElementById("modalSpecs").textContent = `${typeLabel} · ${item.sizeFormatted} · Item ${index + 1} of ${filteredItems.length}`;
 
             document.getElementById("modal").classList.add("open");
+        }
+
+        // Document Reader & Markdown Engine
+        let currentDocText = "";
+        let currentDocMode = "rendered";
+
+        async function loadDocContent(item) {
+            let text = "";
+            try {
+                if (item.fileObj) {
+                    text = await item.fileObj.text();
+                } else if (item.presetUrl || item.url) {
+                    const resp = await fetch(item.presetUrl || item.url);
+                    text = await resp.text();
+                } else {
+                    text = "(No file stream available)";
+                }
+            } catch (err) {
+                text = "Error reading document: " + err.message;
+            }
+
+            currentDocText = text;
+            item.textContent = text;
+
+            const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+            const lines = text.split("\n").length;
+            const metaEl = document.getElementById("docMetaBadge");
+            if (metaEl) {
+                metaEl.textContent = `${lines.toLocaleString()} lines · ${words.toLocaleString()} words`;
+            }
+
+            const ext = item.name.split(".").pop().toLowerCase();
+            if (["json", "js", "ts", "css", "html", "htm", "log", "xml", "yaml", "yml", "sh", "py"].includes(ext)) {
+                currentDocMode = "raw";
+            } else {
+                currentDocMode = "rendered";
+            }
+
+            const btnR = document.getElementById("btnViewRendered");
+            const btnW = document.getElementById("btnViewRaw");
+            if (btnR && btnW) {
+                if (currentDocMode === "rendered") {
+                    btnR.classList.add("active");
+                    btnW.classList.remove("active");
+                } else {
+                    btnW.classList.add("active");
+                    btnR.classList.remove("active");
+                }
+            }
+
+            renderDocView();
+        }
+
+        function setDocViewMode(mode) {
+            currentDocMode = mode;
+            const btnR = document.getElementById("btnViewRendered");
+            const btnW = document.getElementById("btnViewRaw");
+            if (btnR && btnW) {
+                if (mode === "rendered") {
+                    btnR.classList.add("active");
+                    btnW.classList.remove("active");
+                } else {
+                    btnW.classList.add("active");
+                    btnR.classList.remove("active");
+                }
+            }
+            renderDocView();
+        }
+
+        function renderDocView() {
+            const area = document.getElementById("docContentArea");
+            if (!area) return;
+            if (currentDocMode === "rendered") {
+                area.innerHTML = `<div class="doc-markdown-body">${renderMarkdown(currentDocText)}</div>`;
+            } else {
+                area.innerHTML = `<pre class="doc-raw-text">${escapeHtml(currentDocText)}</pre>`;
+            }
+        }
+
+        function copyDocText() {
+            if (!currentDocText) return;
+            navigator.clipboard.writeText(currentDocText).then(() => {
+                const btn = event.target;
+                const orig = btn.textContent;
+                btn.textContent = "✅ Copied!";
+                setTimeout(() => { btn.textContent = orig; }, 1800);
+            }).catch(err => {
+                alert("Copied to clipboard!");
+            });
+        }
+
+        function downloadCurrentDoc() {
+            const item = filteredItems[currentModalIndex];
+            if (!item) return;
+            const blob = new Blob([currentDocText], { type: "text/plain;charset=utf-8" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = item.name;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function printDoc() {
+            window.print();
+        }
+
+        function escapeHtml(str) {
+            if (!str) return "";
+            return str
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        function renderMarkdown(md) {
+            if (!md) return "";
+            let src = md;
+
+            // 1. Code blocks
+            const codeBlocks = [];
+            src = src.replace(/```([a-zA-Z0-9_-]*)\n([\s\S]*?)```/g, function(match, lang, code) {
+                const id = `___CODEBLOCK_${codeBlocks.length}___`;
+                codeBlocks.push(`<pre class="doc-code-block"><code class="language-${lang}">${escapeHtml(code.trimEnd())}</code></pre>`);
+                return id;
+            });
+
+            // 2. Inline code
+            const inlineCodes = [];
+            src = src.replace(/`([^`\n]+)`/g, function(match, code) {
+                const id = `___INLINECODE_${inlineCodes.length}___`;
+                inlineCodes.push(`<code class="doc-inline-code">${escapeHtml(code)}</code>`);
+                return id;
+            });
+
+            // 3. Escape raw HTML tags
+            src = src.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+            // 4. Tables
+            src = src.replace(/((?:\|[^\n]+\|\r?\n)+)/g, function(tableMatch) {
+                const lines = tableMatch.trim().split("\n");
+                if (lines.length < 2) return tableMatch;
+                let tableHtml = '<div style="overflow-x:auto;margin:1.4rem 0;"><table class="doc-table" style="width:100%;border-collapse:collapse;font-size:0.92rem;">';
+                lines.forEach((line, i) => {
+                    if (/^\|[-:\s|]+\|$/.test(line.trim())) return;
+                    const cols = line.trim().replace(/^\||\|$/g, '').split('|');
+                    const tag = (i === 0) ? 'th' : 'td';
+                    tableHtml += '<tr>' + cols.map(c => `<${tag} style="border:1px solid rgba(255,255,255,0.12);padding:0.6rem 0.9rem;text-align:left;${tag==='th'?'background:rgba(245,158,11,0.12);color:var(--gold-light);font-weight:600;':''}">${c.trim()}</${tag}>`).join('') + '</tr>';
+                });
+                tableHtml += '</table></div>';
+                return '\n\n' + tableHtml + '\n\n';
+            });
+
+            // 5. Headers
+            src = src.replace(/^#### (.*$)/gim, '<h4>$1</h4>');
+            src = src.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+            src = src.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+            src = src.replace(/^# (.*$)/gim, '<h1>$1</h1>');
+
+            // 6. Horizontal Rules
+            src = src.replace(/^(?:---|\*\*\*|___)\s*$/gim, '<hr class="doc-divider">');
+
+            // 7. Blockquotes
+            src = src.replace(/^(?:&gt;|\>)\s?(.*$)/gim, '<blockquote>$1</blockquote>');
+            src = src.replace(/<\/blockquote>\s*<blockquote>/g, '<br>');
+
+            // 8. Bold & Italic
+            src = src.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+            src = src.replace(/__([^_]+)__/g, '<strong>$1</strong>');
+            src = src.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+            src = src.replace(/_([^_]+)_/g, '<em>$1</em>');
+
+            // 9. Links
+            src = src.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+
+            // 10. Unordered Lists
+            src = src.replace(/^\s*[-*]\s+(.*$)/gim, '<li>$1</li>');
+            src = src.replace(/(<li>.*<\/li>)/gims, function(match) {
+                return '<ul>' + match + '</ul>';
+            });
+            src = src.replace(/<\/ul>\s*<ul>/g, '');
+
+            // 11. Paragraphs
+            const blocks = src.split(/\n{2,}/);
+            let out = blocks.map(block => {
+                block = block.trim();
+                if (!block) return '';
+                if (/^<(h[1-6]|ul|ol|pre|blockquote|hr|div|table)/i.test(block)) {
+                    return block;
+                }
+                return '<p>' + block.replace(/\n/g, '<br>') + '</p>';
+            }).join('\n');
+
+            // 12. Restore inline codes & code blocks
+            inlineCodes.forEach((code, i) => {
+                out = out.replace(new RegExp(`___INLINECODE_${i}___`, 'g'), code);
+            });
+            codeBlocks.forEach((code, i) => {
+                out = out.replace(new RegExp(`___CODEBLOCK_${i}___`, 'g'), code);
+            });
+
+            return out;
         }
 
         function closeModal() {
             const modalBody = document.getElementById("modalBody");
             const media = modalBody.querySelector("audio, video");
             if (media) media.pause();
+            currentDocText = "";
             document.getElementById("modal").classList.remove("open");
         }
 
@@ -1205,7 +1646,7 @@
 
         // Boot initial render with 160 master photos right away!
         // Clean standalone mode: ready for user input
-        document.getElementById("scanStatus").textContent = "Standing ready. Select a folder or drag files here.";
+        document.getElementById("scanStatus").textContent = "Standing ready. Select a folder, drive, or drag files/docs here.";
     </script>
 </body>
 </html>
