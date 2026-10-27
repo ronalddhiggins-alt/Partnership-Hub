@@ -1433,27 +1433,115 @@ If you are reading this inside the **Universal Media Console**, congratulations!
                 const legacyFormats = ["asf", "wmv", "avi", "flv", "rm", "vob", "3gp"];
                 
                 if (legacyFormats.includes(ext)) {
+                    // Check if an MP4 companion with the same base name exists
+                    const baseName = item.name.substring(0, item.name.lastIndexOf(".")).toLowerCase();
+                    const companionIndex = allItems.findIndex(x => {
+                        const otherBase = x.name.substring(0, x.name.lastIndexOf(".")).toLowerCase();
+                        const otherExt = x.name.split(".").pop().toLowerCase();
+                        return otherBase === baseName && (otherExt === "mp4" || otherExt === "webm");
+                    });
+
                     const videoBox = document.createElement("div");
                     videoBox.className = "modal-audio-deck";
-                    videoBox.innerHTML = `
-                        <div style="font-size:3.5rem;margin-bottom:1rem;">📹</div>
-                        <h3 style="font-family:var(--font-display);font-size:1.5rem;color:#fff;margin-bottom:0.8rem;">${item.name}</h3>
-                        <p style="color:var(--text-secondary);font-size:0.95rem;margin-bottom:1.5rem;line-height:1.6;max-width:440px;margin-left:auto;margin-right:auto;">
-                            <strong>Legacy Camcorder Video (${ext.toUpperCase()} — 2002 Era)</strong><br>
-                            This is an authentic early 2000s mini-camcorder recording. Modern web browsers do not have built-in HTML5 decoders for proprietary Microsoft ASF/WMV streams.
-                        </p>
-                        <a href="${itemUrl}" download="${item.name}" class="btn-open-drive" style="display:inline-flex;padding:0.8rem 1.6rem;font-size:0.95rem;text-decoration:none;">
-                            ▶️ Open in QuickTime / VLC Player
-                        </a>
-                    `;
-                    modalBody.appendChild(videoBox);
+                    
+                    if (companionIndex !== -1) {
+                        const companionItem = allItems[companionIndex];
+                        videoBox.innerHTML = `
+                            <div style="font-size:3.5rem;margin-bottom:1rem;">📹</div>
+                            <h3 style="font-family:var(--font-display);font-size:1.5rem;color:#fff;margin-bottom:0.8rem;">${item.name}</h3>
+                            <p style="color:var(--text-secondary);font-size:0.95rem;margin-bottom:1.5rem;line-height:1.6;max-width:520px;margin-left:auto;margin-right:auto;">
+                                <strong>Legacy Video (${ext.toUpperCase()}) & Modern Companion Found</strong><br>
+                                A universally playable <strong>${companionItem.name}</strong> was detected in this folder! You can stream the modern version immediately without downloading, or open the original vintage master in your desktop player (VLC / Dolphin).
+                            </p>
+                            <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+                                <button id="btnPlayCompanion" class="btn-open-drive" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.85rem 1.7rem;font-size:0.98rem;cursor:pointer;border:none;">
+                                    ▶️ Stream Modern MP4 Instantly (No Download)
+                                </button>
+                                <a href="${itemUrl}" download="${item.name}" class="btn-open-files" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.85rem 1.5rem;font-size:0.92rem;text-decoration:none;">
+                                    💾 Open Original ${ext.toUpperCase()} Master (VLC / Dolphin)
+                                </a>
+                            </div>
+                        `;
+                        modalBody.appendChild(videoBox);
+                        document.getElementById("btnPlayCompanion").onclick = () => {
+                            let fIdx = filteredItems.indexOf(companionItem);
+                            if (fIdx === -1) {
+                                filteredItems.push(companionItem);
+                                fIdx = filteredItems.length - 1;
+                            }
+                            openModal(fIdx);
+                        };
+                    } else {
+                        videoBox.innerHTML = `
+                            <div style="font-size:3.5rem;margin-bottom:1rem;">📹</div>
+                            <h3 style="font-family:var(--font-display);font-size:1.5rem;color:#fff;margin-bottom:0.8rem;">${item.name}</h3>
+                            <p style="color:var(--text-secondary);font-size:0.95rem;margin-bottom:1.5rem;line-height:1.6;max-width:480px;margin-left:auto;margin-right:auto;">
+                                <strong>Legacy Video Format (${ext.toUpperCase()})</strong><br>
+                                Modern web browsers may not decode proprietary vintage streams without conversion. You can attempt direct in-browser playback, or open in your desktop player (VLC / Dolphin).
+                            </p>
+                            <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;">
+                                <button id="btnTryDirectPlay" class="btn-open-drive" style="display:inline-flex;padding:0.8rem 1.5rem;font-size:0.95rem;cursor:pointer;border:none;">
+                                    ▶️ Try In-Browser Playback
+                                </button>
+                                <a href="${itemUrl}" download="${item.name}" class="btn-open-files" style="display:inline-flex;padding:0.8rem 1.5rem;font-size:0.92rem;text-decoration:none;">
+                                    💾 Open in VLC / Dolphin
+                                </a>
+                            </div>
+                            <div id="directVideoContainer" style="display:none;width:100%;margin-top:1rem;"></div>
+                        `;
+                        modalBody.appendChild(videoBox);
+                        document.getElementById("btnTryDirectPlay").onclick = () => {
+                            const c = document.getElementById("directVideoContainer");
+                            c.style.display = "block";
+                            c.innerHTML = `
+                                <video controls autoplay style="width:100%;max-height:60vh;border-radius:12px;outline:none;">
+                                    <source src="${itemUrl}">
+                                    Your browser cannot decode this video codec. Please use the button above to open in VLC or Dolphin.
+                                </video>
+                            `;
+                        };
+                    }
                 } else {
+                    const videoContainer = document.createElement("div");
+                    videoContainer.style.width = "100%";
+                    videoContainer.style.display = "flex";
+                    videoContainer.style.flexDirection = "column";
+                    videoContainer.style.alignItems = "center";
+                    
                     const video = document.createElement("video");
                     video.src = itemUrl;
                     video.controls = true;
                     video.autoplay = true;
                     video.className = "modal-media";
-                    modalBody.appendChild(video);
+                    videoContainer.appendChild(video);
+
+                    // Check if there is an original legacy master for this MP4
+                    const baseName = item.name.substring(0, item.name.lastIndexOf(".")).toLowerCase();
+                    const legacyMaster = allItems.find(x => {
+                        const otherBase = x.name.substring(0, x.name.lastIndexOf(".")).toLowerCase();
+                        const otherExt = x.name.split(".").pop().toLowerCase();
+                        return otherBase === baseName && legacyFormats.includes(otherExt);
+                    });
+
+                    if (legacyMaster) {
+                        const masterExt = legacyMaster.name.split(".").pop().toUpperCase();
+                        let masterUrl = legacyMaster.presetUrl;
+                        if (!masterUrl && legacyMaster.fileObj) {
+                            if (!legacyMaster.url) legacyMaster.url = URL.createObjectURL(legacyMaster.fileObj);
+                            masterUrl = legacyMaster.url;
+                        }
+                        const badge = document.createElement("div");
+                        badge.style.marginTop = "0.8rem";
+                        badge.style.textAlign = "center";
+                        badge.innerHTML = `
+                            <a href="${masterUrl}" download="${legacyMaster.name}" style="color:var(--gold-light);font-family:var(--font-mono);font-size:0.8rem;text-decoration:none;background:rgba(245,158,11,0.1);padding:0.4rem 0.8rem;border-radius:6px;border:1px solid rgba(245,158,11,0.3);display:inline-flex;align-items:center;gap:0.4rem;">
+                                🎞️ Original 2002 ${masterExt} Master Available in Folder (${legacyMaster.sizeFormatted}) — Click to Save
+                            </a>
+                        `;
+                        videoContainer.appendChild(badge);
+                    }
+
+                    modalBody.appendChild(videoContainer);
                 }
             } else if (item.type === "document") {
                 const docExt = item.name.split(".").pop().toLowerCase();
