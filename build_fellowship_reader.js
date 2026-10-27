@@ -7,10 +7,31 @@ const libraryMdPath = path.resolve(__dirname, '../../2_BOOK_LIBRARY/The_Sovereig
 const fellowshipHtmlPath = path.resolve(__dirname, 'fellowship.html');
 const aliasHtmlPath = path.resolve(__dirname, 'sovereign-fellowship.html');
 
-// Read the complete markdown edition
-const markdownContent = fs.readFileSync(draftCompleteMdPath, 'utf8');
+// 1. Assemble complete markdown from modular chapter drafts
+const parts = [
+    fs.readFileSync(path.join(draftsDir, '00_Dedication_and_Preludes.md'), 'utf8'),
+    fs.readFileSync(path.join(draftsDir, 'Chapter_01_The_Smoke_Above_the_Trees.md'), 'utf8'),
+    fs.readFileSync(path.join(draftsDir, 'Chapter_02_The_Anatomy_of_the_Ego_Trap.md'), 'utf8'),
+    fs.readFileSync(path.join(draftsDir, 'Chapter_03_The_Lighthouse_Principle.md'), 'utf8'),
+    fs.readFileSync(path.join(draftsDir, 'Chapter_04_The_Machines_Dream_of_Dreams.md'), 'utf8'),
+    fs.readFileSync(path.join(draftsDir, 'Chapter_05_The_Acoustics_of_Truth.md'), 'utf8'),
+    fs.readFileSync(path.join(draftsDir, 'Chapter_06_Through_Me_Not_From_Me.md'), 'utf8'),
+    fs.readFileSync(path.join(draftsDir, 'Chapter_07_The_Five_Dollar_Epiphany.md'), 'utf8'),
+    fs.readFileSync(path.join(draftsDir, 'Chapter_08_The_Weightless_Sanctuary.md'), 'utf8'),
+    fs.readFileSync(path.join(draftsDir, 'Chapter_09_The_Vibe_Coded_Commons.md'), 'utf8'),
+    fs.readFileSync(path.join(draftsDir, 'Chapter_10_The_Portable_Sanctuary.md'), 'utf8'),
+    fs.readFileSync(path.join(draftsDir, 'Chapter_11_Everyone_Will_Be_Able_to_Be.md'), 'utf8'),
+    fs.readFileSync(path.join(draftsDir, 'Chapter_12_Whats_It_All_About_Alfie.md'), 'utf8'),
+    fs.readFileSync(path.join(draftsDir, 'Chapter_13_The_Sealed_Vessel.md'), 'utf8'),
+    fs.readFileSync(path.join(draftsDir, 'Chapter_14_Harmonic_Resonance.md'), 'utf8'),
+    fs.readFileSync(path.join(draftsDir, 'Chapter_15_The_Organic_Byproduct.md'), 'utf8'),
+    fs.readFileSync(path.join(draftsDir, 'Epilogue_The_Echo_in_the_Mirror.md'), 'utf8')
+];
 
-// Synchronize into 2_BOOK_LIBRARY
+const markdownContent = parts.join('\n\n---\n\n');
+
+// 2. Synchronize into Complete Editions
+fs.writeFileSync(draftCompleteMdPath, markdownContent, 'utf8');
 fs.writeFileSync(libraryMdPath, markdownContent, 'utf8');
 console.log(`Saved synchronized complete edition to:`);
 console.log(`  1. ${draftCompleteMdPath}`);
