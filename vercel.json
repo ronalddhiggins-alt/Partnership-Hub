@@ -2,6 +2,18 @@
     "cleanUrls": true,
     "rewrites": [
         {
+            "source": "/fellowship(.*)",
+            "destination": "/fellowship.html"
+        },
+        {
+            "source": "/sovereign-fellowship(.*)",
+            "destination": "/fellowship.html"
+        },
+        {
+            "source": "/book11(.*)",
+            "destination": "/fellowship.html"
+        },
+        {
             "source": "/heart",
             "destination": "/heart.html"
         },
