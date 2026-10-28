@@ -696,6 +696,107 @@
             font-family: var(--font-mono);
         }
 
+        /* Archival Photography Showcase */
+        .archive-photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .archive-photo-item {
+            background: rgba(10, 14, 22, 0.85);
+            border: 1px dashed var(--border-brass);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .archive-photo-item:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.7), 0 0 15px var(--brass-glow);
+        }
+
+        .archive-photo-img-box {
+            position: relative;
+            min-height: 170px;
+            background: linear-gradient(135deg, rgba(20, 26, 38, 0.9), rgba(12, 16, 24, 0.95));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        .archive-photo-img-box img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .archive-photo-item:hover .archive-photo-img-box img {
+            transform: scale(1.04);
+        }
+
+        .archive-photo-placeholder {
+            padding: 2rem 1.25rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .archive-photo-placeholder-icon {
+            font-size: 2rem;
+            opacity: 0.8;
+        }
+
+        .archive-photo-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(7, 9, 12, 0.9);
+            border: 1px solid var(--border-brass);
+            color: var(--gold-light);
+            font-size: 0.68rem;
+            font-family: var(--font-mono);
+            padding: 3px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            backdrop-filter: blur(8px);
+        }
+
+        .archive-photo-info {
+            padding: 1rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            flex: 1;
+        }
+
+        .archive-photo-title {
+            font-family: var(--font-head);
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .archive-photo-desc {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
         /* Footer */
         .rhm-footer {
             border-top: 1px solid var(--border-glass);
@@ -1092,16 +1193,127 @@
             </div>
 
             <div class="timeline-container">
-                <!-- 1966: The Genesis -->
+                <!-- 1966: The Genesis (The Younger Generation & Spokane Acetate) -->
                 <div class="timeline-milestone">
-                    <div class="milestone-year">1966 · THE FIRST RECORDINGS</div>
+                    <div class="milestone-year">1966 · THE SPARK: FIRST ACETATE SINGLE</div>
                     <div class="milestone-card">
-                        <h3>The Tape Genesis: First Reel-to-Reel Sessions</h3>
+                        <h3>October 10, 1966 · The Younger Generation at Sound Recording Co. (Spokane, WA)</h3>
                         <p>
-                            Ron Higgins lays down his very first recordings on analog reel tape. Armed with an acoustic guitar, raw curiosity, and an innate ear for harmony, this spark begins a lifetime of independent music creation.
+                            Exactly sixty years ago, nineteen-year-old Ron Higgins cuts his very first recording session on a 7-inch acetate disc with his folk-rock group <strong>The Younger Generation</strong> at Sound Recording Co. (SRC) in Spokane, Washington. Tracking the single <em>"I'm A Boy" / "Magic"</em> during the height of the Pacific Northwest garage and folk-rock explosion, this session ignited an unbroken sixty-year creative flame.
                         </p>
-                        <div class="milestone-callout">
-                            📜 [ARCHIVE GATEWAY: Original 1966 tape reels and early band photos are currently being cataloged to be exhibited right here].
+                        
+                        <div class="archive-photo-grid" style="grid-template-columns: minmax(280px, 480px);">
+                            <div class="archive-photo-item">
+                                <div class="archive-photo-img-box" style="height: auto; min-height: 220px;">
+                                    <img src="images/rhm_archive/younger_generation_1966_archive.jpg" alt="Northwest Music Archives Entry: The Younger Generation (1966)" style="height: auto; max-height: 280px; object-fit: contain; background: #16120e;">
+                                    <span class="archive-photo-badge">Archival Record · 1966</span>
+                                </div>
+                                <div class="archive-photo-info">
+                                    <div class="archive-photo-title">Pacific Northwest Music Archives Entry</div>
+                                    <div class="archive-photo-desc">
+                                        Cataloged historical discography entry for <em>The Younger Generation</em>, recording "I'm A Boy" / "Magic" at Sound Recording Co. (SRC) on October 10, 1966. Documented in regional music history alongside Stomp & Shout and HistoryLink.org.
+                                    </div>
+                                    <a href="https://nwmusicarchives.com/artist/younger-generation-the/" target="_blank" rel="noopener noreferrer" style="color:var(--gold); font-size:0.8rem; font-family:var(--font-mono); text-decoration:none; margin-top:0.4rem; display:inline-block;">
+                                        🔗 View Northwest Music Archives Registry →
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="milestone-callout" style="margin-top:1.25rem;">
+                            📜 [ARCHIVE DISCOVERY: 1966 Sound Recording Co. Spokane acetate disc catalog entry authenticated October 2026].
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1966-1970: US Navy Service -->
+                <div class="timeline-milestone">
+                    <div class="milestone-year">1966–1970 · SERVICE & HARMONY</div>
+                    <div class="milestone-card">
+                        <h3>USS Pickaway (APA-222) · Yeoman 3rd Class & Shortwave CW Morse</h3>
+                        <p>
+                            Four years of US Navy service during the Vietnam era aboard the troop transport <strong>USS Pickaway (APA-222)</strong> on the West Coast. Beginning on deck, Ron's typing speed caught the attention of a Chief Petty Officer from Spokane, leading to a Yeoman rate and promotion to 3rd Class (YN3) within 17 months. Though qualified and offered a cross-rate to Radioman (drawing upon his lifelong mastery of shortwave CW Morse code since age 13), Ron chose to remain a yeoman—quietly practicing acoustic guitar and vocal harmonies in off-duty hours.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 1970-1978: Bremerton Sound Recording & The Road -->
+                <div class="timeline-milestone">
+                    <div class="milestone-year">1970–1978 · THE ANALOG TAPROOT</div>
+                    <div class="milestone-card">
+                        <h3>Bremerton Sound Recording & The Touring Musician Era</h3>
+                        <p>
+                            A decade of intense, hands-on audio craftsmanship and stage performance. By day, Ron served the public at Washington State Job Service, counseling and lifting up workers navigating job loss. In the evenings, he operated <strong>Bremerton Sound Recording</strong> in Bremerton, Washington—tracking bands onto a <strong>1-inch Ampex tape machine</strong>, mastering down to a <strong>stereo 2-track Ampex deck</strong>, and sculpting analog frequencies through a classic <strong>Tascam mixing console</strong>.
+                        </p>
+                        <p>
+                            For live remote gigs, Ron packed a <strong>Tascam 1/2-inch 8-track recorder</strong> into the field, capturing regional talent live on stage. Concurrently, from 1970 through 1978, Ron performed full-time and part-time as a working club musician, touring venues with rich four-part vocal arrangements steeped in The Beatles, The Beach Boys, and The Association.
+                        </p>
+
+                        <!-- Archival Gallery Slots for Bremerton Sound Recording -->
+                        <div class="archive-photo-grid">
+                            <div class="archive-photo-item" id="photo-slot-ampex1">
+                                <div class="archive-photo-img-box">
+                                    <div class="archive-photo-placeholder">
+                                        <span class="archive-photo-placeholder-icon">🎛️</span>
+                                        <strong>1" Ampex Tape Machine</strong>
+                                        <span>Vintage studio photograph being curated</span>
+                                    </div>
+                                    <span class="archive-photo-badge">Bremerton Sound</span>
+                                </div>
+                                <div class="archive-photo-info">
+                                    <div class="archive-photo-title">1-Inch Ampex Tape Deck</div>
+                                    <div class="archive-photo-desc">The beating heart of Bremerton Sound Recording: multi-track analog iron and warm magnetic tape compression.</div>
+                                </div>
+                            </div>
+
+                            <div class="archive-photo-item" id="photo-slot-tascam8">
+                                <div class="archive-photo-img-box">
+                                    <div class="archive-photo-placeholder">
+                                        <span class="archive-photo-placeholder-icon">📼</span>
+                                        <strong>Tascam 1/2" 8-Track</strong>
+                                        <span>Mobile field recording unit photograph</span>
+                                    </div>
+                                    <span class="archive-photo-badge">Mobile Rig</span>
+                                </div>
+                                <div class="archive-photo-info">
+                                    <div class="archive-photo-title">Tascam 1/2" 8-Track Remote Rig</div>
+                                    <div class="archive-photo-desc">Used for remote mobile recording sessions of live bands across the Puget Sound region.</div>
+                                </div>
+                            </div>
+
+                            <div class="archive-photo-item" id="photo-slot-studio">
+                                <div class="archive-photo-img-box">
+                                    <div class="archive-photo-placeholder">
+                                        <span class="archive-photo-placeholder-icon">🎙️</span>
+                                        <strong>Bremerton Studio Interior</strong>
+                                        <span>Original 1970s studio room & console</span>
+                                    </div>
+                                    <span class="archive-photo-badge">The Studio</span>
+                                </div>
+                                <div class="archive-photo-info">
+                                    <div class="archive-photo-title">Bremerton Sound Recording Studio</div>
+                                    <div class="archive-photo-desc">The evening sanctuary where independent artists tracked original music through analog boards.</div>
+                                </div>
+                            </div>
+
+                            <div class="archive-photo-item" id="photo-slot-card">
+                                <div class="archive-photo-img-box">
+                                    <div class="archive-photo-placeholder">
+                                        <span class="archive-photo-placeholder-icon">🏷️</span>
+                                        <strong>Original Business Card</strong>
+                                        <span>Vintage Bremerton Sound Recording artifact</span>
+                                    </div>
+                                    <span class="archive-photo-badge">Artifact</span>
+                                </div>
+                                <div class="archive-photo-info">
+                                    <div class="archive-photo-title">Vintage Studio Business Card</div>
+                                    <div class="archive-photo-desc">Original printed studio card from Bremerton, Washington, preserving the early recording venture.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="milestone-callout" style="margin-top:1.25rem;">
+                            📸 [GALLERY READY: Archival vintage photographs of the 1" Ampex, Tascam 1/2" 8-track, studio interior, and original business card are ready to be mounted].
                         </div>
                     </div>
                 </div>
