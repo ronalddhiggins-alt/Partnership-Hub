@@ -596,3 +596,4 @@ const htmlTemplate = `<!DOCTYPE html>
 fs.writeFileSync(primaryHtmlPath, htmlTemplate, 'utf8');
 fs.writeFileSync(aliasHtmlPath, htmlTemplate, 'utf8');
 console.log(`Successfully generated Book 12 reader at:\n  1. ${primaryHtmlPath}\n  2. ${aliasHtmlPath}`);
+
