@@ -2,33 +2,13 @@ const fs = require('fs');
 const path = require('path');
 
 const draftsDir = path.resolve(__dirname, '../../01_Drafts/The_Sovereign_Musician');
+const completeDraftMdPath = path.resolve(draftsDir, 'The_Sovereign_Musician_Complete_Draft.md');
 const draftCompleteMdPath = path.resolve(draftsDir, 'The_Sovereign_Musician_Complete_Edition.md');
 const libraryMdPath = path.resolve(__dirname, '../../2_BOOK_LIBRARY/The_Sovereign_Musician_Complete_Edition.md');
 const musicianHtmlPath = path.resolve(__dirname, 'sovereign-musician.html');
 
-// 1. Assemble complete markdown from modular chapter drafts
-const parts = [
-    fs.readFileSync(path.join(draftsDir, '00_Dedication_and_Preludes.md'), 'utf8'),
-    '---\n\n# PART I: THE WHEEL OF MISFORTUNE (The Modern Streaming Trap)\n\n---',
-    fs.readFileSync(path.join(draftsDir, 'Chapter_01_The_Illusion_of_the_Indie_Lottery.md'), 'utf8'),
-    fs.readFileSync(path.join(draftsDir, 'Chapter_02_The_Forensic_Audit.md'), 'utf8'),
-    fs.readFileSync(path.join(draftsDir, 'Chapter_03_The_Moment_of_Refusal.md'), 'utf8'),
-    '---\n\n# PART II: THE SOVEREIGN ARCHIVE (Local-First Music Architecture)\n\n---',
-    fs.readFileSync(path.join(draftsDir, 'Chapter_04_The_Master_Vault.md'), 'utf8'),
-    fs.readFileSync(path.join(draftsDir, 'Chapter_05_100_Point_Publishing_Sovereignty.md'), 'utf8'),
-    '---\n\n# PART III: THE CENTAUR STUDIO (Agentic Video & Multi-Media Factory)\n\n---',
-    fs.readFileSync(path.join(draftsDir, 'Chapter_06_The_15_Minute_Transformation.md'), 'utf8'),
-    fs.readFileSync(path.join(draftsDir, 'Chapter_07_The_Open_Source_Engine.md'), 'utf8'),
-    fs.readFileSync(path.join(draftsDir, 'Chapter_08_The_Metadata_Engine.md'), 'utf8'),
-    '---\n\n# PART IV: DIRECT-TO-HUMAN DISTRIBUTION (All for All)\n\n---',
-    fs.readFileSync(path.join(draftsDir, 'Chapter_09_The_Permanent_Stage.md'), 'utf8'),
-    fs.readFileSync(path.join(draftsDir, 'Chapter_10_The_Sovereign_Tip_Jar.md'), 'utf8'),
-    fs.readFileSync(path.join(draftsDir, 'Chapter_11_The_Acoustic_Companion_to_Awakening.md'), 'utf8'),
-    '---\n\n# PART V: APPENDICES & FORENSIC ARTIFACTS\n\n---',
-    fs.readFileSync(path.join(draftsDir, 'Appendices_and_Forensic_Artifacts.md'), 'utf8')
-];
-
-const markdownContent = parts.join('\n\n');
+// 1. Read complete master draft (including Appendix D & November 2026 remaster chapters)
+const markdownContent = fs.readFileSync(completeDraftMdPath, 'utf8');
 
 // 2. Write synchronized complete editions
 fs.writeFileSync(draftCompleteMdPath, markdownContent, 'utf8');
