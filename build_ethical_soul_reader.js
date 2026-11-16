@@ -16,7 +16,8 @@ const chapterFiles = [
     'Chapter_06_Unkinking_the_Hose_in_the_Living_Now.md',
     'Chapter_07_The_Transparent_Clarity_Voice_Cloner_Blueprint.md',
     'Chapter_08_Spontaneous_Inspiration_The_Antigravity_Lyric.md',
-    'Chapter_09_Epilogue_Answering_the_Knocking_at_the_Door.md'
+    'Chapter_09_Epilogue_Answering_the_Knocking_at_the_Door.md',
+    'Chapter_10_Re_Reading_in_Parallel_and_the_Universe_of_Choice.md'
 ].filter(f => fs.existsSync(path.join(draftsDir, f)));
 
 const parts = chapterFiles.map(f => fs.readFileSync(path.join(draftsDir, f), 'utf8'));
